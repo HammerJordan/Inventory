@@ -1,8 +1,28 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inventory.API", "Inventory.API\Inventory.API.csproj", "{799CC2C2-DFC8-4B62-AD8B-4096D480900B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inventory.API.Tests", "Inventory.API.Tests\Inventory.API.Tests.csproj", "{242F3097-2F4C-4B6D-9A52-5A01F4C1208E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{D56EA362-F58F-4C71-9957-C3CAE941C5C9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{799CC2C2-DFC8-4B62-AD8B-4096D480900B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{799CC2C2-DFC8-4B62-AD8B-4096D480900B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{799CC2C2-DFC8-4B62-AD8B-4096D480900B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{799CC2C2-DFC8-4B62-AD8B-4096D480900B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{242F3097-2F4C-4B6D-9A52-5A01F4C1208E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{242F3097-2F4C-4B6D-9A52-5A01F4C1208E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{242F3097-2F4C-4B6D-9A52-5A01F4C1208E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{242F3097-2F4C-4B6D-9A52-5A01F4C1208E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{799CC2C2-DFC8-4B62-AD8B-4096D480900B} = {D56EA362-F58F-4C71-9957-C3CAE941C5C9}
+		{242F3097-2F4C-4B6D-9A52-5A01F4C1208E} = {D56EA362-F58F-4C71-9957-C3CAE941C5C9}
 	EndGlobalSection
 EndGlobal
