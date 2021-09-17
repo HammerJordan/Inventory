@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Globalization;
-using InventoryManagement.Core.Models;
+using Inventory.Core;
 using InventoryManagement.Desktop.ViewModel;
 
 namespace InventoryManagement.Desktop.Model

@@ -1,4 +1,6 @@
-﻿using InventoryManagement.Core.Models;
+﻿
+
+using Inventory.Core;
 
 namespace InventoryManagement.Desktop.Events
 {
@@ -8,7 +10,7 @@ namespace InventoryManagement.Desktop.Events
 
         public ProductModelAddRemove(ProductModel model)
         {
-            this.Model = model;
+            Model = model;
         }
     }
 }

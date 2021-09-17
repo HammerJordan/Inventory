@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Input;
-using InventoryManagement.Core.Models;
-using InventoryManagement.Core.Services;
 using InventoryManagement.Desktop.Commands;
 using InventoryManagement.Desktop.Events;
 using InventoryManagement.Desktop.Model;
@@ -15,7 +11,7 @@ namespace InventoryManagement.Desktop.ViewModel
 {
     public class RecordViewModel : ViewModelBase
     {
-        private readonly InvoiceDBHelper invoiceDbHelper;
+        //private readonly InvoiceDBHelper invoiceDbHelper;
         private RecordBindableModel selectedRecord;
 
         public ICommand NewRecordCommand { get; }
@@ -38,19 +34,19 @@ namespace InventoryManagement.Desktop.ViewModel
         }
 
 
-        public RecordViewModel(InvoiceDBHelper invoiceDbHelper)
+        public RecordViewModel()
         {
-            this.invoiceDbHelper = invoiceDbHelper;
-
-            var loadedInvoices = invoiceDbHelper.LoadInvoices();
+            // this.invoiceDbHelper = invoiceDbHelper;
+            //
+            // var loadedInvoices = invoiceDbHelper.LoadInvoices();
 
             RecordsCollection = new ObservableCollection<RecordBindableModel>();
-            foreach (RecordBindableModel record in loadedInvoices)
-            {
-                RecordsCollection.Add(record);
-                record.PropertyChanged += RecordOnPropertyChanged;
-
-            }
+            // foreach (RecordBindableModel record in loadedInvoices)
+            // {
+            //     RecordsCollection.Add(record);
+            //     record.PropertyChanged += RecordOnPropertyChanged;
+            //
+            // }
 
             ProductViewModels = new ObservableCollection<ProductViewModel>();
 
@@ -69,12 +65,12 @@ namespace InventoryManagement.Desktop.ViewModel
 
         private void AddNewRecord()
         {
-            var record = invoiceDbHelper.CreateNewInvoice();
+            //var record = invoiceDbHelper.CreateNewInvoice();
             //TODO list view should set the selected invoice and this should overide that
-            RecordBindableModel recordBindable = record;
-
-            RecordsCollection.Insert(0,recordBindable);
-            SelectedRecord = recordBindable;
+            // RecordBindableModel recordBindable = record;
+            //
+            // RecordsCollection.Insert(0,recordBindable);
+            // SelectedRecord = recordBindable;
         }
 
         private void RecordOnPropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -82,14 +78,14 @@ namespace InventoryManagement.Desktop.ViewModel
             if(sender is not RecordBindableModel model)
                 return;
 
-            invoiceDbHelper.SaveRecordModel(model);
+            // invoiceDbHelper.SaveRecordModel(model);
         }
 
         private void DeleteRecord()
         {
             if (SelectedRecord == null)
                 return;
-            invoiceDbHelper.DeleteRecordModel(SelectedRecord);
+            // invoiceDbHelper.DeleteRecordModel(SelectedRecord);
 
             int selectedIndex = RecordsCollection
                 .IndexOf(RecordsCollection.First(x => x.ID == SelectedRecord.ID));

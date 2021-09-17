@@ -10,7 +10,7 @@
              FontSize="18"
              mc:Ignorable="d">
     <UserControl.Resources>
-        <converters:ImageToSourceConverter x:Key="imageToSourceConverter" />
+        <!-- <converters:ImageToSourceConverter x:Key="imageToSourceConverter" /> -->
     </UserControl.Resources>
 
     <!--<Viewbox Stretch="Uniform" StretchDirection="DownOnly">-->
@@ -33,13 +33,21 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
+        <!-- <Image Grid.Row="0" -->
+        <!--        Grid.RowSpan="4" -->
+        <!--        Grid.Column="0" -->
+        <!--        Margin="0,0,15,0" -->
+        <!--        HorizontalAlignment="Left" -->
+        <!--        VerticalAlignment="Center" -->
+        <!--        Source="{Binding ProductModel.Image, Converter={StaticResource imageToSourceConverter}}" -->
+        <!--        StretchDirection="Both" />         -->
         <Image Grid.Row="0"
                Grid.RowSpan="4"
                Grid.Column="0"
                Margin="0,0,15,0"
                HorizontalAlignment="Left"
                VerticalAlignment="Center"
-               Source="{Binding ProductModel.Image, Converter={StaticResource imageToSourceConverter}}"
+
                StretchDirection="Both" />
 
         <TextBlock Grid.Row="0"
@@ -97,14 +105,14 @@
                  HorizontalAlignment="Center"
                  VerticalAlignment="Center"
                  Text="{Binding ProductModel.Quantity}"
-                 PreviewTextInput="NumberValidationTextBox"/>
+                 PreviewTextInput="NumberValidationTextBox" />
 
         <Button Grid.Row="1"
                 Grid.Column="3"
                 Width="50"
                 VerticalAlignment="Bottom"
                 Content="Add"
-                Click="AddButtonClick"/>
+                Click="AddButtonClick" />
     </Grid>
 
     <!--</StackPanel>-->

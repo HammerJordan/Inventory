@@ -42,11 +42,11 @@ namespace WebScraping
             return document;
         }
 
-        public Image GetImageFromUrl(string url)
-        {
-            using var memStream = new MemoryStream(webClient.DownloadData(url));
-            return Image.FromStream(memStream);
-        }
+        // public Image GetImageFromUrl(string url)
+        // {
+        //     using var memStream = new MemoryStream(webClient.DownloadData(url));
+        //     return Image.FromStream(memStream);
+        // }
 
         private void ReleaseUnmanagedResources()
         {

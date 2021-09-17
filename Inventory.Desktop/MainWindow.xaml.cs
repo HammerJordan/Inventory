@@ -1,28 +1,57 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
+using InventoryManagement.Desktop.Controls;
+using InventoryManagement.Desktop.Services;
+using InventoryManagement.Desktop.ViewModel;
 
-namespace Inventory.Desktop
+namespace InventoryManagement.Desktop
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    ///     Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private readonly MainWindowViewModel viewModel;
+        private readonly ViewResolveService viewResolve;
+
+        public MainWindow(MainWindowViewModel viewModel, ViewResolveService viewResolve)
         {
             InitializeComponent();
+            this.viewModel = viewModel;
+            this.viewResolve = viewResolve;
+            DataContext = viewModel;
+
+            foreach (UIElement child in SideBarNav.Children)
+            {
+                if (child is SideBarItem sideBarItem)
+                {
+                    sideBarItem.SideBarClickEvent += OnSideBarItemClickedEvent;
+
+                    if (sideBarItem.SideBarSelected)
+                        ActiveContent.Content = viewResolve.Resolve(sideBarItem.SideBarName);
+
+                }
+            }
         }
+
+        private void OnSideBarItemClickedEvent(SideBarItem clickedItem)
+        {
+            foreach (UIElement child in SideBarNav.Children)
+            {
+                if (child is SideBarItem sideBarItem)
+                {
+                    if (sideBarItem == clickedItem)
+                    {
+                        sideBarItem.SideBarSelected = true;
+                        ActiveContent.Content = viewResolve.Resolve(sideBarItem.SideBarName);
+                    }
+                    else
+                    {
+                        sideBarItem.SideBarSelected = false;
+                    }
+
+                }
+            }
+        }
+
     }
 }

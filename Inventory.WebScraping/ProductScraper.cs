@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using AngleSharp.Dom;
 using AngleSharp.Html.Dom;
 using Inventory.Core;
-using Microsoft.Extensions.Configuration;
 
 namespace WebScraping
 {
@@ -198,11 +195,11 @@ namespace WebScraping
                 .GetAttribute("href");
         }
 
-        public Image GetImage(IHtmlDocument htmlDocument)
-        {
-            var imageUrl = htmlDocument.All.First(x => x.Id == "item-display").Attributes[1].Value;
-            var image = pageLoader.GetImageFromUrl(imageUrl);
-            return image;
-        }
+        // public Image GetImage(IHtmlDocument htmlDocument)
+        // {
+        //     var imageUrl = htmlDocument.All.First(x => x.Id == "item-display").Attributes[1].Value;
+        //     var image = pageLoader.GetImageFromUrl(imageUrl);
+        //     return image;
+        // }
     }
 }

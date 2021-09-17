@@ -10,25 +10,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7a6d2810-f582-42df-adfb-b5401f0dfa70" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Inventory/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Inventory.Core/Models/ProductModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Inventory.Core/Models/RecordModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Inventory.DataAccess.Tests/DbConnectionTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Inventory.DataAccess/Database/DbConnection.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Inventory.DataAccess/Database/ISqlLiteDataAccess.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Inventory.DataAccess/Database/SqlLiteDataAccess.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Inventory.DataAccess/Database/TableSchema.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Inventory.DataAccess/Services/InvoiceDBHelper.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Inventory.DataAccess/Services/ProductSearchEngine.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Inventory/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Inventory/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.API.Tests/Inventory.API.Tests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.API.Tests/Inventory.API.Tests.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.Core.Tests/Inventory.Core.Tests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Core.Tests/Inventory.Core.Tests.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.Core/Class1.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.DataAccess.Tests/Inventory.DataAccess.Tests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.DataAccess.Tests/Inventory.DataAccess.Tests.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.DataAccess.Tests/UnitTest1.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.DataAccess/Class1.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.DataAccess/Inventory.DataAccess.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.DataAccess/Inventory.DataAccess.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.API/Controllers/WeatherForecastController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.API/Controllers/WeatherForecastController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.API/Inventory.API.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.API/Inventory.API.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.API/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.API/Startup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.API/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.API/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Core/Inventory.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Core/Inventory.Core.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/App.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/App.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/App.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/App.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/Controls/ProductItem.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/Controls/ProductItem.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/Converters/ImageToSourceConverter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/Converters/ImageToSourceConverter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/Events/ProdcutModelAddRemove.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/Events/ProdcutModelAddRemove.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/Inventory.Desktop.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/Inventory.Desktop.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/MainWindow.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/MainWindow.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/MainWindow.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/MainWindow.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/Model/RecordBindableModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/Model/RecordBindableModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/Services/DatabaseUpdate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/Services/DatabaseUpdate.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/View/SettingsPage.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/View/SettingsPage.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/ViewModel/CatalogViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/ViewModel/CatalogViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/ViewModel/ProductViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/ViewModel/ProductViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/ViewModel/RecordViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/ViewModel/RecordViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/ViewModel/SettingsViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/ViewModel/SettingsViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Mobile/Inventory.Mobile.Android/Resources/Resource.designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Mobile/Inventory.Mobile.Android/Resources/Resource.designer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Inventory.WebScraping.Tests/Inventory.WebScraping.Tests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.WebScraping.Tests/Inventory.WebScraping.Tests.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.WebScraping/Inventory.WebScraping.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.WebScraping/Inventory.WebScraping.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.WebScraping/ProductScraper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.WebScraping/ProductScraper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.WebScraping/ProductUpdateRunner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.WebScraping/ProductUpdateRunner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.WebScraping/WebPageLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.WebScraping/WebPageLoader.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +56,7 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bc3d7024e97f4f818de53bc3c23872b48f5790/233/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bc3d7024e97f4f818de53bc3c23872b48f5790/394/FileStream.Windows.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="InvalidFacetManager">
@@ -70,7 +80,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C#" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected=".NET Launch Settings Profile.Inventory.API">
@@ -173,7 +183,7 @@
       <workItem from="1631830856281" duration="300000" />
       <workItem from="1631831182798" duration="11000" />
       <workItem from="1631831283687" duration="183000" />
-      <workItem from="1631884497409" duration="4821000" />
+      <workItem from="1631884497409" duration="8279000" />
     </task>
     <servers />
   </component>
@@ -212,6 +222,19 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Inventory.Desktop/App.xaml.cs</url>
+          <line>35</line>
+          <properties documentPath="C:\Users\Hammer\Desktop\MyProjects\C#\Inventory\Inventory.Desktop\App.xaml.cs" initialLine="35" containingFunctionPresentation="method 'SetupIoC'">
+            <startOffsets>
+              <option value="889" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1011" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

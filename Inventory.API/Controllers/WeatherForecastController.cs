@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Dapper;
+using Inventory.DataAccess;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -17,23 +19,35 @@ namespace Inventory.API.Controllers
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
+        private readonly DbConnection _db;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, DbConnection db)
         {
             _logger = logger;
+            _db = db;
         }
 
+        // [HttpGet]
+        // public IEnumerable<WeatherForecast> Get()
+        // {
+        //     var rng = new Random();
+        //     return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+        //         {
+        //             Date = DateTime.Now.AddDays(index),
+        //             TemperatureC = rng.Next(-20, 55),
+        //             Summary = Summaries[rng.Next(Summaries.Length)]
+        //         })
+        //         .ToArray();
+        // }
+
         [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
+        [Route("GetTest")]
+        public int TestGet()
         {
-            var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-                {
-                    Date = DateTime.Now.AddDays(index),
-                    TemperatureC = rng.Next(-20, 55),
-                    Summary = Summaries[rng.Next(Summaries.Length)]
-                })
-                .ToArray();
+            var result = _db.GetDBConnection().QuerySingle<int>("select count() from Product;");
+
+            return result;
         }
+        
     }
 }

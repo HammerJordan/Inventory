@@ -1,4 +1,4 @@
-﻿using InventoryManagement.Core.Models;
+﻿using Inventory.Core;
 
 namespace InventoryManagement.Desktop.ViewModel
 {
