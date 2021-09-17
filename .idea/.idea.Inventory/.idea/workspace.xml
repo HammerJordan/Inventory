@@ -10,16 +10,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7a6d2810-f582-42df-adfb-b5401f0dfa70" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.Inventory/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Inventory.Core/Models/ProductModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Inventory.Core/Models/RecordModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Inventory.DataAccess.Tests/DbConnectionTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Inventory.DataAccess/Database/DbConnection.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Inventory.DataAccess/Database/ISqlLiteDataAccess.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Inventory.DataAccess/Database/SqlLiteDataAccess.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Inventory.DataAccess/Database/TableSchema.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Inventory.DataAccess/Services/InvoiceDBHelper.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Inventory.DataAccess/Services/ProductSearchEngine.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Inventory/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Inventory/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.API.Tests/Controllers/WeatherForecastController.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Inventory.API.Tests/Inventory.API.Tests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.API.Tests/Inventory.API.Tests.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.API.Tests/Program.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.API.Tests/Properties/launchSettings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.API.Tests/Startup.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.API.Tests/WeatherForecast.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.API.Tests/appsettings.Development.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.API.Tests/appsettings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Core.Tests/Inventory.Core.Tests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Core.Tests/Inventory.Core.Tests.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Core/Class1.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.DataAccess.Tests/Inventory.DataAccess.Tests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.DataAccess.Tests/Inventory.DataAccess.Tests.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.DataAccess.Tests/UnitTest1.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.DataAccess/Class1.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.DataAccess/Inventory.DataAccess.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.DataAccess/Inventory.DataAccess.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.WebScraping.Tests/Inventory.WebScraping.Tests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.WebScraping.Tests/Inventory.WebScraping.Tests.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,23 +38,39 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bc3d7024e97f4f818de53bc3c23872b48f5790/394/FileStream.Windows.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="InvalidFacetManager">
     <ignored-facets>
       <facet id="Inventory.Mobile.Android/invalid/Android Facet - Inventory.Mobile.Android" />
     </ignored-facets>
   </component>
   <component name="ProjectId" id="1yEy4gsxe1FKOjxVabYLlpu9pUG" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="autoscrollToSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.35005066" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="SolutionBuilderGeneralOptionsPageId" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected=".NET Launch Settings Profile.Inventory.API">
@@ -148,6 +173,7 @@
       <workItem from="1631830856281" duration="300000" />
       <workItem from="1631831182798" duration="11000" />
       <workItem from="1631831283687" duration="183000" />
+      <workItem from="1631884497409" duration="4821000" />
     </task>
     <servers />
   </component>
@@ -157,7 +183,37 @@
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Inventory.DataAccess.Tests/DbConnectionTests.cs</url>
+          <line>13</line>
+          <properties documentPath="C:\Users\Hammer\Desktop\MyProjects\C#\Inventory\Inventory.DataAccess.Tests\DbConnectionTests.cs" initialLine="13" containingFunctionPresentation="method 'Should_CreateNewDB_When_NoDbFound'">
+            <startOffsets>
+              <option value="338" />
+            </startOffsets>
+            <endOffsets>
+              <option value="399" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
