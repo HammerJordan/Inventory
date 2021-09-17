@@ -1,0 +1,112 @@
+﻿<UserControl x:Class="InventoryManagement.Desktop.Controls.ProductItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:converters="clr-namespace:InventoryManagement.Desktop.Converters"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:InventoryManagement.Desktop.Controls"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             Height="160"
+             d:DesignWidth="800"
+             FontSize="18"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <converters:ImageToSourceConverter x:Key="imageToSourceConverter" />
+    </UserControl.Resources>
+
+    <!--<Viewbox Stretch="Uniform" StretchDirection="DownOnly">-->
+
+    <!--<StackPanel Orientation="Horizontal">-->
+    <!--<Image></Image> TODO-->
+    <!--  Name  -->
+
+    <Grid Background="DimGray">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Image Grid.Row="0"
+               Grid.RowSpan="4"
+               Grid.Column="0"
+               Margin="0,0,15,0"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Center"
+               Source="{Binding ProductModel.Image, Converter={StaticResource imageToSourceConverter}}"
+               StretchDirection="Both" />
+
+        <TextBlock Grid.Row="0"
+                   Grid.Column="1"
+                   VerticalAlignment="Center"
+                   FontSize="14"
+                   FontWeight="Bold"
+                   Foreground="Black"
+                   Text="{Binding ProductModel.Name}"
+                   TextAlignment="Center" />
+
+        <!--  Description  -->
+        <TextBlock Grid.Row="1"
+                   Grid.Column="1"
+                   VerticalAlignment="Top"
+                   FontSize="12"
+                   Foreground="Black"
+                   Text="{Binding ProductModel.Description}"
+                   TextAlignment="Left"
+                   TextWrapping="WrapWithOverflow" />
+
+        <TextBlock Grid.Row="2"
+                   Grid.Column="1"
+                   VerticalAlignment="Bottom"
+                   FontSize="10"
+                   Foreground="Black"
+                   Text="{Binding ProductModel.UPC, StringFormat={}UPC: {0}}" />
+
+        <TextBlock Grid.Row="3"
+                   Grid.Column="1"
+                   VerticalAlignment="Bottom"
+                   FontSize="14"
+                   Foreground="Black">
+            <Hyperlink NavigateUri="{Binding ProductModel.URL}" RequestNavigate="Hyperlink_RequestNavigate">Go to web page</Hyperlink>
+
+        </TextBlock>
+
+        <TextBlock Grid.Row="1"
+                   Grid.RowSpan="2"
+                   Grid.Column="2"
+                   Padding="10,0"
+                   VerticalAlignment="Center"
+                   Foreground="Black">
+            <Run Text="{Binding ProductModel.Cost, StringFormat={}{0:C}}" />
+            <Run Text="{Binding ProductModel.Unit}" />
+        </TextBlock>
+        <TextBlock Grid.Row="1"
+                   Grid.Column="3"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top"
+                   Text="Quantity" />
+        <TextBox Grid.Row="1"
+                 Grid.Column="3"
+                 Width="50"
+                 HorizontalAlignment="Center"
+                 VerticalAlignment="Center"
+                 Text="{Binding ProductModel.Quantity}"
+                 PreviewTextInput="NumberValidationTextBox"/>
+
+        <Button Grid.Row="1"
+                Grid.Column="3"
+                Width="50"
+                VerticalAlignment="Bottom"
+                Content="Add"
+                Click="AddButtonClick"/>
+    </Grid>
+
+    <!--</StackPanel>-->
+    <!--</Viewbox>-->
+</UserControl>
