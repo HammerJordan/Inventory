@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Inventory.API", "Inventory.API\Inventory.API.csproj", "{799CC2C2-DFC8-4B62-AD8B-4096D480900B}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Inventory.DataAccess", "Inventory.DataAccess\Inventory.DataAccess.csproj", "{8E599AB1-3A77-4C1C-AF96-80E217FAF28D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Inventory.Core", "Inventory.Core\Inventory.Core.csproj", "{5C7BB46F-B134-4FAA-9F1C-E0EAF9D5EC42}"
@@ -15,15 +13,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Inventory.Desktop", "Invent
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inventory.Mobile.Android", "Inventory.Mobile\Inventory.Mobile.Android\Inventory.Mobile.Android.csproj", "{A1D0B50C-2F54-456A-8BA9-F554B03D50CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inventory.Mobile", "Inventory.Mobile\Inventory.Mobile\Inventory.Mobile.csproj", "{B5256BD5-4A0A-4E1B-A41B-D409AEA55DF2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Inventory.Mobile", "Inventory.Mobile\Inventory.Mobile\Inventory.Mobile.csproj", "{B5256BD5-4A0A-4E1B-A41B-D409AEA55DF2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inventory.Core.Tests", "Inventory.Core.Tests\Inventory.Core.Tests.csproj", "{279CF8A3-196C-43E4-BF08-102DBAFD8B65}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Inventory.Core.Tests", "Inventory.Core.Tests\Inventory.Core.Tests.csproj", "{279CF8A3-196C-43E4-BF08-102DBAFD8B65}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inventory.DataAccess.Tests", "Inventory.DataAccess.Tests\Inventory.DataAccess.Tests.csproj", "{7460C848-E915-4E92-9A1F-2B7E824EB2C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Inventory.DataAccess.Tests", "Inventory.DataAccess.Tests\Inventory.DataAccess.Tests.csproj", "{7460C848-E915-4E92-9A1F-2B7E824EB2C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inventory.API.Tests", "Inventory.API.Tests\Inventory.API.Tests.csproj", "{BDB81528-43AD-4016-ADFB-752A73CFC1E3}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inventory.WebScraping.Tests", "Inventory.WebScraping.Tests\Inventory.WebScraping.Tests.csproj", "{191896D6-C692-44AA-81E3-579CCB56C6FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Inventory.WebScraping.Tests", "Inventory.WebScraping.Tests\Inventory.WebScraping.Tests.csproj", "{191896D6-C692-44AA-81E3-579CCB56C6FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,10 +27,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{799CC2C2-DFC8-4B62-AD8B-4096D480900B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{799CC2C2-DFC8-4B62-AD8B-4096D480900B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{799CC2C2-DFC8-4B62-AD8B-4096D480900B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{799CC2C2-DFC8-4B62-AD8B-4096D480900B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8E599AB1-3A77-4C1C-AF96-80E217FAF28D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8E599AB1-3A77-4C1C-AF96-80E217FAF28D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E599AB1-3A77-4C1C-AF96-80E217FAF28D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -69,10 +61,6 @@ Global
 		{7460C848-E915-4E92-9A1F-2B7E824EB2C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7460C848-E915-4E92-9A1F-2B7E824EB2C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7460C848-E915-4E92-9A1F-2B7E824EB2C4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BDB81528-43AD-4016-ADFB-752A73CFC1E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BDB81528-43AD-4016-ADFB-752A73CFC1E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BDB81528-43AD-4016-ADFB-752A73CFC1E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BDB81528-43AD-4016-ADFB-752A73CFC1E3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{191896D6-C692-44AA-81E3-579CCB56C6FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{191896D6-C692-44AA-81E3-579CCB56C6FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{191896D6-C692-44AA-81E3-579CCB56C6FB}.Release|Any CPU.ActiveCfg = Release|Any CPU

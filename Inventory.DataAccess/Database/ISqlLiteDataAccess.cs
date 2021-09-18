@@ -4,7 +4,6 @@ namespace Inventory.DataAccess
 {
     public interface ISqlLiteDataAccess
     {
-        string GetConnectionString();
         List<T> LoadData<T, U>(string storedProcedure, U parameters);
         void SaveData<T>(string storedProcedure, T parameters);
 

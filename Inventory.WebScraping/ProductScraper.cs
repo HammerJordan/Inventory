@@ -107,7 +107,7 @@ namespace WebScraping
 
                 while (true)
                 {
-                    //productLinks.AddRange(GetProductLinksFromPage(page));
+                    // productLinks.AddRange(GetProductLinksFromPage(page));
                     var next = GetNextProductLinkPage(page);
                     if (next is null)
                         break;

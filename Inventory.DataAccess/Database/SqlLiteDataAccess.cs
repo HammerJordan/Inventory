@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SQLite;
 using System.Linq;
 using Dapper;
 
@@ -11,43 +10,29 @@ namespace Inventory.DataAccess
     {
         private IDbConnection dbConnection;
         private IDbTransaction dbTransaction;
-        private bool isClosed = false;
+        private bool isClosed;
 
 
-        public SqlLiteDataAccess()
+        public SqlLiteDataAccess(DbConnection connection)
         {
-        }
-
-        public string GetConnectionString()
-        {
-            return
-                "Data Source=C:/Users/Hammer/Desktop/MyProjects/C#/InventoryManagement/InventoryManagement.Core/Data/InventoryDB.db;Version=3;";
+            dbConnection = connection.GetDBConnection();
         }
 
         public List<T> LoadData<T, TPrams>(string storedProcedure, TPrams parameters)
         {
-            string connectionString = GetConnectionString();
-
-            using IDbConnection db = new SQLiteConnection(connectionString);
-            
-            var rows = db.Query<T>(storedProcedure, parameters).ToList();
+            var rows = dbConnection.Query<T>(storedProcedure, parameters).ToList();
 
             return rows;
         }
 
         public void SaveData<T>(string storedProcedure, T parameters)
         {
-            string connectionString = GetConnectionString();
-
-            using IDbConnection db = new SQLiteConnection(connectionString);
-            db.Execute(storedProcedure, parameters);
+            dbConnection.Execute(storedProcedure, parameters);
         }
 
 
         public void StartTransaction()
         {
-            string connectionString = GetConnectionString();
-            dbConnection = new SQLiteConnection(connectionString);
             dbConnection.Open();
 
             dbTransaction = dbConnection.BeginTransaction();
@@ -89,14 +74,7 @@ namespace Inventory.DataAccess
         {
             if (isClosed == false)
             {
-                try
-                {
-                    CommitTransaction();
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
+                CommitTransaction();
             }
 
             dbTransaction = null;
