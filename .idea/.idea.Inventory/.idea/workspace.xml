@@ -10,20 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7a6d2810-f582-42df-adfb-b5401f0dfa70" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Inventory.WebScraping/ProductUpdateRunner.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Inventory/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Inventory/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Inventory.DataAccess/Database/DbConnection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.DataAccess/Database/DbConnection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.DataAccess/Database/ISqlLiteDataAccess.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Core/Interface/ISqlLiteDataAccess.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Inventory.DataAccess/Database/SqlLiteDataAccess.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.DataAccess/Database/SqlLiteDataAccess.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.DataAccess/Database/TableSchema.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.DataAccess/Database/TableSchema.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/App.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/App.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/Inventory.Desktop.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/Inventory.Desktop.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/Services/DatabaseUpdate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/Services/DatabaseUpdate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/ViewModel/CatalogViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/ViewModel/CatalogViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/ViewModel/RecordViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/ViewModel/RecordViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/ViewModel/SettingsViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/ViewModel/SettingsViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.WebScraping/Inventory.WebScraping.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.WebScraping/Inventory.WebScraping.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,17 +40,21 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2b369d19768947fcba24b2d54b76014c1bbb78/1E7/IStatusCodeActionResult.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/35d0c4d32e464cafa6f180e54901f84630578/6B/IActionResult.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/cbc4469a215a48fca98fdf5b9f7a7d4a31000/14/SqlMapper.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1d4cf8021e1a43bc9fe29097b42720c355978/11/GenericWebHostBuilder.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c7788b2bc733412d8ee39c302ff7ce5713578/3/HostBuilder.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bc3d7024e97f4f818de53bc3c23872b48f5790/233/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bc3d7024e97f4f818de53bc3c23872b48f5790/394/FileStream.Windows.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/adbabd2b288f4892be207445c67c39505c0c8/79/a4dc872e/SQLiteDataReader.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bc3d7024e97f4f818de53bc3c23872b48f5790/3F/String.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/adbabd2b288f4892be207445c67c39505c0c8/4e/bd968d18/SQLiteCommand.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/21610df653fd448d9c453d1fb553cf891bcd90/52/HttpClient.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bc3d7024e97f4f818de53bc3c23872b48f5790/37/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2b369d19768947fcba24b2d54b76014c1bbb78/38/ControllerBase.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2b369d19768947fcba24b2d54b76014c1bbb78/5F/ObjectResult.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2b369d19768947fcba24b2d54b76014c1bbb78/60/OkObjectResult.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d8a85799ff174a54b41e883411e1785814268/24/ServiceProvider.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/adbabd2b288f4892be207445c67c39505c0c8/d7/61d26f9b/SQLiteConnection.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="InvalidFacetManager">
     <ignored-facets>
@@ -132,7 +125,7 @@
       <workItem from="1631831182798" duration="11000" />
       <workItem from="1631831283687" duration="183000" />
       <workItem from="1631884497409" duration="16087000" />
-      <workItem from="1631968080732" duration="2324000" />
+      <workItem from="1631968080732" duration="3659000" />
     </task>
     <servers />
   </component>
@@ -211,6 +204,19 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Inventory.WebScraping/ProductUpdateRunner.cs</url>
+          <line>85</line>
+          <properties documentPath="C:\Users\Hammer\Desktop\MyProjects\C#\Inventory\Inventory.WebScraping\ProductUpdateRunner.cs" initialLine="85" containingFunctionPresentation="method 'RunProductUpdate'">
+            <startOffsets>
+              <option value="3432" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3472" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="33" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

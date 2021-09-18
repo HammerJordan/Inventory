@@ -9,7 +9,7 @@ using Inventory.Core;
 
 namespace Inventory.DataAccess
 {
-    public sealed class DbConnection
+    public sealed class DbConnection : IDisposable
     {
         private readonly SQLiteConnection dbConnection;
 
@@ -26,22 +26,19 @@ namespace Inventory.DataAccess
                                       $"{pathToDatabase};" +
                                       "Version=3;";
             dbConnection = new SQLiteConnection(connectionString);
+            dbConnection.Open();
             if (newDB)
                 CreateTables();
         }
 
         private void CreateTables()
         {
-            dbConnection.Open();
-
             dbConnection.Query(TableSchema.CREATE_PRODUCT_SCHEMA);
             dbConnection.Query(TableSchema.CREATE_CATEGORY_SCHEMA);
             dbConnection.Query(TableSchema.CREATE_PRODUCT_IMAGE_SCHEMA);
             dbConnection.Query(TableSchema.CREATE_PRODUCT_CATEGORY_SCHEMA);
             dbConnection.Query(TableSchema.CREATE_RECORD_SCHEMA);
             dbConnection.Query(TableSchema.CREATE_RECORD_ITEM_SCHEMA);
-            
-            dbConnection.Close();
         }
 
         private static void CreateNewDatabase(string pathToDatabase)
@@ -50,8 +47,6 @@ namespace Inventory.DataAccess
                                       throw new InvalidOperationException());
             
             SQLiteConnection.CreateFile(pathToDatabase);
-            
-            
         }
 
         public async Task InsertProductModel(ProductModel productModel)
@@ -115,5 +110,10 @@ namespace Inventory.DataAccess
         }
 
         public SQLiteConnection GetDBConnection() => dbConnection;
+
+        public void Dispose()
+        {
+            dbConnection?.Dispose();
+        }
     }
 }

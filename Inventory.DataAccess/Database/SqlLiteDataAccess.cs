@@ -34,10 +34,11 @@ namespace Inventory.DataAccess
 
         public void StartTransaction()
         {
-            dbConnection.Open();
+            // if(dbConnection.State != ConnectionState.Open)
+            //     dbConnection.Open();
 
             dbTransaction = dbConnection.BeginTransaction();
-            isClosed = false;
+            // isClosed = false;
         }
 
         public void SaveDataInTransaction<T>(string storedProcedure, T parameters)
@@ -58,16 +59,16 @@ namespace Inventory.DataAccess
         public void CommitTransaction()
         {
             dbTransaction?.Commit();
-            dbConnection?.Close();
-
-            isClosed = true;
+            // dbConnection?.Close();
+            //
+            // isClosed = true;
         }
 
         public void RollbackTransaction()
         {
             dbTransaction?.Rollback();
-            dbConnection?.Close();
-            isClosed = true;
+            // dbConnection?.Close();
+            // isClosed = true;
         }
 
 
