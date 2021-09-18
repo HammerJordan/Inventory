@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using Dapper;
+using Inventory.Core;
 
 namespace Inventory.DataAccess
 {

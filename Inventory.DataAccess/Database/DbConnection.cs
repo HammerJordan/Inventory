@@ -38,6 +38,10 @@ namespace Inventory.DataAccess
             dbConnection.Query(TableSchema.CREATE_CATEGORY_SCHEMA);
             dbConnection.Query(TableSchema.CREATE_PRODUCT_IMAGE_SCHEMA);
             dbConnection.Query(TableSchema.CREATE_PRODUCT_CATEGORY_SCHEMA);
+            dbConnection.Query(TableSchema.CREATE_RECORD_SCHEMA);
+            dbConnection.Query(TableSchema.CREATE_RECORD_ITEM_SCHEMA);
+            
+            dbConnection.Close();
         }
 
         private static void CreateNewDatabase(string pathToDatabase)

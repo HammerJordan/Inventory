@@ -10,23 +10,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7a6d2810-f582-42df-adfb-b5401f0dfa70" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Inventory.API/Services/ProductUpdateRunner.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Inventory.WebScraping/ProductUpdateRunner.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Inventory/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Inventory/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/Inventory/v16/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/Inventory/v16/.suo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.API/Controllers/WeatherForecastController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.API/Controllers/WeatherForecastController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.API/Inventory.API.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.API/Inventory.API.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.API/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.API/Startup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.API/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.API/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.DataAccess/Database/ISqlLiteDataAccess.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.DataAccess/Database/ISqlLiteDataAccess.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.DataAccess/Database/DbConnection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.DataAccess/Database/DbConnection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.DataAccess/Database/ISqlLiteDataAccess.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Core/Interface/ISqlLiteDataAccess.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Inventory.DataAccess/Database/SqlLiteDataAccess.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.DataAccess/Database/SqlLiteDataAccess.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.DataAccess/Database/TableSchema.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.DataAccess/Database/TableSchema.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/App.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/App.xaml.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Inventory.Desktop/Inventory.Desktop.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/Inventory.Desktop.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.WebScraping/ProductScraper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.WebScraping/ProductScraper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.WebScraping/ProductUpdateRunner.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/Services/DatabaseUpdate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/Services/DatabaseUpdate.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/ViewModel/CatalogViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/ViewModel/CatalogViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/ViewModel/RecordViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/ViewModel/RecordViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/ViewModel/SettingsViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/ViewModel/SettingsViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.WebScraping/Inventory.WebScraping.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.WebScraping/Inventory.WebScraping.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DisabledMethodsStorage">
+    <option name="disabledMethods">
+      <set>
+        <option value="System.Private.CoreLib : System.Exception : get_Message ()" />
+      </set>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -41,16 +50,17 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2b369d19768947fcba24b2d54b76014c1bbb78/1E7/IStatusCodeActionResult.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bc3d7024e97f4f818de53bc3c23872b48f5790/3F/String.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/35d0c4d32e464cafa6f180e54901f84630578/6B/IActionResult.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1d4cf8021e1a43bc9fe29097b42720c355978/11/GenericWebHostBuilder.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/21610df653fd448d9c453d1fb553cf891bcd90/52/HttpClient.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c7788b2bc733412d8ee39c302ff7ce5713578/3/HostBuilder.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bc3d7024e97f4f818de53bc3c23872b48f5790/233/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bc3d7024e97f4f818de53bc3c23872b48f5790/394/FileStream.Windows.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bc3d7024e97f4f818de53bc3c23872b48f5790/3F/String.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/adbabd2b288f4892be207445c67c39505c0c8/4e/bd968d18/SQLiteCommand.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/21610df653fd448d9c453d1fb553cf891bcd90/52/HttpClient.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2b369d19768947fcba24b2d54b76014c1bbb78/38/ControllerBase.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2b369d19768947fcba24b2d54b76014c1bbb78/5F/ObjectResult.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2b369d19768947fcba24b2d54b76014c1bbb78/60/OkObjectResult.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2b369d19768947fcba24b2d54b76014c1bbb78/5F/ObjectResult.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2b369d19768947fcba24b2d54b76014c1bbb78/60/OkObjectResult.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d8a85799ff174a54b41e883411e1785814268/24/ServiceProvider.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="InvalidFacetManager">
@@ -77,11 +87,11 @@
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C#" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.Inventory.API">
+  <component name="RunManager" selected=".NET Project.Inventory.Desktop">
     <configuration name="Inventory.Desktop" type="DotNetProject" factoryName=".NET Project">
-      <option name="EXE_PATH" value="" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/Inventory.Desktop/bin/Debug/net5.0-windows/Inventory.Desktop.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Inventory.Desktop/bin/Debug/net5.0-windows" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="USE_MONO" value="0" />
@@ -91,67 +101,7 @@
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
       <option name="PROJECT_KIND" value="DotNetCore" />
-      <option name="PROJECT_TFM" value="" />
-      <method v="2">
-        <option name="Build" />
-      </method>
-    </configuration>
-    <configuration name="Inventory.API" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
-      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/Inventory.API/Inventory.API.csproj" />
-      <option name="LAUNCH_PROFILE_TFM" value="net5.0" />
-      <option name="LAUNCH_PROFILE_NAME" value="Inventory.API" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
-      <option name="USE_MONO" value="0" />
-      <option name="RUNTIME_ARGUMENTS" value="" />
-      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
-      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
-      <option name="SEND_DEBUG_REQUEST" value="1" />
-      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
-      <method v="2">
-        <option name="Build" />
-      </method>
-    </configuration>
-    <configuration name="Inventory.API: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
-      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/Inventory.API/Inventory.API.csproj" />
-      <option name="LAUNCH_PROFILE_TFM" value="net5.0" />
-      <option name="LAUNCH_PROFILE_NAME" value="IIS Express" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
-      <option name="USE_MONO" value="0" />
-      <option name="RUNTIME_ARGUMENTS" value="" />
-      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
-      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
-      <option name="SEND_DEBUG_REQUEST" value="1" />
-      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
-      <method v="2">
-        <option name="Build" />
-      </method>
-    </configuration>
-    <configuration name="Inventory.API.Tests" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
-      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/Inventory.API.Tests/Inventory.API.Tests.csproj" />
-      <option name="LAUNCH_PROFILE_TFM" value="net5.0" />
-      <option name="LAUNCH_PROFILE_NAME" value="Inventory.API.Tests" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
-      <option name="USE_MONO" value="0" />
-      <option name="RUNTIME_ARGUMENTS" value="" />
-      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
-      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
-      <option name="SEND_DEBUG_REQUEST" value="1" />
-      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
-      <method v="2">
-        <option name="Build" />
-      </method>
-    </configuration>
-    <configuration name="Inventory.API.Tests: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
-      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/Inventory.API.Tests/Inventory.API.Tests.csproj" />
-      <option name="LAUNCH_PROFILE_TFM" value="net5.0" />
-      <option name="LAUNCH_PROFILE_NAME" value="IIS Express" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
-      <option name="USE_MONO" value="0" />
-      <option name="RUNTIME_ARGUMENTS" value="" />
-      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
-      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
-      <option name="SEND_DEBUG_REQUEST" value="1" />
-      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
+      <option name="PROJECT_TFM" value="net5.0-windows7.0" />
       <method v="2">
         <option name="Build" />
       </method>
@@ -166,10 +116,6 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue=".NET Launch Settings Profile.Inventory.API" />
-      <item itemvalue=".NET Launch Settings Profile.Inventory.API.Tests" />
-      <item itemvalue=".NET Launch Settings Profile.Inventory.API.Tests: IIS Express" />
-      <item itemvalue=".NET Launch Settings Profile.Inventory.API: IIS Express" />
       <item itemvalue=".NET Project.Inventory.Desktop" />
       <item itemvalue="Xamarin.Android.Inventory.Mobile.Android" />
     </list>
@@ -186,6 +132,7 @@
       <workItem from="1631831182798" duration="11000" />
       <workItem from="1631831283687" duration="183000" />
       <workItem from="1631884497409" duration="16087000" />
+      <workItem from="1631968080732" duration="2324000" />
     </task>
     <servers />
   </component>
@@ -205,6 +152,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />

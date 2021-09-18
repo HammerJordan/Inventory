@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Threading;
 using System.Threading.Tasks;
+using Inventory.DataAccess;
 
 namespace InventoryManagement.Desktop.ViewModel
 {
@@ -10,7 +11,7 @@ namespace InventoryManagement.Desktop.ViewModel
 
         private string searchBox;
 
-        //private readonly ProductSearchEngine searchEngine;
+        private readonly ProductSearchEngine searchEngine;
         private CancellationTokenSource cancellationToken;
 
         public string SearchBox
@@ -24,10 +25,10 @@ namespace InventoryManagement.Desktop.ViewModel
         }
 
 
-        public CatalogViewModel()
+        public CatalogViewModel(ProductSearchEngine searchEngine)
         {
             ProductViewModels = new ObservableCollection<ProductViewModel>();
-            // this.searchEngine = searchEngine;
+            this.searchEngine = searchEngine;
         }
 
         private async Task UpdateSearchResults(string newValue)
@@ -38,17 +39,17 @@ namespace InventoryManagement.Desktop.ViewModel
                 cancellationToken.Cancel();
 
             cancellationToken = new CancellationTokenSource();
-            //
-            //
-            // var models = await Task.Run(() => searchEngine.SearchResults(newValue), cancellationToken.Token);
-            //
-            // if (models == null)
-            //     return;
-            //
-            // foreach (var model in models)
-            // {
-            //     ProductViewModels.Add(new ProductViewModel() { ProductModel = model });
-            // }
+            
+            
+            var models = await Task.Run(() => searchEngine.SearchResults(newValue), cancellationToken.Token);
+            
+            if (models == null)
+                return;
+            
+            foreach (var model in models)
+            {
+                ProductViewModels.Add(new ProductViewModel() { ProductModel = model });
+            }
 
         }
     }

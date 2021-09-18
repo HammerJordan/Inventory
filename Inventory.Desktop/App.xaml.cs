@@ -1,10 +1,15 @@
-﻿using System.Windows;
+﻿using System;
+using System.IO;
+using System.Windows;
+using Inventory.Core;
+using Inventory.DataAccess;
 using InventoryManagement.Core.IoC;
 using InventoryManagement.Desktop.Services;
 using InventoryManagement.Desktop.View;
 using InventoryManagement.Desktop.ViewModel;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using WebScraping;
 
 // ReSharper disable PossibleNullReferenceException
 
@@ -20,15 +25,6 @@ namespace InventoryManagement.Desktop
             SetupIoC();
             base.OnStartup(e);
             IoC.Get<MainWindow>().Show();
-
-
-
-            //var x = config.GetSection("IgnoreProducts");
-            //var c = x.GetChildren().Select(x => x.Value).ToArray();
-
-            //TestDB();
-
-
         }
 
         private void SetupIoC()
@@ -38,6 +34,7 @@ namespace InventoryManagement.Desktop
                 .Build();
 
             var serviceCollection = new ServiceCollection();
+
 
             serviceCollection.AddSingleton(config);
             serviceCollection.AddSingleton<MainWindow>();
@@ -53,15 +50,20 @@ namespace InventoryManagement.Desktop
 
 
             serviceCollection
-                .AddTransient<ViewResolveService>();
-                // .AddTransient<InvoiceDBHelper>()
-                // .AddTransient<WebPageLoader>()
-                // .AddTransient<DatabaseUpdate>()
-                // .AddTransient<ProductScraper>()
-                // .AddTransient<ProductUpdateRunner>()
-                //
-                // .AddTransient<ISqlLiteDataAccess, SqlLiteDataAccess>()
-                // .AddTransient<ProductSearchEngine>();
+                .AddTransient<ViewResolveService>()
+                .AddTransient<InvoiceDBHelper>()
+                .AddTransient<WebPageLoader>()
+                .AddTransient<DatabaseUpdate>()
+                .AddTransient<ProductScraper>()
+                .AddTransient<ProductUpdateRunner>()
+                .AddTransient<ISqlLiteDataAccess, SqlLiteDataAccess>()
+                .AddTransient<ProductSearchEngine>();
+
+            string pathToDb = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            pathToDb = Path.Join(pathToDb, config["DbLocation"]);
+            var dbConnection = new DbConnection(pathToDb);
+
+            serviceCollection.AddSingleton(dbConnection);
 
 
             var services = serviceCollection.BuildServiceProvider();

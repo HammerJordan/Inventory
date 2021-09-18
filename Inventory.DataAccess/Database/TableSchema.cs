@@ -45,5 +45,28 @@
             foreign key (ProductID) references Product(ID),
             foreign key (ProductCategoryID) references Category(ID)
         );";
+
+        public const string CREATE_RECORD_SCHEMA =
+            @"create table Record
+        (
+	        ID INTEGER not null
+		        primary key autoincrement
+		        unique,
+	        Name TEXT not null,
+	        CreatedDateTime TEXT
+        );";
+
+        public const string CREATE_RECORD_ITEM_SCHEMA =
+            @"create table RecordItem
+        (
+	        ID INTEGER not null
+		        primary key autoincrement
+		        unique,
+	        RecordID INTEGER not null
+		        references Record,
+	        ProductID INTEGER not null
+		        references Product,
+	        Quantity INTEGER not null
+        );";
     }
 }

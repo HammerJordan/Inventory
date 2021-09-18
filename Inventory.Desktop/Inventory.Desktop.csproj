@@ -8,6 +8,8 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Inventory.Core\Inventory.Core.csproj" />
+      <ProjectReference Include="..\Inventory.DataAccess\Inventory.DataAccess.csproj" />
+      <ProjectReference Include="..\Inventory.WebScraping\Inventory.WebScraping.csproj" />
     </ItemGroup>
 
     <ItemGroup>
