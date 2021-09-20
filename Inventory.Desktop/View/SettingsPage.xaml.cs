@@ -1,7 +1,7 @@
 ﻿using System.Windows.Controls;
-using InventoryManagement.Desktop.ViewModel;
+using Inventory.Desktop.ViewModel;
 
-namespace InventoryManagement.Desktop.View
+namespace Inventory.Desktop.View
 {
     /// <summary>
     /// Interaction logic for SettingsPage.xaml

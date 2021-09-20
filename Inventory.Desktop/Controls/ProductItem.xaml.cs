@@ -12,12 +12,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using InventoryManagement.Core.IoC;
-using InventoryManagement.Desktop.Events;
-using InventoryManagement.Desktop.ViewModel;
+using Inventory.Desktop.Events;
+using Inventory.Desktop.ViewModel;
+using Inventory.Core.IoC;
 using PubSub;
 
-namespace InventoryManagement.Desktop.Controls
+namespace Inventory.Desktop.Controls
 {
     /// <summary>
     /// Interaction logic for ProductItem.xaml

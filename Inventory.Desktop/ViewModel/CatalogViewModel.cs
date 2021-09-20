@@ -3,7 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Inventory.DataAccess;
 
-namespace InventoryManagement.Desktop.ViewModel
+namespace Inventory.Desktop.ViewModel
 {
     public class CatalogViewModel : ViewModelBase
     {

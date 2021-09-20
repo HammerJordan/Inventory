@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace InventoryManagement.Desktop.Controls
+namespace Inventory.Desktop.Controls
 {
     /// <summary>
     /// Interaction logic for SideBarItem.xaml

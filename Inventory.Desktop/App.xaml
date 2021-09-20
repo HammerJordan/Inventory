@@ -1,7 +1,7 @@
-﻿<Application x:Class="InventoryManagement.Desktop.App"
+﻿<Application x:Class="Inventory.Desktop.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:InventoryManagement.Desktop">
+             xmlns:local="clr-namespace:Inventory.Desktop">
     <Application.Resources>
 
 

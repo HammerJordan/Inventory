@@ -9,7 +9,7 @@ using Inventory.Core;
 using Microsoft.Extensions.Configuration;
 using WebScraping;
 
-namespace InventoryManagement.Desktop.Services
+namespace Inventory.Desktop.Services
 {
     public class DatabaseUpdate
     {

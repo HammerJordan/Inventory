@@ -10,9 +10,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using InventoryManagement.Desktop.ViewModel;
+using Inventory.Desktop.ViewModel;
 
-namespace InventoryManagement.Desktop.View
+namespace Inventory.Desktop.View
 {
     /// <summary>
     /// Interaction logic for RecordPage.xaml

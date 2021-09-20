@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Windows.Data;
 using System.Windows.Media;
 
-namespace InventoryManagement.Desktop.Converters
+namespace Inventory.Desktop.Converters
 {
     public class BoolToColorConverter : IValueConverter
     {

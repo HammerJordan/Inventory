@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace InventoryManagement.Desktop.Commands
+namespace Inventory.Desktop.Commands
 {
     public class RelayCommand : ICommand
     {

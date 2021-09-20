@@ -1,9 +1,10 @@
 ﻿using System.Windows;
-using InventoryManagement.Desktop.Controls;
-using InventoryManagement.Desktop.Services;
-using InventoryManagement.Desktop.ViewModel;
+using Inventory.Desktop.Services;
+using Inventory.Desktop.ViewModel;
+using Inventory.Desktop.Controls;
+using SideBarItem = Inventory.Desktop.Controls.SideBarItem;
 
-namespace InventoryManagement.Desktop
+namespace Inventory.Desktop
 {
     /// <summary>
     ///     Interaction logic for MainWindow.xaml
@@ -22,7 +23,7 @@ namespace InventoryManagement.Desktop
 
             foreach (UIElement child in SideBarNav.Children)
             {
-                if (child is SideBarItem sideBarItem)
+                if (child is Controls.SideBarItem sideBarItem)
                 {
                     sideBarItem.SideBarClickEvent += OnSideBarItemClickedEvent;
 
@@ -33,7 +34,7 @@ namespace InventoryManagement.Desktop
             }
         }
 
-        private void OnSideBarItemClickedEvent(SideBarItem clickedItem)
+        private void OnSideBarItemClickedEvent(Controls.SideBarItem clickedItem)
         {
             foreach (UIElement child in SideBarNav.Children)
             {

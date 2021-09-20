@@ -2,18 +2,18 @@
 using System.IO;
 using System.Windows;
 using Inventory.Core;
+using Inventory.Core.IoC;
 using Inventory.DataAccess;
-using InventoryManagement.Core.IoC;
-using InventoryManagement.Desktop.Services;
-using InventoryManagement.Desktop.View;
-using InventoryManagement.Desktop.ViewModel;
+using Inventory.Desktop.Services;
+using Inventory.Desktop.View;
+using Inventory.Desktop.ViewModel;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using WebScraping;
 
 // ReSharper disable PossibleNullReferenceException
 
-namespace InventoryManagement.Desktop
+namespace Inventory.Desktop
 {
     /// <summary>
     /// Interaction logic for App.xaml

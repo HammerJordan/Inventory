@@ -2,7 +2,7 @@
 
 using Inventory.Core;
 
-namespace InventoryManagement.Desktop.Events
+namespace Inventory.Desktop.Events
 {
     public class ProductModelAddRemove
     {

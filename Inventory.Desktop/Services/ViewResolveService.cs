@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Controls;
-using InventoryManagement.Core.IoC;
-using InventoryManagement.Desktop.View;
+using Inventory.Core.IoC;
+using Inventory.Desktop.View;
 
-namespace InventoryManagement.Desktop.Services
+namespace Inventory.Desktop.Services
 {
     public class ViewResolveService
     {
@@ -26,7 +26,7 @@ namespace InventoryManagement.Desktop.Services
         {
             return name switch
             {
-                "Record" => IoC.Get<RecordPage>(),
+                "Home" => IoC.Get<RecordPage>(),
                 "Catalog" => IoC.Get<CatalogPage>(),
                 "Settings" => IoC.Get<SettingsPage>(),
                 _ => null,

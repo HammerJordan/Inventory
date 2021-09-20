@@ -5,10 +5,11 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
-using InventoryManagement.Desktop.Commands;
-using InventoryManagement.Desktop.Controls;
+using Inventory.Desktop.Commands;
+using Inventory.Desktop.Controls;
+using SideBarItem = Inventory.Desktop.Controls.SideBarItem;
 
-namespace InventoryManagement.Desktop.ViewModel
+namespace Inventory.Desktop.ViewModel
 {
     public class MainWindowViewModel : ViewModelBase
     {
@@ -16,7 +17,7 @@ namespace InventoryManagement.Desktop.ViewModel
         public ICommand ToggleFullScreenCommand { get; }
         public ICommand MinimizeCommand { get; }
 
-        private List<SideBarItem> sideBarNav = new List<SideBarItem>();
+        private List<Controls.SideBarItem> sideBarNav = new List<SideBarItem>();
 
 
         public MainWindowViewModel() 

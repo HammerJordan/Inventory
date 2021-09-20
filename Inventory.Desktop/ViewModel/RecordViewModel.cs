@@ -3,12 +3,12 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows.Input;
 using Inventory.DataAccess;
-using InventoryManagement.Desktop.Commands;
-using InventoryManagement.Desktop.Events;
-using InventoryManagement.Desktop.Model;
+using Inventory.Desktop.Commands;
+using Inventory.Desktop.Events;
+using Inventory.Desktop.Model;
 using PubSub;
 
-namespace InventoryManagement.Desktop.ViewModel
+namespace Inventory.Desktop.ViewModel
 {
     public class RecordViewModel : ViewModelBase
     {

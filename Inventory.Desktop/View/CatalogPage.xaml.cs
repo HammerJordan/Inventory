@@ -1,18 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using InventoryManagement.Desktop.ViewModel;
+﻿using System.Windows.Controls;
+using Inventory.Desktop.ViewModel;
 
-namespace InventoryManagement.Desktop.View
+namespace Inventory.Desktop.View
 {
     /// <summary>
     /// Interaction logic for CatalogPage.xaml
@@ -23,7 +12,7 @@ namespace InventoryManagement.Desktop.View
         public CatalogPage(CatalogViewModel viewModel)
         {
             this.viewModel = viewModel;
-            this.DataContext = viewModel;
+            DataContext = viewModel;
             InitializeComponent();
         }
     }

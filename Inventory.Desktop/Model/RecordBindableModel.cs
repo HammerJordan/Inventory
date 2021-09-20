@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Globalization;
 using Inventory.Core;
-using InventoryManagement.Desktop.ViewModel;
+using Inventory.Desktop.ViewModel;
 
-namespace InventoryManagement.Desktop.Model
+namespace Inventory.Desktop.Model
 {
     public class RecordBindableModel : ViewModelBase
     {

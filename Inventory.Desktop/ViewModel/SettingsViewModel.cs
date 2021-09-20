@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
 using System.Windows.Input;
-using InventoryManagement.Desktop.Commands;
+using Inventory.Desktop.Commands;
 using WebScraping;
 
-namespace InventoryManagement.Desktop.ViewModel
+namespace Inventory.Desktop.ViewModel
 {
     public class SettingsViewModel : ViewModelBase
     {

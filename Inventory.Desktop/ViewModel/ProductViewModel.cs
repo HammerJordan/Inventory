@@ -1,6 +1,6 @@
 ﻿using Inventory.Core;
 
-namespace InventoryManagement.Desktop.ViewModel
+namespace Inventory.Desktop.ViewModel
 {
     public class ProductViewModel : ViewModelBase
     {
