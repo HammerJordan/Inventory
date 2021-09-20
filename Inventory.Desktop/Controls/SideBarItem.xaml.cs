@@ -1,20 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using InventoryManagement.Core.IoC;
-using InventoryManagement.Desktop.Commands;
-using InventoryManagement.Desktop.ViewModel;
 
 namespace InventoryManagement.Desktop.Controls
 {
@@ -87,21 +74,31 @@ namespace InventoryManagement.Desktop.Controls
 
         private void OnIsSelectedChanged(DependencyPropertyChangedEventArgs e)
         {
+            SideBarSelected = (bool)e.NewValue;
             //SelectedPip.Background = new SolidColorBrush();
-            SelectedPip.Background = (bool)e.NewValue ? defaultSelectedPipBrush : new SolidColorBrush();
+            Root.Background = (bool)e.NewValue ? defaultBackground : new SolidColorBrush();
+            //Name.Foreground = (bool)e.NewValue ? defaultTextColor : selectedTextBrush;
+            //Icon.Foreground = (bool)e.NewValue ? selectedTextBrush : defaultTextColor;
         }
 
         public event Action<SideBarItem> SideBarClickEvent;
 
-        private readonly Brush defaultSelectedPipBrush;
+        private readonly Brush defaultBackground;
+        private readonly Brush defaultTextColor;
+        private readonly Brush selectedTextBrush;
 
 
 
 
         public SideBarItem()
         {
+            DataContext = this;
             InitializeComponent();
-            defaultSelectedPipBrush = SelectedPip.Background;
+           
+            defaultBackground = Root.Background;
+            defaultTextColor = Name.Foreground;
+            var bc = new BrushConverter();
+            selectedTextBrush = (Brush)bc.ConvertFrom("#FFFFFF");
         }
 
         private void OnSideBarClicked(object sender, RoutedEventArgs e)

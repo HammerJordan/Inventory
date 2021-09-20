@@ -21,6 +21,7 @@
         <None Remove="Font\Font Awesome 5 Brands-Regular-400.otf" />
         <None Remove="Font\Font Awesome 5 Free-Regular-400.otf" />
         <None Remove="Font\Font Awesome 5 Free-Solid-900.otf" />
+        <None Remove="Resources\Logo.png" />
         <None Remove="settings.json" />
     </ItemGroup>
 
@@ -28,6 +29,7 @@
         <Resource Include="Font\Font Awesome 5 Brands-Regular-400.otf" />
         <Resource Include="Font\Font Awesome 5 Free-Regular-400.otf" />
         <Resource Include="Font\Font Awesome 5 Free-Solid-900.otf" />
+        <Resource Include="Resources\Logo.png" />
         <Content Include="settings.json">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>

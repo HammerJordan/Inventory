@@ -2,16 +2,21 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:InventoryManagement.Desktop.Controls"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:converters="clr-namespace:InventoryManagement.Desktop.Converters"
              d:DesignHeight="450"
              d:DesignWidth="800"
              mc:Ignorable="d">
 
     <UserControl.Resources>
         <ResourceDictionary>
-            <SolidColorBrush x:Key="TextBrush" Color="{StaticResource LightTextColor}" />
-            <SolidColorBrush x:Key="HoverOverBrush" Color="{StaticResource HoverColor1}" />
+            <converters:BoolToColorConverter x:Key="BoolToColor"
+                                             FalseBrush="{StaticResource LightTextColorBrush}"
+                                             TrueBrush="White"/>
+
+
+
+            <SolidColorBrush x:Key="HoverOverBrush" Color="White" />
             <SolidColorBrush x:Key="PressedBrush" Color="{StaticResource SelectedColor}" />
 
             <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
@@ -47,51 +52,57 @@
                 <Setter Property="Foreground" Value="{StaticResource LightTextColorBrush}" />
                 <Style.Triggers>
                     <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=IsMouseOver}" Value="True">
-                        <Setter Property="Foreground" Value="{StaticResource PressedBrush}" />
+                        <Setter Property="Foreground" Value="White" />
                     </DataTrigger>
                 </Style.Triggers>
             </Style>
 
+            <!--<converters:BoolToColorConverter x:Key="BoolToColorConverter"
+                                             FalseBrush="{StaticResource LightTextColorBrush}"
+                                             TrueBrush="White" />-->
+
         </ResourceDictionary>
+
+        
+
     </UserControl.Resources>
 
+
     <Button Margin="0"
+            x:Name="Root"
             Padding="0"
             HorizontalContentAlignment="Stretch"
             BorderThickness="0"
+            Background="{StaticResource SelectedColorBrush}"
             Click="OnSideBarClicked"
-            Foreground="Transparent"
             Style="{StaticResource ButtonStyle}">
 
-        <Grid>
+        <Grid Margin="7 0 0 0" Height="65">
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <Grid x:Name="SelectedPip"
-                  Grid.Column="0"
-                  Width="10"
-                  Margin="0"
-                  HorizontalAlignment="Left"
-                  Background="{StaticResource SelectedColorBrush}" />
-
             <TextBlock x:Name="Icon"
-                       Grid.Column="1"
+                       Grid.Column="0"
+                       Width="55"
                        Padding="10,0,10,0"
+                       HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        FontFamily="{StaticResource FontAwesomeSolid}"
-                       FontSize="25"
+                       FontSize="30"
+                       Foreground="{Binding SideBarSelected, Converter={StaticResource BoolToColor}}"
                        Style="{StaticResource TextBlockStyle}"
                        Text="&#xf015;" />
 
             <TextBlock x:Name="Name"
-                       Grid.Column="2"
+                       Grid.Column="1"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"
+                       Foreground="{Binding SideBarSelected, Converter={StaticResource BoolToColor}}"
                        FontSize="25"
+                       FontWeight="Medium"
                        Style="{StaticResource TextBlockStyle}"
                        Text="Home" />
 

@@ -2,8 +2,14 @@
 
     <!--  Colors  -->
     <Color x:Key="LightTextColor">#969697</Color>
-    <Color x:Key="HoverColor1">#3F3F41</Color>
+    <Color x:Key="HoverColor1">#525252</Color>
     <Color x:Key="SelectedColor">#2e67a3</Color>
+
+    <Color x:Key="Dark">#12242D</Color>
+    <Color x:Key="Dark-Mid">#162A33</Color>
+    <Color x:Key="Mid">#20323B</Color>
+
+
 
     <!--  Brush  -->
     <SolidColorBrush x:Key="SideBarBackground" Color="#262629" />
@@ -12,9 +18,15 @@
     <SolidColorBrush x:Key="SelectedColorBrush" Color="{StaticResource SelectedColor}" />
     <SolidColorBrush x:Key="LightTextColorBrush" Color="{StaticResource LightTextColor}" />
 
+    <SolidColorBrush x:Key="Dark-Brush" Color="{StaticResource Dark}"/>
+    <SolidColorBrush x:Key="Dark-Mid-Brush" Color="{StaticResource Dark-Mid}" />
+    <SolidColorBrush x:Key="Mid-Brush" Color="{StaticResource Mid}"/>
+
     <!--  Fonts  -->
     <FontFamily x:Key="FontAwesome">/Font/Font Awesome 5 Free-Regular-400.otf#Font Awesome 5 Free</FontFamily>
     <FontFamily x:Key="FontAwesomeBrands">/Font/Font Awesome 5 Brands-Regular-400.otf#Font Awesome 5 Brands</FontFamily>
     <FontFamily x:Key="FontAwesomeSolid">/Font/Font Awesome 5 Free-Solid-900.otf#Font Awesome 5 Free</FontFamily>
 
 </ResourceDictionary>
+    
+    

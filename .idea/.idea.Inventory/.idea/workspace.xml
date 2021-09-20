@@ -9,11 +9,7 @@
     <projectFile profileName="Inventory.API.Tests">Inventory.API.Tests/Inventory.API.Tests.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a6d2810-f582-42df-adfb-b5401f0dfa70" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Inventory/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Inventory/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.DataAccess/Database/DbConnection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.DataAccess/Database/DbConnection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.DataAccess/Database/SqlLiteDataAccess.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.DataAccess/Database/SqlLiteDataAccess.cs" afterDir="false" />
-    </list>
+    <list default="true" id="7a6d2810-f582-42df-adfb-b5401f0dfa70" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -46,6 +42,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bc3d7024e97f4f818de53bc3c23872b48f5790/233/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bc3d7024e97f4f818de53bc3c23872b48f5790/394/FileStream.Windows.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/adbabd2b288f4892be207445c67c39505c0c8/79/a4dc872e/SQLiteDataReader.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/39c05a262c304f0baf68d816fced27b82c1588/8f/83d85e83/IDbConnection.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bc3d7024e97f4f818de53bc3c23872b48f5790/3F/String.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/adbabd2b288f4892be207445c67c39505c0c8/4e/bd968d18/SQLiteCommand.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/21610df653fd448d9c453d1fb553cf891bcd90/52/HttpClient.cs" root0="SKIP_HIGHLIGHTING" />
@@ -125,7 +122,7 @@
       <workItem from="1631831182798" duration="11000" />
       <workItem from="1631831283687" duration="183000" />
       <workItem from="1631884497409" duration="16087000" />
-      <workItem from="1631968080732" duration="3659000" />
+      <workItem from="1631968080732" duration="3876000" />
     </task>
     <servers />
   </component>

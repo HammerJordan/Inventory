@@ -13,95 +13,105 @@
         MinWidth="800"
         Width="1200"
         Height="750"
-        AllowsTransparency="true"
-        Background="{StaticResource MainViewBackground}"
-        WindowStyle="None"
+        
+        Background="{StaticResource Mid-Brush}"
+        WindowStyle="SingleBorderWindow"
         mc:Ignorable="d">
     <Window.DataContext>
         <vm:MainWindowViewModel />
     </Window.DataContext>
 
     <WindowChrome.WindowChrome>
-        <WindowChrome CaptionHeight="35" ResizeBorderThickness="5" />
+        <WindowChrome CaptionHeight="40" ResizeBorderThickness="0" GlassFrameThickness="0" />
     </WindowChrome.WindowChrome>
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-
-        <!--  TopBar  -->
-        <Grid Height="35"
-              VerticalAlignment="Top"
-              Background="{StaticResource TopBarColor}"
-              ColumnSpan="2">
+    <Border BorderThickness="0">
+        <Border.Style>
+            <Style TargetType="{x:Type Border}">
+                <Style.Triggers>
+                    <!-- Add to avoid border disappearing when window is maximised -->
+                    <DataTrigger Binding="{Binding WindowState, RelativeSource={RelativeSource AncestorType=Window}}"
+                                 Value="Maximized">
+                        <Setter Property="Margin"
+                                Value="7" />
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding WindowState, RelativeSource={RelativeSource AncestorType=Window}}"
+                                 Value="Normal">
+                        <Setter Property="Margin"
+                                Value="0" />
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </Border.Style>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <!--<Setter Property="WindowChrome.IsHitTestVisibleInChrome"
-                    Value="True" />-->
 
-            <!--<Menu VerticalAlignment="Center"
-                  Background="Transparent"
-                  IsMainMenu="True">
+            <!--  TopBar  -->
+            <Grid Height="40"
+                  VerticalAlignment="Top"
+                  Background="{StaticResource Dark-Brush}"
+                  ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
 
-                <MenuItem FontSize="17"
-                          Foreground="White"
-                          Header="_File"
-                          WindowChrome.IsHitTestVisibleInChrome="True">
-                    <MenuItem Foreground="Black" Header="_Open" />
-                </MenuItem>
+                <StackPanel Grid.Column="1"
+                            Orientation="Horizontal">
+                    <Button Command="{Binding MinimizeCommand}"
+                            FontFamily="areal"
+                            Content="&#x2014;"
+                            Style="{StaticResource TitleBarButtons}" />
+                    <Button Command="{Binding ToggleFullScreenCommand}"
+                            Content="&#x1f5d7;"
+                            Style="{StaticResource TitleBarButtons}" />
+                    <Button Command="{Binding CloseWindowCommand}"
+                            Content="X"
+                            Style="{StaticResource TitleBarButtons}" />
+                </StackPanel>
 
-            </Menu>-->
+            </Grid>
+            <!--  SideBar  -->
+            <StackPanel x:Name="SideBarNav"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Width="175"
+                        Background="{StaticResource Dark-Mid-Brush}"
+                        Orientation="Vertical">
 
-            <StackPanel Grid.Column="1"
-                        Margin="1"
-                        Orientation="Horizontal">
-                <Button Command="{Binding MinimizeCommand}"
-                        Content="&#x2014;"
-                        Style="{StaticResource TitleBarButtons}" />
-                <Button Command="{Binding ToggleFullScreenCommand}"
-                        Content="&#x1f5d7;"
-                        Style="{StaticResource TitleBarButtons}" />
-                <Button Command="{Binding CloseWindowCommand}"
-                        Content="X"
-                        Style="{StaticResource TitleBarButtons}" />
+                <Border Margin="0 5 0 15"
+                        Background="#CDCACA"
+                        Height="80"
+                        CornerRadius="18">
+                    <Image Source="/Resources/Logo.png"/>
+
+                </Border>
+
+                <controls:SideBarItem Padding="0,5,0,10"
+                                      SideBarName="Home"
+                                      SideBarSelected="True" />
+                <controls:SideBarItem Padding="0,0,0,10"
+                                      SideBarIcon=""
+                                      SideBarName="Catalog"
+                                      SideBarSelected="False" />
+                <controls:SideBarItem Padding="0,0,0,10"
+                                      SideBarName="Settings"
+                                      SideBarSelected="False" />
+
             </StackPanel>
 
+            <ContentControl x:Name="ActiveContent"
+                            Grid.Row="1"
+                            Grid.Column="1" />
+
         </Grid>
-        <!--  SideBar  -->
-        <StackPanel x:Name="SideBarNav"
-                    Grid.Row="1"
-                    Grid.Column="0"
-                    Width="150"
-                    Background="{StaticResource SideBarBackground}"
-                    Orientation="Vertical">
-
-            <controls:SideBarItem Padding="0,5,0,10"
-                                  SideBarIcon="&#xf543;"
-                                  SideBarName="Record"
-                                  SideBarSelected="True" />
-            <controls:SideBarItem Padding="0,0,0,10"
-                                  SideBarName="Catalog"
-                                  SideBarSelected="False" />
-            <controls:SideBarItem Padding="0,0,0,10"
-                                  SideBarName="Settings"
-                                  SideBarSelected="False" />
-
-        </StackPanel>
-
-        <ContentControl x:Name="ActiveContent"
-                        Grid.Row="1"
-                        Grid.Column="1" />
-
-
-
-    </Grid>
+    </Border>
 
 </Window>

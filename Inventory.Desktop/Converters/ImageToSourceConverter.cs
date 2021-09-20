@@ -7,7 +7,7 @@ using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-namespace InventoryManagement.Desktop.Converters
+namespace Inventory.Desktop.Converters
 {
     // public class ImageToSourceConverter : IValueConverter
     // {
