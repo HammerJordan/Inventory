@@ -86,11 +86,13 @@
                         Background="{StaticResource Dark-Mid-Brush}"
                         Orientation="Vertical">
 
-                <Border Margin="0 5 0 15"
+                <Border Margin="0 1 0 15"
                         Background="#CDCACA"
-                        Height="80"
+                        Height="120"
                         CornerRadius="18">
-                    <Image Source="/Resources/Logo.png"/>
+                    <Image Source="/Resources/Logo.png" 
+                           UseLayoutRounding="True"
+                           RenderOptions.BitmapScalingMode="HighQuality"/>
 
                 </Border>
 
