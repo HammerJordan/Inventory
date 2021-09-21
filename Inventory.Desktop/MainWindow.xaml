@@ -10,10 +10,9 @@
         xmlns:vm="clr-namespace:Inventory.Desktop.ViewModel"
         Title="MainWindow"
         MinHeight="600"
-        MinWidth="800"
+        MinWidth="900"
         Width="1200"
         Height="750"
-        
         Background="{StaticResource Mid-Brush}"
         WindowStyle="SingleBorderWindow"
         mc:Ignorable="d">
@@ -22,7 +21,9 @@
     </Window.DataContext>
 
     <WindowChrome.WindowChrome>
-        <WindowChrome CaptionHeight="40" ResizeBorderThickness="0" GlassFrameThickness="0" />
+        <WindowChrome CaptionHeight="15"
+                      ResizeBorderThickness="5"
+                      GlassFrameThickness="0" />
     </WindowChrome.WindowChrome>
 
     <Border BorderThickness="0">
@@ -54,7 +55,7 @@
             </Grid.ColumnDefinitions>
 
             <!--  TopBar  -->
-            <Grid Height="40"
+            <Grid Height="25"
                   VerticalAlignment="Top"
                   Background="{StaticResource Dark-Brush}"
                   ColumnSpan="2">
@@ -62,6 +63,8 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
+
+
 
                 <StackPanel Grid.Column="1"
                             Orientation="Horizontal">
@@ -83,16 +86,16 @@
                         Grid.Row="1"
                         Grid.Column="0"
                         Width="175"
-                        Background="{StaticResource Dark-Mid-Brush}"
+                        Background="{StaticResource Dark-Brush}"
                         Orientation="Vertical">
 
                 <Border Margin="0 1 0 15"
                         Background="#CDCACA"
                         Height="120"
                         CornerRadius="18">
-                    <Image Source="/Resources/Logo.png" 
+                    <Image Source="/Resources/Logo.png"
                            UseLayoutRounding="True"
-                           RenderOptions.BitmapScalingMode="HighQuality"/>
+                           RenderOptions.BitmapScalingMode="HighQuality" />
 
                 </Border>
 

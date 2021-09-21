@@ -1,22 +1,26 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Net.Mime;
+using System.Windows;
 using System.Windows.Input;
 using Inventory.DataAccess;
 using Inventory.Desktop.Commands;
 using Inventory.Desktop.Events;
 using Inventory.Desktop.Model;
+using Inventory.Desktop.PopupWindows;
 using PubSub;
 
 namespace Inventory.Desktop.ViewModel
 {
-    public class RecordViewModel : ViewModelBase
+    public class HomeViewModel : ViewModelBase
     {
         private readonly InvoiceDBHelper invoiceDbHelper;
         private RecordBindableModel selectedRecord;
 
         public ICommand NewRecordCommand { get; }
         public ICommand DeleteRecordCommand { get; }
+        public ICommand OpenRecordCommand { get; }
         public ObservableCollection<ProductViewModel> ProductViewModels { get; set; }
         public ObservableCollection<RecordBindableModel> RecordsCollection { get; set; }
 
@@ -31,7 +35,7 @@ namespace Inventory.Desktop.ViewModel
             }
         }
 
-        public RecordViewModel(InvoiceDBHelper invoiceDbHelper)
+        public HomeViewModel(InvoiceDBHelper invoiceDbHelper)
         {
             this.invoiceDbHelper = invoiceDbHelper;
 
@@ -51,6 +55,14 @@ namespace Inventory.Desktop.ViewModel
 
             NewRecordCommand = new RelayCommand((_) => true, (_) => AddNewRecord());
             DeleteRecordCommand = new RelayCommand((_) => true, (_) => DeleteRecord());
+            OpenRecordCommand = new RelayCommand((_) => true, (_) => OpenRecord());
+        }
+
+        private void OpenRecord()
+        {
+            var window = new SelectRecordWindow();
+            window.Owner = Application.Current.MainWindow;
+            window.ShowDialog();
         }
 
         public void ModifyProducts(ProductModelAddRemove model)

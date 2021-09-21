@@ -26,7 +26,7 @@ namespace Inventory.Desktop.Services
         {
             return name switch
             {
-                "Home" => IoC.Get<RecordPage>(),
+                "Home" => IoC.Get<HomePage>(),
                 "Catalog" => IoC.Get<CatalogPage>(),
                 "Settings" => IoC.Get<SettingsPage>(),
                 _ => null,

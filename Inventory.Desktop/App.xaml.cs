@@ -41,8 +41,8 @@ namespace Inventory.Desktop
             serviceCollection.AddSingleton<MainWindowViewModel>();
 
             serviceCollection
-                .AddTransient<RecordPage>()
-                .AddTransient<RecordViewModel>()
+                .AddTransient<HomePage>()
+                .AddTransient<HomeViewModel>()
                 .AddTransient<CatalogPage>()
                 .AddTransient<CatalogViewModel>()
                 .AddTransient<SettingsPage>()
