@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Mime;
 using System.Windows;
 using System.Windows.Input;
+using Inventory.Core.IoC;
 using Inventory.DataAccess;
 using Inventory.Desktop.Commands;
 using Inventory.Desktop.Events;
@@ -16,21 +17,16 @@ namespace Inventory.Desktop.ViewModel
     public class HomeViewModel : ViewModelBase
     {
         private readonly InvoiceDBHelper invoiceDbHelper;
-        private RecordBindableModel selectedRecord;
-
-        public ICommand NewRecordCommand { get; }
-        public ICommand DeleteRecordCommand { get; }
+        private RecordBindableModel record;
         public ICommand OpenRecordCommand { get; }
         public ObservableCollection<ProductViewModel> ProductViewModels { get; set; }
-        public ObservableCollection<RecordBindableModel> RecordsCollection { get; set; }
 
-        public RecordBindableModel SelectedRecord
+        public RecordBindableModel Record
         {
-            get => selectedRecord;
+            get => record;
             set
             {
-                SetProperty(ref selectedRecord, value);
-
+                SetProperty(ref record, value);
                 OnPropertyChanged(null);
             }
         }
@@ -39,83 +35,34 @@ namespace Inventory.Desktop.ViewModel
         {
             this.invoiceDbHelper = invoiceDbHelper;
 
-            var loadedInvoices = invoiceDbHelper.LoadInvoices();
-
-            RecordsCollection = new ObservableCollection<RecordBindableModel>();
-            foreach (RecordBindableModel record in loadedInvoices)
-            {
-                RecordsCollection.Add(record);
-                record.PropertyChanged += RecordOnPropertyChanged;
-            }
-
             ProductViewModels = new ObservableCollection<ProductViewModel>();
 
             var hub = Hub.Default;
             hub.Subscribe<ProductModelAddRemove>(ModifyProducts);
 
-            NewRecordCommand = new RelayCommand((_) => true, (_) => AddNewRecord());
-            DeleteRecordCommand = new RelayCommand((_) => true, (_) => DeleteRecord());
             OpenRecordCommand = new RelayCommand((_) => true, (_) => OpenRecord());
+
+            Hub.Default.Subscribe<RecordModelSelect>(this, (x) =>
+            {
+                Record = x.Record;
+            });
         }
 
         private void OpenRecord()
         {
-            var vm = new SelectRecordWindowViewModel
-            {
-                RecordsCollection = RecordsCollection,
-                AddNewRecord = new RelayCommand((_) =>AddNewRecord())
-            };
-
-            var window = new SelectRecordWindow(vm);
+            var window = IoC.Get<SelectRecordWindow>();
             window.Owner = Application.Current.MainWindow;
             window.ShowDialog();
         }
+
+
 
         public void ModifyProducts(ProductModelAddRemove model)
         {
             ProductViewModels.Add(new ProductViewModel() { ProductModel = model.Model });
         }
 
-        private void AddNewRecord()
-        {
-            var record = invoiceDbHelper.CreateNewInvoice();
-            // TODO list view should set the selected invoice and this should overide that
-            RecordBindableModel recordBindable = record;
 
-            RecordsCollection.Insert(0, recordBindable);
-            SelectedRecord = recordBindable;
-        }
 
-        private void RecordOnPropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            if (sender is not RecordBindableModel model)
-                return;
-
-            invoiceDbHelper.SaveRecordModel(model);
-        }
-
-        private void DeleteRecord()
-        {
-            if (SelectedRecord == null)
-                return;
-            invoiceDbHelper.DeleteRecordModel(SelectedRecord);
-
-            int selectedIndex = RecordsCollection
-                .IndexOf(RecordsCollection.First(x => x.ID == SelectedRecord.ID));
-
-            RecordsCollection.RemoveAt(selectedIndex);
-
-            if (RecordsCollection.Count == 0)
-                SelectedRecord = null;
-            else
-            {
-                if (selectedIndex == 0)
-                    SelectedRecord = RecordsCollection[0];
-                else
-                    SelectedRecord = RecordsCollection[selectedIndex - 1];
-            }
-
-            OnPropertyChanged(null);
-        }
     }
 }

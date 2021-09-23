@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
 using System.Windows.Input;
 using Inventory.Desktop.Commands;
-using Inventory.Desktop.Controls;
 using SideBarItem = Inventory.Desktop.Controls.SideBarItem;
 
 namespace Inventory.Desktop.ViewModel
@@ -45,13 +40,6 @@ namespace Inventory.Desktop.ViewModel
                     if (Application.Current.MainWindow != null)
                         Application.Current.MainWindow.WindowState = WindowState.Minimized;
                 });
-
-
-            
-
-
         }
-
-
     }
 }

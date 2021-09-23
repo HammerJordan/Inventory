@@ -1,9 +1,6 @@
 ﻿using System.Windows;
-using System.Windows.Controls.Primitives;
 using Inventory.Desktop.Services;
 using Inventory.Desktop.ViewModel;
-using Inventory.Desktop.Controls;
-using Inventory.Desktop.View;
 using SideBarItem = Inventory.Desktop.Controls.SideBarItem;
 
 namespace Inventory.Desktop

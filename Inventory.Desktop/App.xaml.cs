@@ -4,11 +4,13 @@ using System.Windows;
 using Inventory.Core;
 using Inventory.Core.IoC;
 using Inventory.DataAccess;
+using Inventory.Desktop.PopupWindows;
 using Inventory.Desktop.Services;
 using Inventory.Desktop.View;
 using Inventory.Desktop.ViewModel;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using PubSub;
 using WebScraping;
 
 // ReSharper disable PossibleNullReferenceException
@@ -36,17 +38,21 @@ namespace Inventory.Desktop
             var serviceCollection = new ServiceCollection();
 
 
-            serviceCollection.AddSingleton(config);
-            serviceCollection.AddSingleton<MainWindow>();
-            serviceCollection.AddSingleton<MainWindowViewModel>();
+            serviceCollection
+                .AddSingleton(config)
+                .AddSingleton<MainWindow>()
+                .AddSingleton<MainWindowViewModel>();
 
+            // views and vm
             serviceCollection
                 .AddTransient<HomePage>()
                 .AddTransient<HomeViewModel>()
                 .AddTransient<CatalogPage>()
                 .AddTransient<CatalogViewModel>()
                 .AddTransient<SettingsPage>()
-                .AddTransient<SettingsViewModel>(); ;
+                .AddTransient<SettingsViewModel>()
+                .AddTransient<SelectRecordWindow>()
+                .AddTransient<SelectRecordWindowViewModel>();
 
 
             serviceCollection
