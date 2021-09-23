@@ -12,6 +12,7 @@ namespace Inventory.DataAccess
     public sealed class DbConnection : IDisposable
     {
         private readonly SQLiteConnection dbConnection;
+        public string ConnectionString { get;  }
 
         public DbConnection(string pathToDatabase)
         {
@@ -22,13 +23,16 @@ namespace Inventory.DataAccess
                 newDB = true;
             }
             
-            string connectionString = "Data Source=" +
-                                      $"{pathToDatabase};" +
-                                      "Version=3;";
-            dbConnection = new SQLiteConnection(connectionString);
+            ConnectionString = "Data Source=" +
+                               $"{pathToDatabase};" +
+                               "Version=3;";
+            
+            
+            dbConnection = new SQLiteConnection(ConnectionString);
             dbConnection.Open();
             if (newDB)
                 CreateTables();
+            dbConnection.Close();
         }
 
         private void CreateTables()
@@ -109,7 +113,6 @@ namespace Inventory.DataAccess
             }
         }
 
-        public SQLiteConnection GetDBConnection() => dbConnection;
 
         public void Dispose()
         {

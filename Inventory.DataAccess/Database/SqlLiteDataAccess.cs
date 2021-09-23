@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SQLite;
 using System.Linq;
 using Dapper;
 using Inventory.Core;
@@ -16,7 +17,8 @@ namespace Inventory.DataAccess
 
         public SqlLiteDataAccess(DbConnection connection)
         {
-            dbConnection = connection.GetDBConnection();
+            dbConnection = new SQLiteConnection(connection.ConnectionString);
+            dbConnection.Open();
         }
 
         public List<T> LoadData<T, TPrams>(string storedProcedure, TPrams parameters)
@@ -34,11 +36,11 @@ namespace Inventory.DataAccess
 
         public void StartTransaction()
         {
-            // if(dbConnection.State != ConnectionState.Open)
-            //     dbConnection.Open();
+            if(dbConnection.State != ConnectionState.Open)
+                dbConnection.Open();
 
             dbTransaction = dbConnection.BeginTransaction();
-            // isClosed = false;
+            isClosed = false;
         }
 
         public void SaveDataInTransaction<T>(string storedProcedure, T parameters)
@@ -59,16 +61,16 @@ namespace Inventory.DataAccess
         public void CommitTransaction()
         {
             dbTransaction?.Commit();
-            // dbConnection?.Close();
-            //
-            // isClosed = true;
+            dbConnection?.Close();
+            
+            isClosed = true;
         }
 
         public void RollbackTransaction()
         {
             dbTransaction?.Rollback();
-            // dbConnection?.Close();
-            // isClosed = true;
+            dbConnection?.Close();
+            isClosed = true;
         }
 
 

@@ -12,7 +12,8 @@
             Cost REAL not null,
             Unit TEXT,
             URL TEXT,
-            LastUpdated TEXT
+            LastUpdated TEXT,
+            ImageHref TEXT
         );";
 
         public const string CREATE_PRODUCT_IMAGE_SCHEMA =

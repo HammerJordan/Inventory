@@ -9,7 +9,24 @@
     <projectFile profileName="Inventory.API.Tests">Inventory.API.Tests/Inventory.API.Tests.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a6d2810-f582-42df-adfb-b5401f0dfa70" name="Changes" comment="" />
+    <list default="true" id="7a6d2810-f582-42df-adfb-b5401f0dfa70" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Inventory.DataAccess/StoreProcedure/DbStoredProcedure.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Inventory.DataAccess/StoreProcedure/IStoreProcedure.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Inventory/.idea/dataSources/7b481bc5-6e11-43dc-a446-32253272f4b4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Inventory/.idea/dataSources/7b481bc5-6e11-43dc-a446-32253272f4b4.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Inventory/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Inventory/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Core.Tests/UnitTest1.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Core/Interface/ISqlLiteDataAccess.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.DataAccess/Database/ISqlLiteDataAccess.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Core/Inventory.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Core/Inventory.Core.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Core/Models/ProductModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Core/Models/ProductModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.DataAccess/Database/DbConnection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.DataAccess/Database/DbConnection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.DataAccess/Database/SqlLiteDataAccess.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.DataAccess/Database/SqlLiteDataAccess.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.DataAccess/Database/TableSchema.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.DataAccess/Database/TableSchema.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.WebScraping.Tests/ProductScraperTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.WebScraping.Tests/ProductScraperTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.WebScraping/Inventory.WebScraping.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.WebScraping/Inventory.WebScraping.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.WebScraping/ProductScraper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.WebScraping/ProductScraper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.WebScraping/ProductUpdateRunner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.WebScraping/ProductUpdateRunner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.sln.DotSettings.user" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,6 +54,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2b369d19768947fcba24b2d54b76014c1bbb78/1E7/IStatusCodeActionResult.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/35d0c4d32e464cafa6f180e54901f84630578/6B/IActionResult.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/cbc4469a215a48fca98fdf5b9f7a7d4a31000/14/SqlMapper.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/39c05a262c304f0baf68d816fced27b82c1588/bc/fadc0b8b/IDbTransaction.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1d4cf8021e1a43bc9fe29097b42720c355978/11/GenericWebHostBuilder.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c7788b2bc733412d8ee39c302ff7ce5713578/3/HostBuilder.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bc3d7024e97f4f818de53bc3c23872b48f5790/233/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
@@ -46,7 +64,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bc3d7024e97f4f818de53bc3c23872b48f5790/3F/String.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/adbabd2b288f4892be207445c67c39505c0c8/4e/bd968d18/SQLiteCommand.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/21610df653fd448d9c453d1fb553cf891bcd90/52/HttpClient.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bc3d7024e97f4f818de53bc3c23872b48f5790/37/Object.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bc3d7024e97f4f818de53bc3c23872b48f5790/37/Object.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2b369d19768947fcba24b2d54b76014c1bbb78/38/ControllerBase.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2b369d19768947fcba24b2d54b76014c1bbb78/5F/ObjectResult.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2b369d19768947fcba24b2d54b76014c1bbb78/60/OkObjectResult.cs" root0="FORCE_HIGHLIGHTING" />
@@ -123,6 +141,7 @@
       <workItem from="1631831283687" duration="183000" />
       <workItem from="1631884497409" duration="16087000" />
       <workItem from="1631968080732" duration="3876000" />
+      <workItem from="1632368620377" duration="3558000" />
     </task>
     <servers />
   </component>
@@ -165,26 +184,26 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Inventory.WebScraping/ProductScraper.cs</url>
-          <line>104</line>
+          <line>107</line>
           <properties documentPath="C:\Users\Hammer\Desktop\MyProjects\C#\Inventory\Inventory.WebScraping\ProductScraper.cs" initialLine="104" containingFunctionPresentation="method 'GetAllModelsFromCategoriesAsync'">
             <startOffsets>
-              <option value="3267" />
+              <option value="3327" />
             </startOffsets>
             <endOffsets>
-              <option value="3347" />
+              <option value="3407" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Inventory.WebScraping/ProductScraper.cs</url>
-          <line>98</line>
+          <line>101</line>
           <properties documentPath="C:\Users\Hammer\Desktop\MyProjects\C#\Inventory\Inventory.WebScraping\ProductScraper.cs" initialLine="98" containingFunctionPresentation="method 'GetAllModelsFromCategoriesAsync'">
             <startOffsets>
-              <option value="3092" />
+              <option value="3152" />
             </startOffsets>
             <endOffsets>
-              <option value="3137" />
+              <option value="3197" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="22" />
@@ -192,28 +211,34 @@
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Inventory.API/Services/ProductUpdateRunner.cs</url>
           <line>87</line>
-          <properties documentPath="C:\Users\Hammer\Desktop\MyProjects\C#\Inventory\Inventory.API\Services\ProductUpdateRunner.cs" initialLine="87" containingFunctionPresentation="method 'RunProductUpdate'">
-            <startOffsets>
-              <option value="3717" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3797" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="C:\Users\Hammer\Desktop\MyProjects\C#\Inventory\Inventory.API\Services\ProductUpdateRunner.cs" initialLine="87" containingFunctionPresentation="method 'RunProductUpdate'" />
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Inventory.WebScraping/ProductUpdateRunner.cs</url>
-          <line>85</line>
-          <properties documentPath="C:\Users\Hammer\Desktop\MyProjects\C#\Inventory\Inventory.WebScraping\ProductUpdateRunner.cs" initialLine="85" containingFunctionPresentation="method 'RunProductUpdate'">
+          <url>file://$PROJECT_DIR$/Inventory.WebScraping.Tests/ProductScraperTests.cs</url>
+          <line>20</line>
+          <properties documentPath="C:\Users\Hammer\Desktop\MyProjects\C#\Inventory\Inventory.WebScraping.Tests\ProductScraperTests.cs" initialLine="20" containingFunctionPresentation="method 'GetProductsElementsFromProductListView'">
             <startOffsets>
-              <option value="3432" />
+              <option value="527" />
             </startOffsets>
             <endOffsets>
-              <option value="3472" />
+              <option value="528" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="33" />
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Inventory.WebScraping.Tests/ProductScraperTests.cs</url>
+          <line>35</line>
+          <properties documentPath="C:\Users\Hammer\Desktop\MyProjects\C#\Inventory\Inventory.WebScraping.Tests\ProductScraperTests.cs" initialLine="35" containingFunctionPresentation="method 'GetProductModelFromIElement'">
+            <startOffsets>
+              <option value="1254" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1300" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="35" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

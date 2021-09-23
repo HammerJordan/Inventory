@@ -1,15 +1,10 @@
 ﻿using System.Collections.Generic;
-using System.Drawing;
-using System.IO;
 using System.Linq;
-using System.Net.Mime;
 using System.Threading.Tasks;
 using AngleSharp.Dom;
 using AngleSharp.Html.Dom;
-// using AngleSharp;
-// using AngleSharp.Dom;
-// using AngleSharp.Html.Dom;
 using Inventory.Core;
+using Inventory.DataAccess;
 using Microsoft.Extensions.Configuration;
 
 namespace WebScraping
@@ -24,9 +19,9 @@ namespace WebScraping
 
         private const string PRODUCT_INSERT_NEW = @"INSERT 
                                                     INTO Product                              
-                                                    (Name, Description, UPC, Cost, Unit, URL, LastUpdated)
+                                                    (Name, Description, UPC, Cost, Unit, URL, LastUpdated,ImageHref)
                                                     VALUES                                           
-                                                    (@Name, @Description, @UPC, @Cost, @Unit, @URL, @NowToString)";
+                                                    (@Name, @Description, @UPC, @Cost, @Unit, @URL,@NowToString,@ImageHref)";
 
         private const string PRODUCT_UPDATE = @"Update Product
                                                 set
@@ -34,17 +29,11 @@ namespace WebScraping
                                                     UPC = @UPC,
                                                     Cost = @Cost,
                                                     URL = @URL,
-                                                    LastUpdated = @NowToString
+                                                    LastUpdated = @NowToString,
+                                                    ImageHref = @ImageHref
                                                 where ID = @ID";
 
-        private const string PRODUCT_IMAGE_SELECT_BY_PRODUCT_ID =
-            @"select *
-                                from Product_Image
-                                where ProductID = @ID";
 
-        private const string SQL_INSERT_IMAGE = @"INSERT INTO Product_Image 
-                                                       (ProductID, Image)
-                                                        VALUES(@ProductID, @Image)";
 
         public float EstPercentDone { get; private set; }
 
@@ -124,34 +113,12 @@ namespace WebScraping
 
                     query = dataAccess.LoadData<ProductModel, object>
                         (PRODUCT_QUERY_BY_NAME, new { name = model.Name });
-                    // int ID = query.First().ID;
-                    //
-                    // var count = dataAccess.LoadData<int, object>(PRODUCT_IMAGE_SELECT_BY_PRODUCT_ID, new { ID });
-                    //
-                    // if (count.Count != 0)
-                    //     return;
-                    //
-                    // var productPage = pageLoader.GetWebPage(model.URL);
-                    // var image = productScraper.GetImage(productPage);
-                    //
-                    // if (image == null)
-                    //     return;
-                    //
-                    // var imageByte = Image2Byte(image);
-                    // dataAccess.SaveData(SQL_INSERT_IMAGE, new { ProductID = ID, Image = imageByte });
+
                 });
             }
         }
 
-        // private byte[] Image2Byte(MediaTypeNames.Image imageToconvert)
-        // {
-        //     using var memoryStream = new MemoryStream();
-        //     var bpm = new Bitmap(imageToconvert);
-        //
-        //     bpm.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Bmp);
-        //     byte[] bytesOfImage = memoryStream.ToArray();
-        //     return bytesOfImage;
-        // }
+
 
         private async Task GetAllProductIElementsInCategory(List<IElement> productLinks,
             IHtmlDocument page,

@@ -26,10 +26,13 @@ namespace WebScraping
                 UPC = GetUpc(productElement),
                 Cost = GetCost(productElement),
                 Unit = GetUnit(productElement),
-                URL = GetURL(productElement)
+                URL = GetURL(productElement),
+                ImageHref = GetImageHref(productElement)
             };
             return product;
         }
+
+
 
         public List<DirectoryNode> GetCategoriesLinks(IHtmlDocument page, params string[] exclude)
         {
@@ -194,12 +197,15 @@ namespace WebScraping
                 .First(x => x.ClassName == "mobile-no")
                 .GetAttribute("href");
         }
+        
+        private string GetImageHref(IElement productElement)
+        {
+            return productElement
+                .QuerySelector("a.thumbnail")
+                .GetElementsByTagName("img")
+                .First()
+                .GetAttribute("src");
+        }
 
-        // public Image GetImage(IHtmlDocument htmlDocument)
-        // {
-        //     var imageUrl = htmlDocument.All.First(x => x.Id == "item-display").Attributes[1].Value;
-        //     var image = pageLoader.GetImageFromUrl(imageUrl);
-        //     return image;
-        // }
     }
 }

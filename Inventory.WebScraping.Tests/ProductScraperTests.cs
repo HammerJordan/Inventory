@@ -21,10 +21,8 @@ namespace WebScraping.Test
         {
             string url = @"https://ebhorsman.com/category-items?type=dimming-colour-change-kits&cat=340501";
             IHtmlDocument page = await pageLoader.GetWebPageAsync(url);
-
             var results = productScraper.GetProductLinksFromPage(page);
-
-            results.Count.Should().Be(30);
+            results.Count.Should().Be(20);
         }
 
         [Fact]
@@ -35,15 +33,19 @@ namespace WebScraping.Test
             var result = productScraper.GetProductLinksFromPage(page).First();
 
             var model = productScraper.GetProductModel(result);
-            model.Name.Should().BeEquivalentTo("DDKIT-SE");
-            model.Description.Should().BeEquivalentTo("Leviton® Decora Digital/Decora Smart Switch Face Plate Color Change Kit is designed for an easy, cost effective way to change the color of the Decora Digital or Decora Smart Switches without having to install a new device. It’s as easy as removing the");
-            model.UPC.Should().BeEquivalentTo("07847775935");
+            model.Name.Should().BeEquivalentTo("IPKIT-E");
+            model.Description
+                .Should().ContainEquivalentOf("Leviton® Color Change Kits for IllumaTech Dimmer - black");
+            model.UPC.Should().BeEquivalentTo("07847701044");
             model.Unit.Should().BeEquivalentTo("each");
-            model.Cost.Should().Be(5.65);
+            model.Cost.Should().Be(5.52);
 
             model.URL.Should()
                 .BeEquivalentTo(
-                    "itemDetail?product=ddkit-se-energy-management-colour-change-kit-leviton&p=375966");
+                    "itemDetail?product=ipkit-e-energy-management-colour-change-kit-&p=49241");
+
+            model.ImageHref.Should()
+                .BeEquivalentTo("https://storage.googleapis.com/ebh/images/product/49241.jpg");
 
         }
         
