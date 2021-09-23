@@ -18,40 +18,14 @@
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
 
-        <StackPanel Orientation="Vertical"
-                    Margin="10 10 0 0"
-                    HorizontalAlignment="Left"
-                    Grid.Column="0"
-                    Grid.Row="0">
-
-            <Button Style="{StaticResource RoundedButton}"
-                    Content="Select Record"
-                    Height="50"
-                    Width="160"
-                    FontSize="16"
-                    FontWeight="Medium"
-                    Foreground="White"
-                    Background="#2E67A3" />
-            <Button Style="{StaticResource RoundedButton}"
-                    Content="Export Record"
-                    Height="50"
-                    FontWeight="Medium"
-                    Foreground="White"
-                    IsEnabled="False"
-                    FontSize="16"
-                    Margin="0 8 0 0"
-                    Width="160"
-                    Background="#A3742E" />
-
-        </StackPanel>
+     
 
         <StackPanel Orientation="Vertical"
                     HorizontalAlignment="Center"
-                    Grid.Column="1"
+                    Grid.Column="0"
                     Grid.Row="0">
 
             <Grid>
@@ -133,6 +107,46 @@
                     FontWeight="Medium"
                     Foreground="White"
                     Background="#2EA33A" />
+
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Margin="0 7 7 0"
+                    Grid.Column="1"
+                    Grid.Row="0">
+
+            <Button Style="{StaticResource RoundedButton}"
+                    Command="{Binding OpenRecordCommand}"
+                    Content="New / Open"
+                    Height="30"
+                    Width="120"
+                    Margin="0 0 7 0"
+                    FontSize="16"
+                    FontWeight="Regular"
+                    Foreground="White"
+                    Background="#2E67A3"/>
+
+            <Button Style="{StaticResource RoundedButton}"
+                    Content="Export"
+                    Height="30"
+                    Width="120"
+                    Margin="0 0 7 0"
+                    FontWeight="Medium"
+                    Foreground="White"
+                    FontSize="16"
+                    Background="#A3742E" />
+
+            <Button Style="{StaticResource RoundedButton}"
+                    Content="Delete"
+                    Height="30"
+                    Width="120"
+                    
+                    FontWeight="Medium"
+                    Foreground="White"
+                    FontSize="16"
+                    Background="#A32E2E" />
 
         </StackPanel>
 

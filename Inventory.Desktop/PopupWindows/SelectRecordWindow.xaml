@@ -6,9 +6,89 @@
         xmlns:local="clr-namespace:Inventory.Desktop.PopupWindows"
         mc:Ignorable="d"
         ShowInTaskbar="False"
+        WindowStyle="None"
+        Background="{StaticResource Dark-Brush}"
+        ResizeMode="NoResize"
         WindowStartupLocation="CenterOwner"
-        Title="SelectRecordWindow" Height="450" Width="800">
-    <Grid>
-        <TextBlock>Hello World</TextBlock>
+        Title="SelectRecordWindow" Height="450" Width="450">
+
+    <Grid  Background="{StaticResource Mid-Brush}"
+           Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0"
+              Width="150"
+              HorizontalAlignment="Center"
+              Margin="8 8 0 0">
+            <StackPanel >
+                <Button Style="{StaticResource RoundedButton}"
+                        Content="New Record"
+                        Height="40"
+                        Width="120"
+                        Margin="0 0 0 0"
+                        FontWeight="Medium"
+                        Foreground="White"
+                        FontSize="16"
+                        Background="#2EA33A" /> 
+
+                <Button Style="{StaticResource RoundedButton}"
+                        Content="Open Record"
+                        Height="40"
+                        Width="120"
+                        Margin="0 10 0 0"
+                        FontWeight="Medium"
+                        Foreground="White"
+                        FontSize="16"
+                        Background="#2E67A3" />
+            </StackPanel>
+            <Button Style="{StaticResource RoundedButton}"
+                    Content="Close"
+                    VerticalAlignment="Bottom"
+                    Height="40"
+                    Width="120"
+                    Margin="0 0 0 10"
+                    FontWeight="Medium"
+                    Foreground="White"
+                    FontSize="16"
+                    Background="#A32E2E" />
+
+        </Grid>
+
+        <ListBox ScrollViewer.VerticalScrollBarVisibility="Visible"
+                 Grid.Column="1"
+                 IsSynchronizedWithCurrentItem="True"
+                 HorizontalContentAlignment="Center"
+                 VerticalAlignment="Stretch"
+                 HorizontalAlignment="Stretch"
+                 SelectionMode="Single"
+                 SelectedItem="{Binding SelectedRecord, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                 ItemsSource="{Binding RecordsCollection}">
+            <ListBox.ItemTemplate>
+                <DataTemplate >
+                    <Grid  HorizontalAlignment="Center">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label Content="{Binding Name}"
+                               Grid.Row="0"
+                               HorizontalAlignment="Center"></Label>
+                        <Label Content="{Binding CreatedAtString}"
+                               Grid.Row="1"
+                               HorizontalAlignment="Center"></Label>
+
+                    </Grid>
+
+                </DataTemplate>
+
+            </ListBox.ItemTemplate>
+
+
+        </ListBox>
+
     </Grid>
 </Window>

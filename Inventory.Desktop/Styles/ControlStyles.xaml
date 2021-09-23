@@ -43,6 +43,12 @@
         <Setter Property="BorderThickness"
                 Value="0" />
 
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect Opacity=".15" />
+            </Setter.Value>
+        </Setter>
+
         <Style.Triggers>
                 <Trigger Property="IsEnabled" Value="False" >
                     <Setter Property="Visibility" Value="Hidden"/>
@@ -53,10 +59,11 @@
         <Style.Resources>
             <Style TargetType="Border">
                 <Setter Property="CornerRadius"
-                        Value="15" />
+                        Value="8" />
 
             </Style>
         </Style.Resources>
+
     </Style>
 
     <Style TargetType="{x:Type MenuItem}">
@@ -192,6 +199,9 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+
+
+
 
 
 </ResourceDictionary>
