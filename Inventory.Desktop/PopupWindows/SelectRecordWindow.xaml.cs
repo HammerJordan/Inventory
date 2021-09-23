@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
+using Inventory.Desktop.Commands;
+using Inventory.Desktop.ViewModel;
 
 namespace Inventory.Desktop.PopupWindows
 {
@@ -19,9 +9,13 @@ namespace Inventory.Desktop.PopupWindows
     /// </summary>
     public partial class SelectRecordWindow : Window
     {
-        public SelectRecordWindow()
+        public SelectRecordWindow(SelectRecordWindowViewModel vm)
         {
             InitializeComponent();
+            vm.CloseWindowCommand = new RelayCommand((_) => Close());
+            DataContext = vm;
         }
+
+
     }
 }

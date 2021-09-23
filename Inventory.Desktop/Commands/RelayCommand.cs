@@ -8,6 +8,11 @@ namespace Inventory.Desktop.Commands
         private readonly Predicate<object> _canExecute;
         private readonly Action<object> _execute;
 
+        public RelayCommand(Action<object> execute)
+        {
+            _canExecute = o => true;
+            _execute = execute;
+        }
         public RelayCommand(Predicate<object> canExecute, Action<object> execute)
         {
             _canExecute = canExecute;

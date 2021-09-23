@@ -60,7 +60,13 @@ namespace Inventory.Desktop.ViewModel
 
         private void OpenRecord()
         {
-            var window = new SelectRecordWindow();
+            var vm = new SelectRecordWindowViewModel
+            {
+                RecordsCollection = RecordsCollection,
+                AddNewRecord = new RelayCommand((_) =>AddNewRecord())
+            };
+
+            var window = new SelectRecordWindow(vm);
             window.Owner = Application.Current.MainWindow;
             window.ShowDialog();
         }
