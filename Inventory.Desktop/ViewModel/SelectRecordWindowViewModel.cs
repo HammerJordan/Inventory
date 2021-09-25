@@ -16,7 +16,6 @@ namespace Inventory.Desktop.ViewModel
         private readonly IRecordQuery recordQuery;
 
         private RecordBindableModel selectedRecord;
-        
         public ObservableCollection<RecordBindableModel> RecordsCollection { get; set; }
         public RecordBindableModel SelectedRecord
         {
@@ -30,17 +29,17 @@ namespace Inventory.Desktop.ViewModel
         }
 
         public ICommand CloseWindowCommand { get; set; }
-        public ICommand OpenRecordCommand { get; set; }
-        public ICommand AddNewRecordCommand { get; set; }
-        public ICommand DeleteRecordCommand { get; set; }
+        public ICommand OpenRecordCommand { get; }
+        public ICommand AddNewRecordCommand { get; }
+        public ICommand DeleteRecordCommand { get; }
 
         public SelectRecordWindowViewModel(IRecordQuery recordQuery)
         {
             this.recordQuery = recordQuery;
-
             var loadedInvoices = recordQuery.LoadAll();
 
             RecordsCollection = new ObservableCollection<RecordBindableModel>();
+            
             foreach (RecordBindableModel record in loadedInvoices)
             {
                 RecordsCollection.Add(record);

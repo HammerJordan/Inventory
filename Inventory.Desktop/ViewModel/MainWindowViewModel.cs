@@ -12,19 +12,14 @@ namespace Inventory.Desktop.ViewModel
         public ICommand ToggleFullScreenCommand { get; }
         public ICommand MinimizeCommand { get; }
 
-        private List<Controls.SideBarItem> sideBarNav = new List<SideBarItem>();
+        private List<SideBarItem> sideBarNav = new List<SideBarItem>();
 
-
-        public MainWindowViewModel() 
+        public MainWindowViewModel()
         {
-            CloseWindowCommand =
-                new RelayCommand((o => true), c =>
-                {
-                    Application.Current.Shutdown();
-                });
+            CloseWindowCommand = new RelayCommand(() => Application.Current.Shutdown());
 
             ToggleFullScreenCommand =
-                new RelayCommand((o => true), c =>
+                new RelayCommand(() =>
                 {
                     if (Application.Current.MainWindow == null)
                         return;
@@ -35,7 +30,7 @@ namespace Inventory.Desktop.ViewModel
                 });
 
             MinimizeCommand =
-                new RelayCommand((o => true), c =>
+                new RelayCommand(() =>
                 {
                     if (Application.Current.MainWindow != null)
                         Application.Current.MainWindow.WindowState = WindowState.Minimized;

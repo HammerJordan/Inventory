@@ -10,14 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7a6d2810-f582-42df-adfb-b5401f0dfa70" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Inventory/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Inventory/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.Core/Inventory.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Core/Inventory.Core.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.DataAccess/Database/ISqlLiteDataAccess.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.DataAccess/StoreProcedure/DbStoredProcedure.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.DataAccess/StoreProcedure/IStoreProcedure.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.WebScraping/Inventory.WebScraping.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.WebScraping/Inventory.WebScraping.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.WebScraping/ProductUpdateRunner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.WebScraping/ProductUpdateRunner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/ViewModel/MainWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/ViewModel/MainWindowViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/ViewModel/SelectRecordWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/ViewModel/SelectRecordWindowViewModel.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,6 +129,7 @@
       <workItem from="1631968080732" duration="3876000" />
       <workItem from="1632368620377" duration="3602000" />
       <workItem from="1632407711647" duration="216000" />
+      <workItem from="1632573688270" duration="390000" />
     </task>
     <servers />
   </component>
