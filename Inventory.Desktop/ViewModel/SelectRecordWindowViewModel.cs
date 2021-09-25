@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Linq;
 using System.Windows.Input;
+using Inventory.Core;
 using Inventory.DataAccess;
 using Inventory.Desktop.Commands;
 using Inventory.Desktop.Events;
@@ -12,7 +13,7 @@ namespace Inventory.Desktop.ViewModel
 {
     public class SelectRecordWindowViewModel : ViewModelBase
     {
-        private readonly InvoiceDBHelper invoiceDbHelper;
+        private readonly IRecordQuery recordQuery;
 
         private RecordBindableModel selectedRecord;
         
@@ -33,11 +34,11 @@ namespace Inventory.Desktop.ViewModel
         public ICommand AddNewRecordCommand { get; set; }
         public ICommand DeleteRecordCommand { get; set; }
 
-        public SelectRecordWindowViewModel(InvoiceDBHelper invoiceDbHelper)
+        public SelectRecordWindowViewModel(IRecordQuery recordQuery)
         {
-            this.invoiceDbHelper = invoiceDbHelper;
+            this.recordQuery = recordQuery;
 
-            var loadedInvoices = invoiceDbHelper.LoadInvoices();
+            var loadedInvoices = recordQuery.LoadAll();
 
             RecordsCollection = new ObservableCollection<RecordBindableModel>();
             foreach (RecordBindableModel record in loadedInvoices)
@@ -58,12 +59,12 @@ namespace Inventory.Desktop.ViewModel
             if (sender is not RecordBindableModel model)
                 return;
 
-            invoiceDbHelper.SaveRecordModel(model);
+            recordQuery.Update(model);
         }
 
         private void AddNewRecord()
         {
-            var record = invoiceDbHelper.CreateNewInvoice();
+            var record = recordQuery.Create();
             RecordBindableModel recordBindableModel = record;
 
             RecordsCollection.Insert(0, recordBindableModel);
@@ -74,7 +75,7 @@ namespace Inventory.Desktop.ViewModel
             if (SelectedRecord == null)
                 return;
 
-            invoiceDbHelper.DeleteRecordModel(SelectedRecord);
+            recordQuery.Delete(SelectedRecord);
 
             int selectedIndex = RecordsCollection
                 .IndexOf(RecordsCollection.First(x => x.ID == SelectedRecord.ID));

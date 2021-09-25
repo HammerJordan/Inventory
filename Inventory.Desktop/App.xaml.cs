@@ -4,6 +4,7 @@ using System.Windows;
 using Inventory.Core;
 using Inventory.Core.IoC;
 using Inventory.DataAccess;
+using Inventory.DataAccess.Queries;
 using Inventory.Desktop.PopupWindows;
 using Inventory.Desktop.Services;
 using Inventory.Desktop.View;
@@ -57,7 +58,7 @@ namespace Inventory.Desktop
 
             serviceCollection
                 .AddTransient<ViewResolveService>()
-                .AddTransient<InvoiceDBHelper>()
+                .AddTransient<IRecordQuery,RecordQuery>()
                 .AddTransient<WebPageLoader>()
                 .AddTransient<DatabaseUpdate>()
                 .AddTransient<ProductScraper>()

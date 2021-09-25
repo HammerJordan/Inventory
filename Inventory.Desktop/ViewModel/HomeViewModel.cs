@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
+using Inventory.Core;
 using Inventory.Core.IoC;
 using Inventory.DataAccess;
 using Inventory.Desktop.Commands;
@@ -17,7 +18,7 @@ namespace Inventory.Desktop.ViewModel
 
         private bool editRecordName;
 
-        private readonly InvoiceDBHelper invoiceDbHelper;
+        private readonly IRecordQuery recordQuery;
         private RecordBindableModel record;
         public ICommand OpenRecordCommand { get; }
         public ICommand EditRecordCommand { get; }
@@ -53,9 +54,9 @@ namespace Inventory.Desktop.ViewModel
 
         public bool RecordNameEmpty => EditRecordName && string.IsNullOrEmpty(RecordNameEdit);
 
-        public HomeViewModel(InvoiceDBHelper invoiceDbHelper)
+        public HomeViewModel(IRecordQuery recordQuery)
         {
-            this.invoiceDbHelper = invoiceDbHelper;
+            this.recordQuery = recordQuery;
             ProductViewModels = new ObservableCollection<ProductViewModel>();
 
             var hub = Hub.Default;
@@ -79,7 +80,7 @@ namespace Inventory.Desktop.ViewModel
             RecordNameEdit = string.Empty;
             EditRecordName = false;
 
-            invoiceDbHelper.SaveRecordModel(Record);
+            recordQuery.Update(Record);
         }
 
         private void OpenRecord()

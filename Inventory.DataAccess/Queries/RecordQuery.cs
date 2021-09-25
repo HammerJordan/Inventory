@@ -2,60 +2,53 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Threading.Tasks;
 using Inventory.Core;
 
-namespace Inventory.DataAccess
+namespace Inventory.DataAccess.Queries
 {
-    public class InvoiceDBHelper
+    public class RecordQuery : IRecordQuery
     {
         private readonly ISqlLiteDataAccess dataAccess;
 
-
-        public InvoiceDBHelper(ISqlLiteDataAccess dataAccess)
+        public RecordQuery(ISqlLiteDataAccess dataAccess)
         {
             this.dataAccess = dataAccess;
         }
 
-        public IEnumerable<RecordModel> LoadInvoices()
+        public IEnumerable<RecordModel> LoadAll()
         {
             var sql = "Select * from Record";
 
-            return dataAccess.LoadData<RecordModel,dynamic>(sql, null);
+            return dataAccess.LoadData<RecordModel, dynamic>(sql, null);
         }
 
-        public  RecordModel CreateNewInvoice()
+        public RecordModel Create()
         {
-
             var sql = $"INSERT INTO Record (Name, CreatedDateTime)" +
                       $"VALUES ('',@CreatedDate)";
             var prams = new { CreatedDate = DateTime.Now.ToString(CultureInfo.InvariantCulture) };
 
-            dataAccess.SaveData(sql,prams);
+            dataAccess.SaveData(sql, prams);
 
             sql = @"SELECT * 
                         FROM Record
                         WHERE ID = (SELECT MAX(ID)  FROM Record); ";
 
-            return dataAccess.LoadData<RecordModel,dynamic>(sql,null).First();
+            return dataAccess.LoadData<RecordModel, dynamic>(sql, null).First();
         }
 
-        public void SaveRecordModel(RecordModel model)
+        public void Update(RecordModel record)
         {
             var sql = @"UPDATE Record
                             Set Name = @Name
                             Where ID = @ID;";
-            dataAccess.SaveData(sql,model);
+            dataAccess.SaveData(sql, record);
         }
 
-        public void DeleteRecordModel(RecordModel model)
+        public void Delete(RecordModel record)
         {
             var sql = @"DELETE from Record where ID = @ID;";
-            dataAccess.SaveData(sql, model);
+            dataAccess.SaveData(sql, record);
         }
-
-        //TODO: GetInvoice Items
-
-
     }
 }
