@@ -5,116 +5,114 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Inventory.Desktop.Controls"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             Height="160"
+             Height="100"
              d:DesignWidth="800"
              FontSize="18"
              mc:Ignorable="d">
-    <UserControl.Resources>
-        <!-- <converters:ImageToSourceConverter x:Key="imageToSourceConverter" /> -->
-    </UserControl.Resources>
 
-    <!--<Viewbox Stretch="Uniform" StretchDirection="DownOnly">-->
+    <Border BorderBrush="Black" BorderThickness="1.25">
+        <Grid Background="{StaticResource Dark-Brush}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
 
-    <!--<StackPanel Orientation="Horizontal">-->
-    <!--<Image></Image> TODO-->
-    <!--  Name  -->
-
-    <Grid Background="DimGray">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-
-        <!-- <Image Grid.Row="0" -->
-        <!--        Grid.RowSpan="4" -->
-        <!--        Grid.Column="0" -->
-        <!--        Margin="0,0,15,0" -->
-        <!--        HorizontalAlignment="Left" -->
-        <!--        VerticalAlignment="Center" -->
-        <!--        Source="{Binding ProductModel.Image, Converter={StaticResource imageToSourceConverter}}" -->
-        <!--        StretchDirection="Both" />         -->
-        <Image Grid.Row="0"
-               Grid.RowSpan="4"
-               Grid.Column="0"
-               Margin="0,0,15,0"
-               HorizontalAlignment="Left"
-               VerticalAlignment="Center"
-               Source="{Binding ProductModel.ImageHref}"
-               StretchDirection="Both" />
-
-        <TextBlock Grid.Row="0"
-                   Grid.Column="1"
+            <Image Grid.Column="0"
+                   Margin="0,0,0,0"
+                   HorizontalAlignment="Left"
                    VerticalAlignment="Center"
-                   FontSize="14"
-                   FontWeight="Bold"
-                   Foreground="Black"
-                   Text="{Binding ProductModel.Name}"
-                   TextAlignment="Center" />
+                   Source="{Binding ProductModel.ImageHref}"
+                   StretchDirection="Both" />
 
-        <!--  Description  -->
-        <TextBlock Grid.Row="1"
-                   Grid.Column="1"
-                   VerticalAlignment="Top"
-                   FontSize="12"
-                   Foreground="Black"
-                   Text="{Binding ProductModel.Description}"
-                   TextAlignment="Left"
-                   TextWrapping="WrapWithOverflow" />
+            <TextBlock Grid.Column="1"
+                       Margin="5,0,0,0"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center">
+                <Hyperlink NavigateUri="{Binding ProductModel.URL}"
+                           RequestNavigate="Hyperlink_RequestNavigate" >
+                    <TextBlock Text="{Binding ProductModel.Name}"
+                               FontSize="16"
+                               FontWeight="Bold"
+                               Foreground="White"
+                               TextAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                </Hyperlink>
+            </TextBlock>
 
-        <TextBlock Grid.Row="2"
-                   Grid.Column="1"
-                   VerticalAlignment="Bottom"
-                   FontSize="10"
-                   Foreground="Black"
-                   Text="{Binding ProductModel.UPC, StringFormat={}UPC: {0}}" />
+            <TextBlock Grid.Column="2"
+                       FontSize="12"
+                       Margin="5,0,0,0"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Foreground="White"
+                       Text="{Binding ProductModel.UPC, StringFormat={}{0}}" />
 
-        <TextBlock Grid.Row="3"
+            <!--  Description  -->
+
+            <TextBlock Grid.Column="3"
+                       VerticalAlignment="Stretch"
+                       Margin="5 2 0 2 "
+                       FontSize="12"
+                       Foreground="White"
+                       Text="{Binding ProductModel.Description}"
+                       TextAlignment="Left"
+                       TextWrapping="Wrap" />
+
+            <!--<TextBlock Grid.Row="3"
                    Grid.Column="1"
                    VerticalAlignment="Bottom"
                    FontSize="14"
                    Foreground="Black">
             <Hyperlink NavigateUri="{Binding ProductModel.URL}" RequestNavigate="Hyperlink_RequestNavigate">Go to web page</Hyperlink>
 
-        </TextBlock>
+        </TextBlock>-->
 
-        <TextBlock Grid.Row="1"
-                   Grid.RowSpan="2"
-                   Grid.Column="2"
-                   Padding="10,0"
-                   VerticalAlignment="Center"
-                   Foreground="Black">
-            <Run Text="{Binding ProductModel.Cost, StringFormat={}{0:C}}" />
-            <Run Text="{Binding ProductModel.Unit}" />
-        </TextBlock>
-        <TextBlock Grid.Row="1"
-                   Grid.Column="3"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Top"
-                   Text="Quantity" />
-        <TextBox Grid.Row="1"
-                 Grid.Column="3"
-                 Width="50"
-                 HorizontalAlignment="Center"
-                 VerticalAlignment="Center"
-                 Text="{Binding ProductModel.Quantity}"
-                 PreviewTextInput="NumberValidationTextBox" />
+            <TextBlock Grid.Column="4"
+                       Margin="5,0,0,0"
+                       VerticalAlignment="Center"
+                       FontSize="16"
+                       Foreground="White"
+                       Text="{Binding ProductModel.Cost, StringFormat={}{0:C}}" />
 
-        <Button Grid.Row="1"
-                Grid.Column="3"
-                Width="50"
-                VerticalAlignment="Bottom"
-                Content="Add"
-                Click="AddButtonClick" />
-    </Grid>
+            <TextBlock Grid.Column="5"
+                       Margin="5,0,0,0"
+                       VerticalAlignment="Center"
+                       FontSize="12"
+                       Foreground="White"
+                       Text="{Binding ProductModel.Unit}" />
 
-    <!--</StackPanel>-->
-    <!--</Viewbox>-->
+            <StackPanel Grid.Column="6"
+                        Margin="5,0,0,0"
+                        VerticalAlignment="Center"
+                        Orientation="Horizontal">
+                <TextBox Width="50"
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Center"
+                         Text="{Binding ProductModel.Quantity}"
+                         PreviewTextInput="NumberValidationTextBox" />
+            </StackPanel>
+
+            <TextBlock Grid.Column="7"
+                       Margin="5,0,0,0"
+                       VerticalAlignment="Center"
+                       FontSize="12"
+                       Foreground="White"
+                       Text="$158.32" />
+
+            <Button Grid.Column="8"
+                    Margin="5,0,0,0"
+                    Style="{StaticResource RoundedButton}"
+                    HorizontalAlignment="Center"
+                    Width="50"
+                    VerticalAlignment="Center"
+                    Content="Add"
+                    Click="AddButtonClick" />
+        </Grid>
+    </Border>
 </UserControl>
