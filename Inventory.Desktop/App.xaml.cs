@@ -37,8 +37,6 @@ namespace Inventory.Desktop
                 .Build();
 
             var serviceCollection = new ServiceCollection();
-
-
             serviceCollection
                 .AddSingleton(config)
                 .AddSingleton<MainWindow>()
@@ -53,12 +51,9 @@ namespace Inventory.Desktop
                 .AddTransient<SettingsPage>()
                 .AddTransient<SettingsViewModel>()
                 .AddTransient<SelectRecordWindow>()
-                .AddTransient<SelectRecordWindowViewModel>();
-
-
-            serviceCollection
+                .AddTransient<SelectRecordWindowViewModel>()
                 .AddTransient<ViewResolveService>()
-                .AddTransient<IRecordQuery,RecordQuery>()
+                .AddTransient<IRecordQuery, RecordQuery>()
                 .AddTransient<WebPageLoader>()
                 .AddTransient<DatabaseUpdate>()
                 .AddTransient<ProductScraper>()
@@ -66,57 +61,20 @@ namespace Inventory.Desktop
                 .AddTransient<ISqlLiteDataAccess, SqlLiteDataAccess>()
                 .AddTransient<ProductSearchEngine>();
 
+            AddDbConfig(config, serviceCollection);
+
+            var services = serviceCollection.BuildServiceProvider();
+
+            IoC.IoCInitialize(services);
+        }
+
+        private static void AddDbConfig(IConfiguration config, ServiceCollection serviceCollection)
+        {
             string pathToDb = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             pathToDb = Path.Join(pathToDb, config["DbLocation"]);
             var dbConnection = new DbConnection(pathToDb);
 
             serviceCollection.AddSingleton(dbConnection);
-
-
-            var services = serviceCollection.BuildServiceProvider();
-
-            IoC.IoCInitialize(services);
-
-
         }
-
-        //private async Task TestDB()
-        //{
-        //    var connection = new DbConnection();
-        //    using var webPageLoader = new WebPageLoader();
-        //    var pageScraper = new ProductScraper(webPageLoader);
-
-        //    var sw = new System.Diagnostics.Stopwatch();
-
-        //    var ignoreCategories = ServiceCollection
-        //        .GetService<IConfiguration>()
-        //        .GetSection("IgnoreProducts")
-        //        .GetChildren()
-        //        .Select(x => x.Value)
-        //        .ToArray();
-
-        //    sw.Start();
-
-        //    var results = await Task.Run(async () => await pageScraper.GetAllModelsFromCategoriesAsync(
-        //         ServiceCollection.GetService<IConfiguration>()["EntryUrl"],
-        //         ignoreCategories));
-
-        //    await connection.InsertProductModels(results);
-
-
-
-
-
-
-
-        //    //int count = 0;
-        //    // foreach (var Model in results)
-        //    // {
-        //    //     count++;
-        //    //     await connection.InsertProductModel(Model);
-        //    // }
-
-
-        //}
     }
 }
