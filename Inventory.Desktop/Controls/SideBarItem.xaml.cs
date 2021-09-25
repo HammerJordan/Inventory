@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace Inventory.Desktop.Controls
@@ -76,16 +77,12 @@ namespace Inventory.Desktop.Controls
         {
             SideBarSelected = (bool)e.NewValue;
             //SelectedPip.Background = new SolidColorBrush();
-            Root.Background = (bool)e.NewValue ? defaultBackground : new SolidColorBrush();
             //Name.Foreground = (bool)e.NewValue ? defaultTextColor : selectedTextBrush;
             //Icon.Foreground = (bool)e.NewValue ? selectedTextBrush : defaultTextColor;
         }
 
         public event Action<SideBarItem> SideBarClickEvent;
 
-        private readonly Brush defaultBackground;
-        private readonly Brush defaultTextColor;
-        private readonly Brush selectedTextBrush;
 
 
 
@@ -94,16 +91,12 @@ namespace Inventory.Desktop.Controls
         {
             DataContext = this;
             InitializeComponent();
-           
-            defaultBackground = Root.Background;
-            defaultTextColor = Name.Foreground;
-            var bc = new BrushConverter();
-            selectedTextBrush = (Brush)bc.ConvertFrom("#FFFFFF");
         }
 
         private void OnSideBarClicked(object sender, RoutedEventArgs e)
         {
             SideBarClickEvent?.Invoke(this);
         }
+
     }
 }

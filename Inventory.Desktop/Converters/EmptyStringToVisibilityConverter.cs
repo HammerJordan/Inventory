@@ -12,7 +12,8 @@ namespace Inventory.Desktop.Converters
             if (value is not string v)
                 return null;
 
-            if (parameter is bool b)
+
+            if (bool.TryParse(parameter as string, out bool b))
                 return string.IsNullOrEmpty(v) ^ b ? Visibility.Visible : Visibility.Collapsed;
 
             return string.IsNullOrEmpty(v) ? Visibility.Visible : Visibility.Collapsed;

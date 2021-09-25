@@ -1,46 +1,64 @@
-﻿<UserControl x:Class="Inventory.Desktop.Controls.SideBarItem"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:converters="clr-namespace:Inventory.Desktop.Converters"
-             d:DesignHeight="450"
-             d:DesignWidth="800"
-             mc:Ignorable="d">
+﻿<UserControl
+    x:Class="Inventory.Desktop.Controls.SideBarItem"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:Inventory.Desktop.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
 
     <UserControl.Resources>
         <ResourceDictionary>
-            <converters:BoolToColorConverter x:Key="BoolToColor"
-                                             FalseBrush="{StaticResource LightTextColorBrush}"
-                                             TrueBrush="White" />
+            <converters:BoolToColorConverter
+                x:Key="BoolToColor"
+                FalseBrush="{StaticResource LightTextColorBrush}"
+                TrueBrush="White" />
+            <converters:BoolToColorConverter
+                x:Key="isSelectedColor"
+                FalseBrush="Transparent"
+                TrueBrush="{StaticResource SelectedColorBrush}" />
 
-            <SolidColorBrush x:Key="HoverOverBrush" Color="White" />
+
+            <SolidColorBrush x:Key="HoverOverBrush" Color="#2e67a3" />
             <SolidColorBrush x:Key="PressedBrush" Color="{StaticResource SelectedColor}" />
 
             <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
 
-                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="Background" Value="{Binding SideBarSelected, Converter={StaticResource isSelectedColor}}" />
                 <Setter Property="BorderBrush" Value="Transparent" />
                 <Setter Property="HorizontalAlignment" Value="Stretch" />
 
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type Button}">
-                            <Border HorizontalAlignment="Stretch" Background="{TemplateBinding Background}">
-                                <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+                            <Border
+                                HorizontalAlignment="Stretch"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                                <ContentPresenter
+                                    x:Name="PART_Content"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Center" />
                             </Border>
+
+
+
                         </ControlTemplate>
                     </Setter.Value>
+
                 </Setter>
 
                 <Style.Triggers>
 
                     <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="Background" Value="{StaticResource HoverOverBrush}" />
+                        <Setter Property="Background" Value="#224050" />
                     </Trigger>
 
                     <Trigger Property="IsPressed" Value="True">
-                        <Setter Property="Background" Value="#121111" />
+                        <Setter Property="Background" Value="#0B151A" />
                     </Trigger>
                 </Style.Triggers>
 
@@ -49,9 +67,14 @@
             <Style x:Key="TextBlockStyle" TargetType="{x:Type TextBlock}">
                 <Setter Property="Foreground" Value="{StaticResource LightTextColorBrush}" />
                 <Style.Triggers>
+
+
                     <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=IsMouseOver}" Value="True">
                         <Setter Property="Foreground" Value="White" />
                     </DataTrigger>
+
+
+
                 </Style.Triggers>
             </Style>
 
@@ -61,48 +84,50 @@
 
         </ResourceDictionary>
 
-        
+
 
     </UserControl.Resources>
 
 
-    <Button Margin="0"
-            x:Name="Root"
-            Padding="0"
-            HorizontalContentAlignment="Stretch"
-            BorderThickness="0"
-            Background="{StaticResource SelectedColorBrush}"
-            Click="OnSideBarClicked"
-            Style="{StaticResource ButtonStyle}">
+    <Button
+        x:Name="Root"
+        Margin="0"
+        Padding="0"
+        HorizontalContentAlignment="Stretch"
+        BorderThickness="0"
+        Click="OnSideBarClicked"
+        Style="{StaticResource ButtonStyle}">
 
-        <Grid Margin="7 0 0 0" Height="65">
+        <Grid Height="65" Margin="7,0,0,0">
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <TextBlock x:Name="Icon"
-                       Grid.Column="0"
-                       Width="55"
-                       Padding="10,0,10,0"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
-                       FontFamily="{StaticResource FontAwesomeSolid}"
-                       FontSize="25"
-                       Foreground="{Binding SideBarSelected, Converter={StaticResource BoolToColor}}"
-                       Style="{StaticResource TextBlockStyle}"
-                       Text="&#xf015;" />
+            <TextBlock
+                x:Name="Icon"
+                Grid.Column="0"
+                Width="55"
+                Padding="10,0,10,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontFamily="{StaticResource FontAwesomeSolid}"
+                FontSize="25"
+                Foreground="{Binding SideBarSelected, Converter={StaticResource BoolToColor}}"
+                Style="{StaticResource TextBlockStyle}"
+                Text="&#xf015;" />
 
-            <TextBlock x:Name="Name"
-                       Grid.Column="1"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       Foreground="{Binding SideBarSelected, Converter={StaticResource BoolToColor}}"
-                       FontSize="21"
-                       FontWeight="bold"
-                       Style="{StaticResource TextBlockStyle}"
-                       Text="Home" />
+            <TextBlock
+                x:Name="Name"
+                Grid.Column="1"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                FontSize="21"
+                FontWeight="bold"
+                Foreground="{Binding SideBarSelected, Converter={StaticResource BoolToColor}}"
+                Style="{StaticResource TextBlockStyle}"
+                Text="Home" />
 
         </Grid>
 

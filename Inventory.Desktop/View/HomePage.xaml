@@ -1,26 +1,27 @@
-﻿<UserControl x:Class="Inventory.Desktop.View.HomePage"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:Inventory.Desktop.View"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:controls="clr-namespace:Inventory.Desktop.Controls"
-             xmlns:converters="clr-namespace:Inventory.Desktop.Converters"
-             d:DesignHeight="450"
-             d:DesignWidth="800"
-             mc:Ignorable="d">
+﻿<UserControl
+    x:Class="Inventory.Desktop.View.HomePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:Inventory.Desktop.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
 
     <UserControl.Resources>
-        <converters:BetterBooleanToVisibilityConverter TrueValue="Visible"
-                                                       FalseValue="Hidden"
-                                                       x:Key="trueVisibleConverter" />
-        <converters:BetterBooleanToVisibilityConverter TrueValue="Hidden"
-                                                       FalseValue="Visible"
-                                                       x:Key="falseVisibleConverter" />
+        <converters:BetterBooleanToVisibilityConverter
+            x:Key="trueVisibleConverter"
+            FalseValue="Hidden"
+            TrueValue="Visible" />
+        <converters:BetterBooleanToVisibilityConverter
+            x:Key="falseVisibleConverter"
+            FalseValue="Visible"
+            TrueValue="Hidden" />
+
     </UserControl.Resources>
 
-    <Grid Margin="0 0 0 0">
+    <Grid Margin="0,0,0,0">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -32,134 +33,147 @@
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
 
-        <StackPanel Orientation="Vertical"
-                    HorizontalAlignment="Center"
-                    Grid.Column="0"
-                    Grid.Row="0">
+        <StackPanel
+            Grid.Row="0"
+            Grid.Column="0"
+            HorizontalAlignment="Center"
+            Orientation="Vertical">
 
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="{Binding Record.Name, FallbackValue=Open or Create a record}"
-                           Grid.Column="0"
-                           Foreground="White"
-                           Visibility="{Binding EditRecordName,Converter={StaticResource falseVisibleConverter}}"
-                           FontSize="30"
-                           Margin="0 0 6 0"
-                           TextAlignment="Center"
-                           HorizontalAlignment="Center"
-                           FontWeight="Bold" />
-                <TextBlock Margin="5,2"
-                           Grid.Column="0"
-                           MinWidth="50"
-                           VerticalAlignment="Center"
-                           Text="Record Name"
-                           FontSize="20"
-                           Visibility="{Binding RecordNameEmpty,Converter={StaticResource trueVisibleConverter}}"
-                           Foreground="Gray" />
-                <TextBox x:Name="RenameTextBox"
-                         MinWidth="50"
-                         Grid.Column="0"
-                         FontSize="18"
-                         Visibility="{Binding EditRecordName,Converter={StaticResource trueVisibleConverter}}"
-                         CaretBrush="White"
-                         Foreground="White"
-                         Text="{Binding RecordNameEdit, UpdateSourceTrigger=PropertyChanged}"
-                         VerticalAlignment="Center"
-                         Background="Transparent">
+                <TextBlock
+                    Grid.Column="0"
+                    Margin="0,0,6,0"
+                    HorizontalAlignment="Center"
+                    FontSize="30"
+                    FontWeight="Bold"
+                    Foreground="White"
+                    Text="{Binding Record.Name, FallbackValue=Open or Create a record}"
+                    TextAlignment="Center"
+                    Visibility="{Binding EditRecordName, Converter={StaticResource falseVisibleConverter}}" />
+                <TextBlock
+                    Grid.Column="0"
+                    MinWidth="50"
+                    Margin="5,2"
+                    VerticalAlignment="Center"
+                    FontSize="20"
+                    Foreground="Gray"
+                    Text="Record Name"
+                    Visibility="{Binding RecordNameEmpty, Converter={StaticResource trueVisibleConverter}}" />
+                <TextBox
+                    x:Name="RenameTextBox"
+                    Grid.Column="0"
+                    MinWidth="50"
+                    VerticalAlignment="Center"
+                    Background="Transparent"
+                    CaretBrush="White"
+                    FontSize="18"
+                    Foreground="White"
+                    Text="{Binding RecordNameEdit, UpdateSourceTrigger=PropertyChanged}"
+                    Visibility="{Binding EditRecordName, Converter={StaticResource trueVisibleConverter}}">
                     <TextBox.InputBindings>
-                        <KeyBinding Key="Return"
-                                    Command="{Binding RenameRecordCommand}"
-                                    CommandParameter="{Binding ElementName=MyTextBox, Path=Text}" />
+                        <KeyBinding
+                            Key="Return"
+                            Command="{Binding RenameRecordCommand}"
+                            CommandParameter="{Binding ElementName=MyTextBox, Path=Text}" />
                     </TextBox.InputBindings>
 
                 </TextBox>
 
-                <Button Grid.Column="1"
-                        Margin="0 5 0 0"
-                        VerticalAlignment="Center"
-                        Foreground="#A3742E"
-                        Background="Transparent"
-                        BorderBrush="Transparent"
-                        FontFamily="{StaticResource FontAwesomeSolid}"
-                        Content="&#xf303;"
-                        Command="{Binding EditRecordCommand}"
-                        Width="20"
-                        Height="20" />
+                <Button
+                    Grid.Column="1"
+                    Width="20"
+                    Height="20"
+                    Margin="0,5,0,0"
+                    VerticalAlignment="Center"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    Command="{Binding EditRecordCommand}"
+                    Content="&#xf303;"
+                    FontFamily="{StaticResource FontAwesomeSolid}"
+                    Foreground="#A3742E" />
 
             </Grid>
 
-            <TextBlock Text="{Binding Record.CreatedAt,StringFormat=d}"
-                       Padding="0 6 0 0"
-                       Foreground="#969697"
-                       FontSize="23"
-                       TextAlignment="Center"
-                       HorizontalAlignment="Center"
-                       FontWeight="Medium" />
+            <TextBlock
+                Padding="0,6,0,0"
+                HorizontalAlignment="Center"
+                FontSize="23"
+                FontWeight="Medium"
+                Foreground="#969697"
+                Text="{Binding Record.CreatedAt, StringFormat=d}"
+                TextAlignment="Center" />
 
-            <TextBlock Text="Total Items: 153"
-                       Padding="0 6 0 0"
-                       Foreground="White"
-                       FontSize="23"
-                       TextAlignment="Center"
-                       HorizontalAlignment="Center"
-                       FontWeight="Regular" />
+            <TextBlock
+                Padding="0,6,0,0"
+                HorizontalAlignment="Center"
+                FontSize="23"
+                FontWeight="Regular"
+                Foreground="White"
+                Text="Total Items: 153"
+                TextAlignment="Center" />
 
-            <TextBlock Text="Subtotal: $1587.35"
-                       Padding="0 6 0 0"
-                       Foreground="White"
-                       FontSize="23"
-                       TextAlignment="Center"
-                       HorizontalAlignment="Center"
-                       FontWeight="Regular" />
+            <TextBlock
+                Padding="0,6,0,0"
+                HorizontalAlignment="Center"
+                FontSize="23"
+                FontWeight="Regular"
+                Foreground="White"
+                Text="Subtotal: $1587.35"
+                TextAlignment="Center" />
 
-            <Button Style="{StaticResource RoundedButton}"
-                    Content="Add Item"
-                    Margin="0 8 0 0"
-                    Height="40"
-                    Width="120"
-                    FontSize="16"
-                    FontWeight="Medium"
-                    Foreground="White"
-                    Background="#2EA33A" />
+            <Button
+                Width="120"
+                Height="40"
+                Margin="0,8,0,0"
+                Background="#2EA33A"
+                Content="Add Item"
+                FontSize="16"
+                FontWeight="Medium"
+                Foreground="White"
+                Style="{StaticResource RoundedButton}" />
 
         </StackPanel>
 
-        <StackPanel Orientation="Horizontal"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Top"
-                    Margin="0 7 7 0"
-                    Grid.Column="1"
-                    Grid.Row="0">
+        <StackPanel
+            Grid.Row="0"
+            Grid.Column="1"
+            Margin="0,7,7,0"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            Orientation="Horizontal">
 
-            <Button Style="{StaticResource RoundedButton}"
-                    Command="{Binding OpenRecordCommand}"
-                    Content="New / Open"
-                    Height="30"
-                    Width="120"
-                    Margin="0 0 7 0"
-                    FontSize="16"
-                    FontWeight="Regular"
-                    Foreground="White"
-                    Background="#2E67A3" />
+            <Button
+                Width="120"
+                Height="30"
+                Margin="0,0,7,0"
+                Background="#2E67A3"
+                Command="{Binding OpenRecordCommand}"
+                Content="New / Open"
+                FontSize="16"
+                FontWeight="Regular"
+                Foreground="White"
+                Style="{StaticResource RoundedButton}" />
 
-            <Button Style="{StaticResource RoundedButton}"
-                    Content="Export"
-                    Height="30"
-                    Width="120"
-                    Margin="0 0 7 0"
-                    FontWeight="Medium"
-                    Foreground="White"
-                    FontSize="16"
-                    Background="#A3742E" />
+            <Button
+                Width="120"
+                Height="30"
+                Margin="0,0,7,0"
+                Background="#A3742E"
+                Content="Export"
+                FontSize="16"
+                FontWeight="Medium"
+                Foreground="White"
+                Style="{StaticResource RoundedButton}" />
 
             <!--<Button Style="{StaticResource RoundedButton}"
                     Content="Delete"
                     Height="30"
                     Width="120"
-                    
+
                     FontWeight="Medium"
                     Foreground="White"
                     FontSize="16"
@@ -236,7 +250,7 @@
                       Height="25"
                       HorizontalAlignment="Center"
                       VerticalAlignment="Top">
-                    
+
 
                     <TextBlock Margin="5,2"
                                MinWidth="50"
@@ -263,7 +277,7 @@
                            HorizontalAlignment="Center"
                            FontSize="20"
                            Foreground="LightSteelBlue"
-                           
+
                            IsHitTestVisible="False" />
 
             </Grid>
