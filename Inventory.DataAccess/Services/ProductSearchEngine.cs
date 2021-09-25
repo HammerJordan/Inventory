@@ -37,29 +37,26 @@ namespace Inventory.DataAccess
                     FROM Product
                     where {column} like ('%' || @search || '%');";
 
-                string imageQuery = @"Select Image From Product_Image
-                                      where ProductID = @Id";
-
 
                 var results = dataAccess.LoadData<ProductModel,object>(query, new {search});
 
-                //output.AddRange(results.Where(x => output.All(y => y.ID != x.ID)));
+                output.AddRange(results.Where(x => output.All(y => y.ID != x.ID)));
 
-                foreach (var result in results.Where(result => output.All(x => x.ID != result.ID)))
-                {
-                    //TODO bring the images in later
-                    var image = dataAccess.LoadData<byte[], object>(imageQuery, new { Id = result.ID });
-                    if (image != null && image.Count > 0)
-                    {
-                        //TODO: add images back
-                        //  using var toImage = new MemoryStream(image.First());
-                        // MediaTypeNames.Image imageFromBytes = MediaTypeNames.Image.FromStream(toImage);
-                        // result.Image = imageFromBytes;
-                    }
+                //foreach (var result in results.Where(result => output.All(x => x.ID != result.ID)))
+                //{
+                //    //TODO bring the images in later
+                //    var image = dataAccess.LoadData<byte[], object>(imageQuery, new { Id = result.ID });
+                //    if (image != null && image.Count > 0)
+                //    {
+                //        //TODO: add images back
+                //        //  using var toImage = new MemoryStream(image.First());
+                //        // MediaTypeNames.Image imageFromBytes = MediaTypeNames.Image.FromStream(toImage);
+                //        // result.Image = imageFromBytes;
+                //    }
 
 
-                    output.Add(result);
-                }
+                //    output.Add(result);
+                //}
 
             }
 
