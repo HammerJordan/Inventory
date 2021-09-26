@@ -20,7 +20,7 @@ namespace Inventory.Desktop.ViewModel
             IncrementQuantityCommand = new RelayCommand(() => Quantity++);
             DecrementQuantityCommand = new RelayCommand(() =>
             {
-                if (Quantity > 0)
+                if (Quantity > 1)
                     Quantity--;
             });
             AddToRecordCommand = new RelayCommand(AddProductToRecord);

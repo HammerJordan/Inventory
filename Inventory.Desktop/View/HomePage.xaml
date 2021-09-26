@@ -116,7 +116,7 @@
                 FontSize="23"
                 FontWeight="Regular"
                 Foreground="White"
-                Text="{Binding ProductViewModels.Count, StringFormat=Total Items: {0}}"
+                Text="{Binding TotalItems, StringFormat=Total Items: {0}}"
                 TextAlignment="Center"
                 Visibility="{Binding Record, Converter={StaticResource NullToVisibilityConverter}}" />
 

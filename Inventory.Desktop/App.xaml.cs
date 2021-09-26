@@ -54,6 +54,7 @@ namespace Inventory.Desktop
                 .AddTransient<SelectRecordWindowViewModel>()
                 .AddTransient<ViewResolveService>()
                 .AddTransient<IRecordQuery, RecordQuery>()
+                .AddTransient<IRecordItemsQuery, RecordItemsQuery>()
                 .AddTransient<WebPageLoader>()
                 .AddTransient<DatabaseUpdate>()
                 .AddTransient<ProductScraper>()

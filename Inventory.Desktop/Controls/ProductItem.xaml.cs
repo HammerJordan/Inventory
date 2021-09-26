@@ -24,9 +24,34 @@ namespace Inventory.Desktop.Controls
     /// </summary>
     public partial class ProductItem : UserControl
     {
+
+        //public static readonly DependencyProperty SetNameText =
+        //    DependencyProperty.Register("SideBarName", typeof(string), typeof(SideBarItem), new
+        //        PropertyMetadata("", OnSideBarNameChanged));
+
+        //private static void OnSideBarNameChanged(DependencyObject d,
+        //    DependencyPropertyChangedEventArgs e)
+        //{
+        //    var UserControl1Control = d as SideBarItem;
+        //    UserControl1Control?.OnSetTextChanged(e);
+        //}
+
+        //public string SideBarName
+        //{
+        //    get => (string)GetValue(SetNameText);
+        //    set => SetValue(SetNameText, value);
+        //}
+
+        //private void OnSetTextChanged(DependencyPropertyChangedEventArgs e)
+        //{
+        //    Name.Text = e.NewValue.ToString();
+        //}
+
         public ProductItem()
         {
             InitializeComponent();
+
+           
         }
 
         private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)

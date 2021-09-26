@@ -20,6 +20,7 @@ namespace Inventory.Desktop.ViewModel
         private bool editRecordName;
 
         private readonly IRecordQuery recordQuery;
+        private readonly IRecordItemsQuery recordItemsQuery;
         private RecordBindableModel record;
         public ICommand OpenRecordCommand { get; }
         public ICommand EditRecordCommand { get; }
@@ -55,10 +56,12 @@ namespace Inventory.Desktop.ViewModel
         public bool RecordNameEmpty => EditRecordName && string.IsNullOrEmpty(RecordNameEdit);
 
         public decimal Subtotal => ProductViewModels.Sum(x => x.Quantity * x.ProductModel.Cost);
+        public int TotalItems => ProductViewModels.Sum(x => x.Quantity);
 
-        public HomeViewModel(IRecordQuery recordQuery)
+        public HomeViewModel(IRecordQuery recordQuery, IRecordItemsQuery recordItemsQuery)
         {
             this.recordQuery = recordQuery;
+            this.recordItemsQuery = recordItemsQuery;
             ProductViewModels = new ObservableCollection<ProductViewModel>();
 
             var hub = Hub.Default;
@@ -71,8 +74,12 @@ namespace Inventory.Desktop.ViewModel
             Hub.Default.Subscribe<RecordModelSelect>(this, x =>
             {
                 Record = x.Record;
-                //TODO load the record items
                 ProductViewModels.Clear();
+
+                foreach (var product in recordItemsQuery.LoadAll(Record))
+                    ModifyProducts(new ProductModelAddRemove(product));
+
+
                 OnPropertyChanged(nameof(Subtotal));
             });
         }
@@ -100,13 +107,29 @@ namespace Inventory.Desktop.ViewModel
 
         public void ModifyProducts(ProductModelAddRemove model)
         {
+            if (Record is null)
+                return;
+
             var productModel = model.Model;
             if (ProductViewModels.Any(x => x.ProductModel.ID == productModel.ID))
                 ProductViewModels.First(x => x.ProductModel.ID == productModel.ID).Quantity++;
             else
-                ProductViewModels.Add(new ProductViewModel { ProductModel = model.Model });
+            {
+                var productViewModel = new ProductViewModel { ProductModel = model.Model };
+                productViewModel.PropertyChanged += ProductViewModelPropertyChanged;
+                productViewModel.ProductModel.Quantity = productViewModel.Quantity;
+                recordItemsQuery.UpdateProduct(Record, productViewModel.ProductModel);
+                ProductViewModels.Add(productViewModel);
+            }
 
-            OnPropertyChanged(nameof(Subtotal));
+
+            OnPropertyChanged(null);
+        }
+
+        private void ProductViewModelPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if(e.PropertyName is "Quantity")
+                OnPropertyChanged(null);
         }
     }
 }
