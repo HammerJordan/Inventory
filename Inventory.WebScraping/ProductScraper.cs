@@ -183,11 +183,11 @@ namespace WebScraping
             return inner[end..];
         }
 
-        private double GetCost(IElement productElement)
+        private decimal GetCost(IElement productElement)
         {
             var inner = productElement.QuerySelectorAll("li")[0].InnerHtml;
             int end = inner.IndexOf(';') + 1;
-            return double.Parse(inner[end..]);
+            return decimal.Parse(inner[end..]);
         }
         
         private string GetURL(IElement productElement)

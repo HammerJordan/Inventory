@@ -12,7 +12,7 @@
     mc:Ignorable="d">
 
     <Border BorderBrush="Black" BorderThickness="1.25">
-        <Grid Background="{StaticResource Dark-Brush}">
+        <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
@@ -71,6 +71,7 @@
             <TextBlock
                 Grid.Column="4"
                 Margin="5,0,0,0"
+                HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 FontSize="16"
                 Foreground="White"
@@ -79,29 +80,77 @@
             <TextBlock
                 Grid.Column="5"
                 Margin="5,0,0,0"
+                HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 FontSize="12"
                 Foreground="White"
                 Text="{Binding ProductModel.Unit}" />
 
-            <StackPanel
+            <Grid
                 Grid.Column="6"
-                Margin="5,0,0,0"
-                VerticalAlignment="Center"
-                Orientation="Horizontal">
-                <Button Content="+" />
+                Height="35"
+                HorizontalAlignment="Stretch">
+                <Grid.Resources>
+                    <Style x:Key="addRemoveButton" TargetType="{x:Type Button}">
+
+                        <Setter Property="BorderThickness" Value="0" />
+                        <Setter Property="Height" Value="30" />
+                        <Setter Property="MaxWidth" Value="30" />
+
+                        <Setter Property="Effect">
+                            <Setter.Value>
+                                <DropShadowEffect Opacity=".15" />
+                            </Setter.Value>
+                        </Setter>
+
+                        <Style.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Visibility" Value="Hidden" />
+                            </Trigger>
+
+                        </Style.Triggers>
+
+                        <Style.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="8" />
+
+                            </Style>
+                        </Style.Resources>
+
+                    </Style>
+                </Grid.Resources>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Button
+                    Grid.Column="0"
+                    Background="Green"
+                    Command="{Binding IncrementQuantityCommand}"
+                    Content="+"
+                    Style="{StaticResource addRemoveButton}" />
                 <TextBox
-                    Width="45"
-                    HorizontalAlignment="Center"
+                    Grid.Column="1"
+                    Margin="5,0,5,0"
+                    HorizontalAlignment="Stretch"
                     VerticalAlignment="Center"
                     PreviewTextInput="NumberValidationTextBox"
-                    Text="{Binding ProductModel.Quantity}" />
-                <Button Content="-" />
-            </StackPanel>
+                    Text="{Binding Quantity}" />
+                <Button
+                    Grid.Column="2"
+                    Background="Red"
+                    Command="{Binding DecrementQuantityCommand}"
+                    Content="-"
+                    Style="{StaticResource addRemoveButton}" />
+            </Grid>
 
             <TextBlock
                 Grid.Column="7"
                 Margin="5,0,0,0"
+                HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 FontSize="12"
                 Foreground="White"
@@ -113,7 +162,7 @@
                 Margin="5,0,0,0"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Click="AddButtonClick"
+                Command="{Binding AddToRecordCommand}"
                 Content="Add"
                 Style="{StaticResource RoundedButton}" />
         </Grid>

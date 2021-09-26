@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using Inventory.Core;
@@ -42,7 +43,7 @@ namespace Inventory.Desktop.ViewModel
                 OnPropertyChanged(nameof(RecordNameEmpty));
             }
         }
-        public string RecordNameEdit 
+        public string RecordNameEdit
         {
             get => recordNameEdit;
             set
@@ -51,8 +52,9 @@ namespace Inventory.Desktop.ViewModel
                 OnPropertyChanged(nameof(RecordNameEmpty));
             }
         }
-
         public bool RecordNameEmpty => EditRecordName && string.IsNullOrEmpty(RecordNameEdit);
+
+        public decimal Subtotal => ProductViewModels.Sum(x => x.Quantity * x.ProductModel.Cost);
 
         public HomeViewModel(IRecordQuery recordQuery)
         {
@@ -66,7 +68,13 @@ namespace Inventory.Desktop.ViewModel
             EditRecordCommand = new RelayCommand(() => EditRecordName = true);
             RenameRecordCommand = new RelayCommand(RenameRecord);
 
-            Hub.Default.Subscribe<RecordModelSelect>(this, x => { Record = x.Record; });
+            Hub.Default.Subscribe<RecordModelSelect>(this, x =>
+            {
+                Record = x.Record;
+                //TODO load the record items
+                ProductViewModels.Clear();
+                OnPropertyChanged(nameof(Subtotal));
+            });
         }
 
         private void RenameRecord()
@@ -92,7 +100,13 @@ namespace Inventory.Desktop.ViewModel
 
         public void ModifyProducts(ProductModelAddRemove model)
         {
-            ProductViewModels.Add(new ProductViewModel { ProductModel = model.Model });
+            var productModel = model.Model;
+            if (ProductViewModels.Any(x => x.ProductModel.ID == productModel.ID))
+                ProductViewModels.First(x => x.ProductModel.ID == productModel.ID).Quantity++;
+            else
+                ProductViewModels.Add(new ProductViewModel { ProductModel = model.Model });
+
+            OnPropertyChanged(nameof(Subtotal));
         }
     }
 }

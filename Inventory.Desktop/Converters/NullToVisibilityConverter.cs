@@ -5,19 +5,11 @@ using System.Windows.Data;
 
 namespace Inventory.Desktop.Converters
 {
-    public class EmptyStringToVisibilityConverter : IValueConverter
+    public class NullToVisibilityConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is not string v)
-                return Visibility.Visible;
-
-
-            if (bool.TryParse(parameter as string, out bool b))
-                return string.IsNullOrEmpty(v) ^ b ? Visibility.Visible : Visibility.Collapsed;
-
-            return string.IsNullOrEmpty(v) ? Visibility.Visible : Visibility.Collapsed;
-
+            return value is null ? Visibility.Collapsed : Visibility.Visible;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

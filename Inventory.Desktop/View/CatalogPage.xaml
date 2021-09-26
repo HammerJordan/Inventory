@@ -156,15 +156,12 @@
             Background="Transparent"
             ItemsSource="{Binding ProductViewModels}"
             ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <!--<Viewbox Stretch="Uniform" StretchDirection="Both">-->
-                    <!--<Viewbox>
-                        <Grid Background="Gray">-->
-                    <!--<controls:ProductItem HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" />-->
-                    <controls:ProductItem />
-                    <!--</Grid>
-                    </Viewbox>-->
+
+                    <controls:ProductItem Background="{StaticResource Dark-Brush}" />
+
 
                 </DataTemplate>
 

@@ -38,7 +38,7 @@ namespace WebScraping.Test
                 .Should().ContainEquivalentOf("Leviton® Color Change Kits for IllumaTech Dimmer - black");
             model.UPC.Should().BeEquivalentTo("07847701044");
             model.Unit.Should().BeEquivalentTo("each");
-            model.Cost.Should().Be(5.52);
+            model.Cost.Should().Be(5.52m);
 
             model.URL.Should()
                 .BeEquivalentTo(
