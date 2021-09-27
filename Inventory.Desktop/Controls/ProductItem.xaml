@@ -30,7 +30,7 @@
                 Margin="0,0,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
-                Source="{Binding ProductModel.ImageHref}"
+                Source="{Binding ViewModel.ProductModel.ImageHref}"
                 StretchDirection="Both" />
 
             <TextBlock
@@ -38,13 +38,13 @@
                 Margin="5,0,0,0"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center">
-                <Hyperlink NavigateUri="{Binding ProductModel.URL}" RequestNavigate="Hyperlink_RequestNavigate">
+                <Hyperlink NavigateUri="{Binding ViewModel.ProductModel.URL}" RequestNavigate="Hyperlink_RequestNavigate">
                     <TextBlock
                         HorizontalAlignment="Center"
-                        FontSize="16"
+                        FontSize="14"
                         FontWeight="Bold"
                         Foreground="White"
-                        Text="{Binding ProductModel.Name}"
+                        Text="{Binding ViewModel.ProductModel.Name}"
                         TextAlignment="Center" />
                 </Hyperlink>
             </TextBlock>
@@ -56,7 +56,7 @@
                 VerticalAlignment="Center"
                 FontSize="12"
                 Foreground="White"
-                Text="{Binding ProductModel.UPC, StringFormat={}{0}}" />
+                Text="{Binding ViewModel.ProductModel.UPC, StringFormat={}{0}}" />
 
             <TextBlock
                 Grid.Column="3"
@@ -64,7 +64,7 @@
                 VerticalAlignment="Stretch"
                 FontSize="12"
                 Foreground="White"
-                Text="{Binding ProductModel.Description}"
+                Text="{Binding ViewModel.ProductModel.Description}"
                 TextAlignment="Left"
                 TextWrapping="Wrap" />
 
@@ -75,7 +75,7 @@
                 VerticalAlignment="Center"
                 FontSize="16"
                 Foreground="White"
-                Text="{Binding ProductModel.Cost, StringFormat={}{0:C}}" />
+                Text="{Binding ViewModel.ProductModel.Cost, StringFormat={}{0:C}}" />
 
             <TextBlock
                 Grid.Column="5"
@@ -84,7 +84,7 @@
                 VerticalAlignment="Center"
                 FontSize="12"
                 Foreground="White"
-                Text="{Binding ProductModel.Unit}" />
+                Text="{Binding ViewModel.ProductModel.Unit}" />
 
             <Grid
                 Grid.Column="6"
@@ -129,7 +129,7 @@
                 <Button
                     Grid.Column="0"
                     Background="Green"
-                    Command="{Binding IncrementQuantityCommand}"
+                    Command="{Binding ViewModel.IncrementQuantityCommand}"
                     Content="+"
                     Style="{StaticResource addRemoveButton}" />
                 <TextBox
@@ -138,11 +138,11 @@
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Center"
                     PreviewTextInput="NumberValidationTextBox"
-                    Text="{Binding Quantity}" />
+                    Text="{Binding ViewModel.Quantity}" />
                 <Button
                     Grid.Column="2"
                     Background="Red"
-                    Command="{Binding DecrementQuantityCommand}"
+                    Command="{Binding ViewModel.DecrementQuantityCommand}"
                     Content="-"
                     Style="{StaticResource addRemoveButton}" />
             </Grid>
@@ -156,15 +156,22 @@
                 Foreground="White"
                 Text="$158.32" />
 
+
+
             <Button
                 Grid.Column="8"
-                Width="50"
+                Width="{Binding ActionWidth}"
+                Height="30"
                 Margin="5,0,0,0"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Command="{Binding AddToRecordCommand}"
-                Content="Add"
+                Background="{Binding ActionBackground}"
+                Command="{Binding ActionCommand}"
+                CommandParameter="{Binding ActionCommandPram}"
+                Content="{Binding ActionContent}"
+                Foreground="{Binding ActionForeground}"
                 Style="{StaticResource RoundedButton}" />
+
         </Grid>
     </Border>
 </UserControl>

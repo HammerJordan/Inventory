@@ -25,6 +25,7 @@ namespace Inventory.Desktop.ViewModel
         public ICommand OpenRecordCommand { get; }
         public ICommand EditRecordCommand { get; }
         public ICommand RenameRecordCommand { get; }
+        public ICommand DeleteRecordCommand { get; }
         public ObservableCollection<ProductViewModel> ProductViewModels { get; set; }
         public RecordBindableModel Record
         {
@@ -70,6 +71,12 @@ namespace Inventory.Desktop.ViewModel
             OpenRecordCommand = new RelayCommand(_ => true, _ => OpenRecord());
             EditRecordCommand = new RelayCommand(() => EditRecordName = true);
             RenameRecordCommand = new RelayCommand(RenameRecord);
+            DeleteRecordCommand = new RelayCommand((x) =>
+            {
+                if (x is not ProductViewModel vm)
+                    return;
+                DeleteRecord(vm);
+            });
 
             Hub.Default.Subscribe<RecordModelSelect>(this, x =>
             {
@@ -79,12 +86,21 @@ namespace Inventory.Desktop.ViewModel
                 foreach (var product in recordItemsQuery.LoadAll(Record))
                 {
                     var productViewModel = new ProductViewModel { ProductModel = product, Quantity = product.Quantity};
+                    productViewModel.PropertyChanged += ProductViewModelPropertyChanged;
                     ProductViewModels.Add(productViewModel);
                 }
 
 
                 OnPropertyChanged(null);
             });
+        }
+
+        private void DeleteRecord(ProductViewModel vm)
+        {
+            ProductViewModels.Remove(vm);
+            OnPropertyChanged(null);
+            recordItemsQuery.Delete(Record,vm.ProductModel);
+
         }
 
         private void RenameRecord()
@@ -135,8 +151,17 @@ namespace Inventory.Desktop.ViewModel
 
         private void ProductViewModelPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if (e.PropertyName is "Quantity")
-                OnPropertyChanged(null);
+            if (e.PropertyName is not "Quantity")
+                return;
+
+
+            OnPropertyChanged(null);
+            if (sender is ProductViewModel vm)
+            {
+                vm.ProductModel.Quantity = vm.Quantity;
+                recordItemsQuery.UpdateProduct(Record,vm.ProductModel);
+            }
+
         }
     }
 }

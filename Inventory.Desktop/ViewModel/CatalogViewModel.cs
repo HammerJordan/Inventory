@@ -1,13 +1,18 @@
 ﻿using System.Collections.ObjectModel;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Inventory.DataAccess;
+using Inventory.Desktop.Commands;
+using Inventory.Desktop.Events;
+using PubSub;
 
 namespace Inventory.Desktop.ViewModel
 {
     public class CatalogViewModel : ViewModelBase
     {
         public ObservableCollection<ProductViewModel> ProductViewModels { get; set; }
+        public ICommand AddToRecordCommand { get; }
 
         private string searchBox;
 
@@ -29,6 +34,14 @@ namespace Inventory.Desktop.ViewModel
         {
             ProductViewModels = new ObservableCollection<ProductViewModel>();
             this.searchEngine = searchEngine;
+
+            AddToRecordCommand = new RelayCommand((x) =>
+            {
+                if (x is not ProductViewModel vm)
+                    return;
+
+                Hub.Default.Publish(new ProductModelAddRemove(vm.ProductModel));
+            });
         }
 
         private async Task UpdateSearchResults(string newValue)

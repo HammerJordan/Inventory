@@ -45,6 +45,10 @@ namespace Inventory.DataAccess.Queries
 
         public void Delete(RecordModel record, ProductModel product)
         {
+            var sql = $"Delete from RecordItem " +
+                      $"where ProductID = @ID;";
+            var prams = new { ID = product.ID };
+            dataAccess.SaveData(sql, prams);
         }
     }
 }

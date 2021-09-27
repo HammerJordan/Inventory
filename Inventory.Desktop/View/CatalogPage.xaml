@@ -7,6 +7,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Inventory.Desktop.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="Root"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
@@ -160,7 +161,18 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
 
-                    <controls:ProductItem Background="{StaticResource Dark-Brush}" />
+                    <controls:ProductItem
+                        ActionBackground="#2EA33A"
+                        ActionCommand="{Binding ElementName=Root, Path=DataContext.AddToRecordCommand}"
+                        ActionCommandPram="{TemplateBinding Content}"
+                        ActionContent="Add +"
+                        ActionForeground="White"
+                        ActionWidth="65"
+                        Background="{StaticResource Dark-Brush}"
+                        DataContext="{RelativeSource Mode=Self}"
+                        ViewModel="{TemplateBinding Content}" />
+
+
 
 
                 </DataTemplate>
