@@ -77,10 +77,13 @@ namespace Inventory.Desktop.ViewModel
                 ProductViewModels.Clear();
 
                 foreach (var product in recordItemsQuery.LoadAll(Record))
-                    ModifyProducts(new ProductModelAddRemove(product));
+                {
+                    var productViewModel = new ProductViewModel { ProductModel = product, Quantity = product.Quantity};
+                    ProductViewModels.Add(productViewModel);
+                }
 
 
-                OnPropertyChanged(nameof(Subtotal));
+                OnPropertyChanged(null);
             });
         }
 
@@ -110,15 +113,19 @@ namespace Inventory.Desktop.ViewModel
             if (Record is null)
                 return;
 
-            var productModel = model.Model;
-            if (ProductViewModels.Any(x => x.ProductModel.ID == productModel.ID))
-                ProductViewModels.First(x => x.ProductModel.ID == productModel.ID).Quantity++;
+            if (ProductViewModels.Any(x => x.ProductModel.ID == model.Model.ID))
+            {
+                var productViewModel = ProductViewModels.First(x => x.ProductModel.ID == model.Model.ID);
+                productViewModel.Quantity++;
+                productViewModel.ProductModel.Quantity = productViewModel.Quantity;
+                recordItemsQuery.UpdateProduct(Record, productViewModel.ProductModel);
+            }
             else
             {
                 var productViewModel = new ProductViewModel { ProductModel = model.Model };
                 productViewModel.PropertyChanged += ProductViewModelPropertyChanged;
                 productViewModel.ProductModel.Quantity = productViewModel.Quantity;
-                recordItemsQuery.UpdateProduct(Record, productViewModel.ProductModel);
+                recordItemsQuery.InsertProduct(Record, productViewModel.ProductModel);
                 ProductViewModels.Add(productViewModel);
             }
 
@@ -128,7 +135,7 @@ namespace Inventory.Desktop.ViewModel
 
         private void ProductViewModelPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if(e.PropertyName is "Quantity")
+            if (e.PropertyName is "Quantity")
                 OnPropertyChanged(null);
         }
     }

@@ -24,12 +24,21 @@ namespace Inventory.DataAccess.Queries
             return result;
         }
 
-        public void UpdateProduct(RecordModel record, ProductModel product)
+        public void InsertProduct(RecordModel record, ProductModel product)
         {
             var sql = $"INSERT INTO RecordItem (RecordID, ProductID, Quantity)" +
                       $"VALUES (@RecordID, @ProductID, @Quantity)";
             var prams = new { RecordID = record.ID, ProductID = product.ID, Quantity = product.Quantity };
 
+            dataAccess.SaveData(sql, prams);
+        }
+
+        public void UpdateProduct(RecordModel record, ProductModel product)
+        {
+            var sql = $"UPDATE RecordItem " +
+                      $"set Quantity = @Quantity " +
+                      $"where ProductID = @ID;";
+            var prams = new { Quantity = product.Quantity, ID = product.ID };
             dataAccess.SaveData(sql, prams);
         }
 
