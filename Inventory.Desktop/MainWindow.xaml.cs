@@ -22,17 +22,14 @@ namespace Inventory.Desktop
 
             foreach (UIElement child in SideBarNav.Children)
             {
-                if (child is Controls.SideBarItem sideBarItem)
-                {
-                    sideBarItem.SideBarClickEvent += OnSideBarItemClickedEvent;
+                if (child is not Controls.SideBarItem sideBarItem)
+                    continue;
 
-                    if (sideBarItem.SideBarSelected)
-                        ActiveContent.Content = viewResolve.Resolve(sideBarItem.SideBarName);
+                sideBarItem.SideBarClickEvent += OnSideBarItemClickedEvent;
 
-                }
+                if (sideBarItem.SideBarSelected)
+                    ActiveContent.Content = viewResolve.Resolve(sideBarItem.SideBarName);
             }
-
-
         }
 
         private void OnSideBarItemClickedEvent(Controls.SideBarItem clickedItem)

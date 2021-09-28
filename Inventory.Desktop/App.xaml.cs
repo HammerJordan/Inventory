@@ -56,7 +56,6 @@ namespace Inventory.Desktop
                 .AddTransient<IRecordQuery, RecordQuery>()
                 .AddTransient<IRecordItemsQuery, RecordItemsQuery>()
                 .AddTransient<WebPageLoader>()
-                .AddTransient<DatabaseUpdate>()
                 .AddTransient<ProductScraper>()
                 .AddTransient<ProductUpdateRunner>()
                 .AddTransient<ISqlLiteDataAccess, SqlLiteDataAccess>()

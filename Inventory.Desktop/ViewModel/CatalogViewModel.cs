@@ -19,6 +19,7 @@ namespace Inventory.Desktop.ViewModel
         private readonly ProductSearchEngine searchEngine;
         private CancellationTokenSource cancellationToken;
 
+
         public string SearchBox
         {
             get => searchBox;

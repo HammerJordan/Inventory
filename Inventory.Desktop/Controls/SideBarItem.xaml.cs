@@ -83,10 +83,6 @@ namespace Inventory.Desktop.Controls
 
         public event Action<SideBarItem> SideBarClickEvent;
 
-
-
-
-
         public SideBarItem()
         {
             DataContext = this;

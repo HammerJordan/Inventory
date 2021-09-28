@@ -15,47 +15,18 @@ namespace Inventory.Desktop.ViewModel
 {
     public class HomeViewModel : ViewModelBase
     {
-        private string recordNameEdit = string.Empty;
-
-        private bool editRecordName;
 
         private readonly IRecordQuery recordQuery;
         private readonly IRecordItemsQuery recordItemsQuery;
-        private RecordViewModel record;
         public ICommand OpenRecordCommand { get; }
         public ICommand EditRecordCommand { get; }
         public ICommand RenameRecordCommand { get; }
         public ICommand DeleteRecordCommand { get; }
         public ObservableCollection<ProductViewModel> ProductViewModels { get; set; }
-        public RecordViewModel Record
-        {
-            get => record;
-            set
-            {
-                SetProperty(ref record, value);
-                OnPropertyChanged(null);
-            }
-        }
-        public bool EditRecordName
-        {
-            get => editRecordName;
-            set
-            {
-                SetProperty(ref editRecordName, value);
-                OnPropertyChanged(nameof(RecordNameEmpty));
-            }
-        }
-        public string RecordNameEdit
-        {
-            get => recordNameEdit;
-            set
-            {
-                SetProperty(ref recordNameEdit, value);
-                OnPropertyChanged(nameof(RecordNameEmpty));
-            }
-        }
+        public RecordViewModel Record { get; set; }
+        public bool EditRecordName { get; set; }
+        public string RecordNameEdit { get; set; }
         public bool RecordNameEmpty => EditRecordName && string.IsNullOrEmpty(RecordNameEdit);
-
         public decimal Subtotal => ProductViewModels.Sum(x => x.Quantity * x.ProductModel.Cost);
         public int TotalItems => ProductViewModels.Sum(x => x.Quantity);
 

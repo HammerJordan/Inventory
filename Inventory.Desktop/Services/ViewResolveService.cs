@@ -7,9 +7,7 @@ namespace Inventory.Desktop.Services
 {
     public class ViewResolveService
     {
-        private Dictionary<string, UserControl> cachedViews = new Dictionary<string, UserControl>();
-
-
+        private readonly Dictionary<string, UserControl> cachedViews = new();
 
         public UserControl Resolve(string name)
         {
