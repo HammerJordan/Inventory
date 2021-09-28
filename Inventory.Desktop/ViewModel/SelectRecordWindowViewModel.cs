@@ -15,9 +15,9 @@ namespace Inventory.Desktop.ViewModel
     {
         private readonly IRecordQuery recordQuery;
 
-        private RecordBindableModel selectedRecord;
-        public ObservableCollection<RecordBindableModel> RecordsCollection { get; set; }
-        public RecordBindableModel SelectedRecord
+        private RecordViewModel selectedRecord;
+        public ObservableCollection<RecordViewModel> RecordsCollection { get; set; }
+        public RecordViewModel SelectedRecord
         {
             get => selectedRecord;
             set
@@ -38,9 +38,9 @@ namespace Inventory.Desktop.ViewModel
             this.recordQuery = recordQuery;
             var loadedInvoices = recordQuery.LoadAll();
 
-            RecordsCollection = new ObservableCollection<RecordBindableModel>();
+            RecordsCollection = new ObservableCollection<RecordViewModel>();
             
-            foreach (RecordBindableModel record in loadedInvoices)
+            foreach (RecordViewModel record in loadedInvoices)
             {
                 RecordsCollection.Add(record);
                 record.PropertyChanged += RecordOnPropertyChanged;
@@ -55,7 +55,7 @@ namespace Inventory.Desktop.ViewModel
 
         private void RecordOnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (sender is not RecordBindableModel model)
+            if (sender is not RecordViewModel model)
                 return;
 
             recordQuery.Update(model);
@@ -64,10 +64,10 @@ namespace Inventory.Desktop.ViewModel
         private void AddNewRecord()
         {
             var record = recordQuery.Create();
-            RecordBindableModel recordBindableModel = record;
+            RecordViewModel recordViewModel = record;
 
-            RecordsCollection.Insert(0, recordBindableModel);
-            SelectedRecord = recordBindableModel;
+            RecordsCollection.Insert(0, recordViewModel);
+            SelectedRecord = recordViewModel;
         }
         private void DeleteRecord()
         {
