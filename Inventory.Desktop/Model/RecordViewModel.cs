@@ -5,7 +5,7 @@ using Inventory.Desktop.ViewModel;
 
 namespace Inventory.Desktop.Model
 {
-    public class RecordBindableModel : ViewModelBase
+    public class RecordViewModel : ViewModelBase
     {
         private int id;
         private string name;
@@ -36,7 +36,7 @@ namespace Inventory.Desktop.Model
 
         public string CreatedAtString => CreatedAt.ToString("yyyy/M/dd HH:mm", CultureInfo.InvariantCulture);
 
-        public static implicit operator RecordModel(RecordBindableModel model)
+        public static implicit operator RecordModel(RecordViewModel model)
         {
             return new RecordModel()
             {
@@ -46,9 +46,9 @@ namespace Inventory.Desktop.Model
             };
         }
 
-        public static implicit operator RecordBindableModel(RecordModel model)
+        public static implicit operator RecordViewModel(RecordModel model)
         {
-            return new RecordBindableModel()
+            return new RecordViewModel()
             {
                 ID = model.ID,
                 CreatedAt = model.CreatedAt,

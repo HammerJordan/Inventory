@@ -9,7 +9,12 @@ namespace Inventory.Desktop.ViewModel
     public class ProductViewModel : ViewModelBase
     {
         private ProductModel productModel;
-        private int quantity = 1;
+
+        public int Quantity
+        {
+            get => productModel.Quantity;
+            set => productModel.Quantity = value;
+        }
 
         public ICommand IncrementQuantityCommand { get; }
         public ICommand DecrementQuantityCommand { get; }
@@ -37,11 +42,11 @@ namespace Inventory.Desktop.ViewModel
             set => SetProperty(ref productModel, value);
         }
 
-        public int Quantity
-        {
-            get => quantity;
-            set => SetProperty(ref quantity, value);
-        }
+        //public int Quantity
+        //{
+        //    get => quantity;
+        //    set => SetProperty(ref quantity, value);
+        //}
 
     }
 }

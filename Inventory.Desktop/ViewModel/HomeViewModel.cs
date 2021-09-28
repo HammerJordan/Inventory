@@ -21,13 +21,13 @@ namespace Inventory.Desktop.ViewModel
 
         private readonly IRecordQuery recordQuery;
         private readonly IRecordItemsQuery recordItemsQuery;
-        private RecordBindableModel record;
+        private RecordViewModel record;
         public ICommand OpenRecordCommand { get; }
         public ICommand EditRecordCommand { get; }
         public ICommand RenameRecordCommand { get; }
         public ICommand DeleteRecordCommand { get; }
         public ObservableCollection<ProductViewModel> ProductViewModels { get; set; }
-        public RecordBindableModel Record
+        public RecordViewModel Record
         {
             get => record;
             set
