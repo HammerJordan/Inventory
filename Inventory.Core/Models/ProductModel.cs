@@ -15,15 +15,10 @@ namespace Inventory.Core
         public string Unit { get; set; }
         public string URL { get; set; }
         public string ImageHref { get; set; }
-
-
         public string Category { get; set; }
 
         public int Quantity { get; set; } = 1;
-
-
         public string Group { get; set; }
-        public string SubGroup { get; set; }
 
         public string NowToString => DateTime.UtcNow.ToShortDateString();
     }

@@ -1,12 +1,12 @@
-﻿using Inventory.Desktop.Model;
+﻿using Inventory.Core;
 
 namespace Inventory.Desktop.Events
 {
     public class RecordModelSelect
     {
-        public RecordViewModel Record { get; private set; }
+        public RecordModel Record { get; private set; }
 
-        public RecordModelSelect(RecordViewModel recordModel)
+        public RecordModelSelect(RecordModel recordModel)
         {
             Record = recordModel;
         }

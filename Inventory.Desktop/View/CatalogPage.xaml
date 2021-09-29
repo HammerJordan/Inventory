@@ -115,28 +115,28 @@
                     Text="Description" />
                 <TextBlock
                     Grid.Column="3"
-                    Margin="-60,0,0,0"
+                    Margin="0,0,0,0"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Style="{StaticResource TextBlockStyle}"
                     Text="Cost" />
                 <TextBlock
                     Grid.Column="4"
-                    Margin="-60,0,0,0"
+                    Margin="0,0,0,0"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Style="{StaticResource TextBlockStyle}"
                     Text="Unit" />
                 <TextBlock
                     Grid.Column="5"
-                    Margin="-60,0,0,0"
+                    Margin="0,0,0,0"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Style="{StaticResource TextBlockStyle}"
                     Text="Quantity" />
                 <TextBlock
                     Grid.Column="6"
-                    Margin="-60,0,0,0"
+                    Margin="0,0,0,0"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Style="{StaticResource TextBlockStyle}"

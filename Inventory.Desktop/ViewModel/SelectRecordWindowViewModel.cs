@@ -3,10 +3,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows.Input;
 using Inventory.Core;
-using Inventory.DataAccess;
 using Inventory.Desktop.Commands;
 using Inventory.Desktop.Events;
-using Inventory.Desktop.Model;
 using PubSub;
 
 namespace Inventory.Desktop.ViewModel
@@ -15,9 +13,9 @@ namespace Inventory.Desktop.ViewModel
     {
         private readonly IRecordQuery recordQuery;
 
-        private RecordViewModel selectedRecord;
-        public ObservableCollection<RecordViewModel> RecordsCollection { get; set; }
-        public RecordViewModel SelectedRecord
+        private RecordModel selectedRecord;
+        public ObservableCollection<RecordModel> RecordsCollection { get; set; }
+        public RecordModel SelectedRecord
         {
             get => selectedRecord;
             set
@@ -38,12 +36,12 @@ namespace Inventory.Desktop.ViewModel
             this.recordQuery = recordQuery;
             var loadedInvoices = recordQuery.LoadAll();
 
-            RecordsCollection = new ObservableCollection<RecordViewModel>();
+            RecordsCollection = new ObservableCollection<RecordModel>();
             
-            foreach (RecordViewModel record in loadedInvoices)
+            foreach (RecordModel record in loadedInvoices)
             {
                 RecordsCollection.Add(record);
-                record.PropertyChanged += RecordOnPropertyChanged;
+                //record.PropertyChanged += RecordOnPropertyChanged;
             }
 
             AddNewRecordCommand = new RelayCommand(AddNewRecord);
@@ -55,7 +53,7 @@ namespace Inventory.Desktop.ViewModel
 
         private void RecordOnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (sender is not RecordViewModel model)
+            if (sender is not RecordModel model)
                 return;
 
             recordQuery.Update(model);
@@ -64,7 +62,7 @@ namespace Inventory.Desktop.ViewModel
         private void AddNewRecord()
         {
             var record = recordQuery.Create();
-            RecordViewModel recordViewModel = record;
+            RecordModel recordViewModel = record;
 
             RecordsCollection.Insert(0, recordViewModel);
             SelectedRecord = recordViewModel;

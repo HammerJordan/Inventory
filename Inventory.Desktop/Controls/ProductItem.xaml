@@ -41,7 +41,7 @@
                 <Hyperlink NavigateUri="{Binding ViewModel.ProductModel.URL}" RequestNavigate="Hyperlink_RequestNavigate">
                     <TextBlock
                         HorizontalAlignment="Center"
-                        FontSize="14"
+                        FontSize="13"
                         FontWeight="Bold"
                         Foreground="White"
                         Text="{Binding ViewModel.ProductModel.Name}"

@@ -7,7 +7,6 @@ using Inventory.Core.IoC;
 using Inventory.DataAccess;
 using Inventory.Desktop.Commands;
 using Inventory.Desktop.Events;
-using Inventory.Desktop.Model;
 using Inventory.Desktop.PopupWindows;
 using PubSub;
 
@@ -23,7 +22,7 @@ namespace Inventory.Desktop.ViewModel
         public ICommand RenameRecordCommand { get; }
         public ICommand DeleteRecordCommand { get; }
         public ObservableCollection<ProductViewModel> ProductViewModels { get; set; }
-        public RecordViewModel Record { get; set; }
+        public RecordModel Record { get; set; }
         public bool EditRecordName { get; set; }
         public string RecordNameEdit { get; set; }
         public bool RecordNameEmpty => EditRecordName && string.IsNullOrEmpty(RecordNameEdit);
@@ -71,7 +70,6 @@ namespace Inventory.Desktop.ViewModel
             ProductViewModels.Remove(vm);
             OnPropertyChanged(null);
             recordItemsQuery.Delete(Record,vm.ProductModel);
-
         }
 
         private void RenameRecord()
@@ -86,6 +84,7 @@ namespace Inventory.Desktop.ViewModel
             EditRecordName = false;
 
             recordQuery.Update(Record);
+            OnPropertyChanged(null);
         }
 
         private void OpenRecord()
