@@ -4,7 +4,15 @@
         <OutputType>WinExe</OutputType>
         <TargetFramework>net5.0-windows</TargetFramework>
         <UseWPF>true</UseWPF>
+	    <UseWindowsForms>true</UseWindowsForms>
     </PropertyGroup>
+
+    <ItemGroup>
+      <Compile Remove="Model\**" />
+      <EmbeddedResource Remove="Model\**" />
+      <None Remove="Model\**" />
+      <Page Remove="Model\**" />
+    </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Inventory.Core\Inventory.Core.csproj" />
@@ -38,10 +46,6 @@
         <Content Include="settings.json">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Model\" />
     </ItemGroup>
 
 </Project>

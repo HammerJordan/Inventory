@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
@@ -8,7 +9,9 @@ using Inventory.DataAccess;
 using Inventory.Desktop.Commands;
 using Inventory.Desktop.Events;
 using Inventory.Desktop.PopupWindows;
+using Microsoft.Win32;
 using PubSub;
+
 
 namespace Inventory.Desktop.ViewModel
 {
@@ -17,10 +20,12 @@ namespace Inventory.Desktop.ViewModel
 
         private readonly IRecordQuery recordQuery;
         private readonly IRecordItemsQuery recordItemsQuery;
+        private readonly IExportRecord exportRecord;
         public ICommand OpenRecordCommand { get; }
         public ICommand EditRecordCommand { get; }
         public ICommand RenameRecordCommand { get; }
         public ICommand DeleteRecordCommand { get; }
+        public ICommand ExportCommand { get; }
         public ObservableCollection<ProductViewModel> ProductViewModels { get; set; }
         public RecordModel Record { get; set; }
         public bool EditRecordName { get; set; }
@@ -29,10 +34,11 @@ namespace Inventory.Desktop.ViewModel
         public decimal Subtotal => ProductViewModels.Sum(x => x.Quantity * x.ProductModel.Cost);
         public int TotalItems => ProductViewModels.Sum(x => x.Quantity);
 
-        public HomeViewModel(IRecordQuery recordQuery, IRecordItemsQuery recordItemsQuery)
+        public HomeViewModel(IRecordQuery recordQuery, IRecordItemsQuery recordItemsQuery,IExportRecord exportRecord)
         {
             this.recordQuery = recordQuery;
             this.recordItemsQuery = recordItemsQuery;
+            this.exportRecord = exportRecord;
             ProductViewModels = new ObservableCollection<ProductViewModel>();
 
             var hub = Hub.Default;
@@ -47,6 +53,8 @@ namespace Inventory.Desktop.ViewModel
                     return;
                 DeleteRecord(vm);
             });
+
+            ExportCommand = new RelayCommand(ExportRecord);
 
             Hub.Default.Subscribe<RecordModelSelect>(this, x =>
             {
@@ -63,6 +71,16 @@ namespace Inventory.Desktop.ViewModel
 
                 OnPropertyChanged(null);
             });
+        }
+
+        private void ExportRecord()
+        {
+            using var dialog = new System.Windows.Forms.FolderBrowserDialog();
+            System.Windows.Forms.DialogResult result = dialog.ShowDialog();
+            string path = dialog.SelectedPath;
+
+            exportRecord.ExportToCSV(path,Record,ProductViewModels.Select(x => x.ProductModel));
+
         }
 
         private void DeleteRecord(ProductViewModel vm)

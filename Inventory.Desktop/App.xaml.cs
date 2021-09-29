@@ -3,6 +3,7 @@ using System.IO;
 using System.Windows;
 using Inventory.Core;
 using Inventory.Core.IoC;
+using Inventory.Core.Services;
 using Inventory.DataAccess;
 using Inventory.DataAccess.Queries;
 using Inventory.Desktop.PopupWindows;
@@ -54,6 +55,7 @@ namespace Inventory.Desktop
                 .AddTransient<SelectRecordWindowViewModel>()
                 .AddTransient<ViewResolveService>()
                 .AddTransient<IRecordQuery, RecordQuery>()
+                .AddTransient<IExportRecord, ExportRecord>()
                 .AddTransient<IRecordItemsQuery, RecordItemsQuery>()
                 .AddTransient<WebPageLoader>()
                 .AddTransient<ProductScraper>()

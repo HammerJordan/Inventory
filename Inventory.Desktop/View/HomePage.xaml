@@ -170,6 +170,7 @@
                 Height="30"
                 Margin="0,0,7,0"
                 Background="#A3742E"
+                Command="{Binding ExportCommand}"
                 Content="Export"
                 FontSize="16"
                 FontWeight="Medium"
