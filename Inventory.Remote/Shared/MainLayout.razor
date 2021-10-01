@@ -1,0 +1,50 @@
+﻿@inject IHttpClientFactory ClientFactory
+
+@using Inventory.Core
+@using System.Text.Json
+@using System.Text.Json.Serialization;
+@using System.Net.Http.Json
+
+@inherits LayoutComponentBase
+
+<div style="display: flex">
+    <a href="/Swagger">Swagger</a>
+    <SearchBar OnSearchEnter="SearchResultUpdated" />
+</div>
+
+
+<div class="search-result-container">
+
+    @foreach (var model in Models)
+    {
+        <ItemDisplay Product="model" />
+    }
+
+</div>
+
+
+@code
+{
+    List<ProductModel> Models = new List<ProductModel>();
+
+
+    private async void SearchResultUpdated(string search)
+    {
+
+
+        var http = ClientFactory.CreateClient();
+        var response = await http.GetAsync($"https://localhost:44345/api/SearchProduct?search={search}").ConfigureAwait(false);
+        Models = await http.GetFromJsonAsync<List<ProductModel>>($"https://localhost:44345/api/SearchProduct?search={search}").ConfigureAwait(false);
+
+
+        //if (response.IsSuccessStatusCode)
+        //{
+        //    var body = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+        //    Models = JsonSerializer.Deserialize<List<ProductModel>>(body,new JsonSerializerOptions(){PropertyNameCaseInsensitive = true});
+        //}
+
+        await InvokeAsync(StateHasChanged);
+
+    }
+
+}

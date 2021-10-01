@@ -1,0 +1,44 @@
+﻿.product-item-container {
+    display: flex;
+    width: 100%;
+    height: 30%;
+    align-items: flex-start;
+}
+
+.product-display {
+    width: 100px;
+    align-self: stretch;
+}
+
+.product-name {
+    font-size: 12px;
+    padding: 5px;
+    align-self: center;
+}
+
+.product-upc {
+    font-size: 10px;
+    padding: 5px;
+    align-self: center;
+}
+
+.product-desc {
+    max-height: 80px;
+    font-size: 12px;
+    align-self: center;
+    width: 400px;
+    line-height: 16px;
+    display: block;
+    text-align: center;
+    overflow: hidden;
+}
+
+.product-cost {
+    padding: 5px;
+    align-self: center;
+}
+
+.add-button {
+    align-self: center;
+    padding: 5px;
+}

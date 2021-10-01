@@ -1,0 +1,17 @@
+﻿@using Inventory.Core
+@inherits LayoutComponentBase
+
+<div class="product-item-container">
+    <img class="product-display" src="@Product.ImageHref" alt="product image" />
+    <div class="product-name">@Product.Name</div>
+    <div class="product-upc">UPC: @Product.UPC</div>
+    <p class="product-desc">@Product.Description</p>
+    <div class="product-cost">$ @Product.Cost</div>
+    <button class="add-button">Add</button>
+</div>
+
+@code
+{
+    [Parameter] public ProductModel Product { get; set; }
+
+}
