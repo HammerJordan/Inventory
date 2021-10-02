@@ -1,0 +1,38 @@
+﻿@inherits LayoutComponentBase
+@inject IJSRuntime jsRuntime
+
+<div class="search-container">
+    <label class="search-bar-label">
+        <input id="search" class="search-bar" @onkeydown="@Enter" type="text" placeholder="Search.." @bind="searchField">
+        <button id="myBtn" class="search-btn" @onclick="SearchButtonClick">Search</button>
+    </label>
+</div>
+
+@code
+{
+
+    private string searchField;
+    public string SearchField => searchField;
+
+    [Parameter] public EventCallback<string> OnSearchEnter { get; set; }
+
+
+    private async void Enter(KeyboardEventArgs e)
+    {
+
+        if (e.Code == "Enter" || e.Code == "NumpadEnter")
+        {
+            await jsRuntime.InvokeAsync<string>("console.log", "Enter");
+            await OnSearchEnter.InvokeAsync(SearchField);
+
+        }
+
+
+    }
+
+    private async void SearchButtonClick()
+    {
+        await jsRuntime.InvokeAsync<string>("console.log", searchField);
+        await OnSearchEnter.InvokeAsync(SearchField);
+    }
+}
