@@ -1,16 +1,33 @@
 ﻿
+.search-container {
+    width: 100%;
+    display: flex;
+    padding-left: .5rem
+}
 
 .search-bar-label {
-    width: 35%;
+    width: 65%;
     display: flex;
 }
 
 .search-bar {
+    border-style: solid;
     width: 100%;
+    background: #12242D;
+    border-width: 2px;
+    border-color: #000;
+    padding: 0 5px;
+    color: #FFF;
 }
-.search-container {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+.search-bar::placeholder{
+    color: #666666;
+    
+    text-align: left ;
 }
+
+.search-btn {
+    width: 50px;
+    font-size: 12px;
+}
+

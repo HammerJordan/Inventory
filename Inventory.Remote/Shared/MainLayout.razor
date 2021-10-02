@@ -33,8 +33,8 @@
 
 
         var http = ClientFactory.CreateClient();
-        var response = await http.GetAsync($"https://localhost:44345/api/SearchProduct?search={search}").ConfigureAwait(false);
-        Models = await http.GetFromJsonAsync<List<ProductModel>>($"https://localhost:44345/api/SearchProduct?search={search}").ConfigureAwait(false);
+       // var response = await http.GetAsync($"https://localhost:44345/api/SearchProduct?search={search}").ConfigureAwait(false);
+        Models = await http.GetFromJsonAsync<List<ProductModel>>($"https://localhost:5006/api/SearchProduct?search={search}").ConfigureAwait(false);
 
 
         //if (response.IsSuccessStatusCode)

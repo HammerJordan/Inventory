@@ -2,6 +2,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    
 }
 
 .main {
@@ -67,6 +68,11 @@
         padding-left: 2rem !important;
         padding-right: 1.5rem !important;
     }
+}
+
+.search-result-container {
+    width: 95%;
+    margin: 30px auto 5px auto;
 }
 
 

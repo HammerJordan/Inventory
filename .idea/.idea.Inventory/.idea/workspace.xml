@@ -13,9 +13,11 @@
   <component name="ChangeListManager">
     <list default="true" id="7a6d2810-f582-42df-adfb-b5401f0dfa70" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Inventory/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Inventory/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/Inventory.Desktop.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/Inventory.Desktop.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Remote/Inventory.Remote.csproj.user" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Remote/Inventory.Remote.csproj.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Remote/Shared/MainLayout.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Remote/Shared/MainLayout.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Remote/Shared/MainLayout.razor.css" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Remote/Shared/MainLayout.razor.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Remote/Shared/SearchBar.razor.css" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Remote/Shared/SearchBar.razor.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Remote/wwwroot/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Remote/wwwroot/css/site.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,6 +84,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.web.browsers" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -168,6 +171,7 @@
       <workItem from="1632407711647" duration="216000" />
       <workItem from="1632573688270" duration="1193000" />
       <workItem from="1633005936792" duration="542000" />
+      <workItem from="1633091866318" duration="592000" />
     </task>
     <servers />
   </component>
