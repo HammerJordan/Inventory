@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Threading.Tasks;
 using Application.Common.Interfaces;
 using Application.Models.Record.Queries;
 using Infrastructure.Exceptions;
@@ -16,55 +17,62 @@ namespace Infrastructure.Database.Queries
         {
         }
 
-        public RecordModel Get(int id)
+        public async Task<RecordModel> GetAsync(int id)
+
         {
-            string sql = "SELECT * FROM Record WHERE ID == @id LIMIT 1;";
-            var result = _dbAccess.LoadData<RecordModel,int>(sql, id).FirstOrDefault();
+            const string sql = "SELECT * FROM Record WHERE ID == @id LIMIT 1;";
+            var awaiter = await _dbAccess.LoadDataAsync<RecordModel, int>(sql, id);
+
+            var result = awaiter.FirstOrDefault();
             
             if (result == null)
                 throw new NotFoundInDbException($"No row found with an ID:{id}");
 
             return result;
-
         }
 
-        public RecordModel Create(RecordModel model)
+        public async Task<RecordModel> CreateAsync(RecordModel model)
         {
             var sql = @"INSERT INTO Record (Name, CreatedDateTime) 
                             VALUES ('@Name',@CreatedDate)";
-            
+
             var prams = new
             {
                 CreatedDate = DateTime.Now.ToString(CultureInfo.InvariantCulture)
             };
-            _dbAccess.SaveData(sql, prams);
-            
+            await _dbAccess.SaveDataAsync(sql, prams);
+
             sql = @"SELECT *
                         FROM Record
                         WHERE ID = (SELECT MAX(ID)  FROM Record);";
-            
-            return _dbAccess.LoadData<RecordModel, dynamic>(sql, null).First();
+
+            var result = await _dbAccess.LoadDataAsync<RecordModel, dynamic>(sql, null);
+            return result.First();
         }
 
-        public void Update(RecordModel model)
+        Task IQuery<RecordModel>.DeleteAsync(RecordModel model)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task UpdateAsync(RecordModel model)
         {
             const string sql = @"UPDATE Record
                             Set Name = @Name
                             Where ID = @ID;";
-            _dbAccess.SaveData(sql, model);
+            await _dbAccess.SaveDataAsync(sql, model);
         }
 
-        public void Delete(RecordModel model)
+        public async Task DeleteAsync(RecordModel model)
         {
             const string sql = @"DELETE from Record where ID = @ID;";
-            _dbAccess.SaveData(sql, model);
+            await _dbAccess.SaveDataAsync(sql, model);
         }
 
-        public IEnumerable<RecordModel> LoadAll()
+        public async Task<IEnumerable<RecordModel>> LoadAllAsync()
         {
             const string sql = "SELECT * FROM Record";
-
-            return _dbAccess.LoadData<RecordModel, dynamic>(sql, null);
+            return await _dbAccess.LoadDataAsync<RecordModel, dynamic>(sql, null);
         }
     }
 }

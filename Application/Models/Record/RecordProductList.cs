@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using Inventory.Application.Common.Exceptions;
 using Inventory.Domain.Models;
 
 namespace Application.Models.Record
@@ -18,18 +20,18 @@ namespace Application.Models.Record
 
         public void Add(ProductModel productModel, int amount = 1)
         {
-            if (_products.Any(x => x.ID == productModel.ID))
-                _products.First(x => x.ID == productModel.ID).Quantity += amount;
+            if (_products.Any(x => x.ProductID == productModel.ID))
+                _products.First(x => x.ProductID == productModel.ID).Quantity += amount;
             else
                 _products.Add(new RecordListItem(productModel, Record) { Quantity = amount });
         }
 
         public void Subtract(ProductModel productModel, int amount = 1)
         {
-            if (_products.All(x => x.ID != productModel.ID))
-                return;
+            if (_products.All(x => x.ProductID != productModel.ID))
+                throw new NotFoundException(productModel.Name);
 
-            var productItem = _products.First(x => x.ID == productModel.ID);
+            var productItem = _products.First(x => x.ProductID == productModel.ID);
             productItem.Quantity -= amount;
             if (productItem.Quantity < 0)
                 productItem.Quantity = 0;
@@ -37,9 +39,9 @@ namespace Application.Models.Record
 
         public void Remove(ProductModel productModel)
         {
-            if (_products.All(x => x.ID != productModel.ID))
+            if (_products.All(x => x.ProductID != productModel.ID))
                 return;
-            var productItem = _products.First(x => x.ID == productModel.ID);
+            var productItem = _products.First(x => x.ProductID == productModel.ID);
             _products.Remove(productItem);
         }
     }

@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
 using System.Linq;
+using System.Threading.Tasks;
 using Application.Common.Interfaces;
 using Dapper;
 
 namespace Infrastructure.Database
 {
-    public class DbAccessAccess : IApplicationDbAccess, IDisposable
+    public class DbAccess : IApplicationDbAccess, IDisposable
     {
-        public DbAccessAccess(DbConnection connection)
+        public DbAccess(DbConnection connection)
         {
             Connection = new SQLiteConnection(connection.ConnectionString);
             Connection.Open();
@@ -18,16 +19,16 @@ namespace Infrastructure.Database
 
         public IDbConnection Connection { get; private set; }
 
-        public List<T> LoadData<T, TPrams>(string storedProcedure, TPrams parameters)
+        public async Task<List<T>> LoadDataAsync<T, TPrams>(string storedProcedure, TPrams parameters)
         {
-            var rows = Connection.Query<T>(storedProcedure, parameters).ToList();
+            var rows = await Connection.QueryAsync<T>(storedProcedure, parameters);
 
-            return rows;
+            return rows.ToList();
         }
 
-        public void SaveData<T>(string storedProcedure, T parameters)
+        public async Task SaveDataAsync<T>(string storedProcedure, T parameters)
         {
-            Connection.Execute(storedProcedure, parameters);
+            await Connection.ExecuteAsync(storedProcedure, parameters);
         }
 
         public void Dispose()

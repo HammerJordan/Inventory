@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Application.Common.Interfaces;
-using Application.Models.Record;
 using Application.Models.Record.Queries;
 using Dapper;
-using Infrastructure.Exceptions;
 using Inventory.Domain.Models;
 
 namespace Infrastructure.Database.Queries
@@ -16,12 +15,7 @@ namespace Infrastructure.Database.Queries
         {
         }
 
-        public RecordListItem Get(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public RecordListItem Create(RecordListItem model)
+        public async Task<RecordListItem> CreateAsync(RecordListItem model)
         {
             const string sql = @"INSERT INTO RecordItem (RecordID, ProductID, Quantity)
                             VALUES (@RecordID, @ProductID, @Quantity)";
@@ -32,36 +26,37 @@ namespace Infrastructure.Database.Queries
                 model.Quantity
             };
 
-            _dbAccess.SaveData(sql, prams);
+            await _dbAccess.SaveDataAsync(sql, prams);
             return model;
         }
 
-        public void Update(RecordListItem model)
+        public async Task UpdateAsync(RecordListItem model)
         {
             const string sql = @"UPDATE RecordItem 
                           SET Quantity = @Quantity 
                           WHERE ProductID = @ID;";
-            var prams = new { Quantity = model.Quantity, ID = model.ProductID };
-            _dbAccess.SaveData(sql, prams);
+            var prams = new { model.Quantity, ID = model.ProductID };
+            await _dbAccess.SaveDataAsync(sql, prams);
         }
 
-        public void Delete(RecordListItem model)
+        public async Task DeleteAsync(RecordListItem model)
         {
             const string sql = @"DELETE FROM RecordItem 
                             WHERE ProductID = @ID;";
             var prams = new { ID = model.ProductID };
-            _dbAccess.SaveData(sql, prams);
+            await _dbAccess.SaveDataAsync(sql, prams);
         }
 
-        public IEnumerable<RecordListItem> LoadAll(RecordModel recordModel)
+        public async Task<IEnumerable<RecordListItem>> LoadAllAsync(RecordModel recordModel)
         {
-            var sql = @"SELECT P.ID, Name, Description, UPC, Cost, Unit, URL, LastUpdated, ImageHref, Quantity 
+            const string sql = @"SELECT P.ID, Name, Description, 
+                                        UPC, Cost, Unit, URL, LastUpdated, ImageHref, Quantity 
                             FROM RecordItem 
                             JOIN Product P on P.ID = RecordItem.ProductID where @ID == RecordItem.RecordID;";
 
-            var results = _dbAccess
+            var results = await _dbAccess
                 .Connection
-                .Query<ProductModel, int, Tuple<ProductModel, int>>(sql, Tuple.Create, recordModel);
+                .QueryAsync<ProductModel, int, Tuple<ProductModel, int>>(sql, Tuple.Create, recordModel);
 
             return results.Select(x => new RecordListItem(x.Item1, recordModel) { Quantity = x.Item2 });
         }

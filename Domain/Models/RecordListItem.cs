@@ -13,10 +13,10 @@ namespace Inventory.Domain.Models
         public int ProductID => ProductModel.ID;
         public string Name => ProductModel.Name;
         public string Description => ProductModel.Description;
-        public string UPC => ProductModel.UPC;
+        public string Upc => ProductModel.UPC;
         public decimal Cost => ProductModel.Cost;
-        public UnitType Unit => ProductModel.Unit;
-        public string URL => ProductModel.URL;
+        public string Unit => ProductModel.Unit;
+        public string Url => ProductModel.URL;
         public string ImageHref => ProductModel.ImageHref;
 
         public RecordListItem(ProductModel productModel, RecordModel recordModel)

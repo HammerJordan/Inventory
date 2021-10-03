@@ -1,4 +1,4 @@
-﻿using Inventory.Domain;
+﻿using Inventory.Domain.Models;
 
 namespace Inventory.Desktop.Events
 {

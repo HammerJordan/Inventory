@@ -1,11 +1,17 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=c4ed6abb_002D7a09_002D44f8_002D92f3_002D95caa1392e30/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="1" IsActive="True" Name="ProductScraperTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/AssemblyExplorer/XmlDocument/@EntryValue">&lt;AssemblyExplorer&gt;&#xD;
+  &lt;Assembly Path="C:\Users\Hammer\.nuget\packages\mediatr\9.0.0\lib\netstandard2.1\MediatR.dll" /&gt;&#xD;
+&lt;/AssemblyExplorer&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=2a52e234_002D49f2_002D4dc9_002Db988_002Dc61bb79eb304/@EntryIndexedValue">&lt;SessionState ContinuousTestingIsOn="True" ContinuousTestingMode="1" IsActive="True" Name="RecordProductListTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;xUnit::191896D6-C692-44AA-81E3-579CCB56C6FB::net5.0::WebScraping.Test.ProductScraperTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::A94B6D15-4219-43A5-87B6-AFB8FCBADF14::net5.0::Application.Tests.Models.RecordProductListTests&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
+	
 	<s:Boolean x:Key="/Default/UnloadedProject/UnloadedProjects/=16773f8e_002D9083_002D492a_002Daac1_002D300feeef3ba2_0023Inventory_002EWebScraping/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/UnloadedProject/UnloadedProjects/=8e599ab1_002D3a77_002D4c1c_002Daf96_002D80e217faf28d_0023Inventory_002EDataAccess/@EntryIndexedValue">True</s:Boolean>
 	
 	<s:Boolean x:Key="/Default/UnloadedProject/UnloadedProjects/=ded4093f_002D61b5_002D4754_002D9cbb_002D4b4472178972_0023Inventory_002ERemote/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/UnloadedProject/UnloadedProjects/=fb428f42_002D01d6_002D42d8_002D977d_002D0274d43bc839_0023Inventory_002EDesktop/@EntryIndexedValue">True</s:Boolean>
+	
 	<s:Boolean x:Key="/Default/UserDictionary/Words/=Bindable/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>

@@ -12,16 +12,19 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Remove="Model\**"/>
-        <EmbeddedResource Remove="Model\**"/>
-        <None Remove="Model\**"/>
-        <Page Remove="Model\**"/>
+        <Compile Remove="Model\**" />
+        <EmbeddedResource Remove="Model\**" />
+        <None Remove="Model\**" />
+        <Page Remove="Model\**" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Domain\Domain.csproj"/>
-        <ProjectReference Include="..\Inventory.DataAccess\Inventory.DataAccess.csproj"/>
-        <ProjectReference Include="..\Inventory.WebScraping\Inventory.WebScraping.csproj"/>
+        <ProjectReference Include="..\Application\Application.csproj" />
+        <ProjectReference Include="..\Domain.Tests\Domain.Tests.csproj" />
+        <ProjectReference Include="..\Domain\Domain.csproj" />
+        <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+        <ProjectReference Include="..\Inventory.DataAccess\Inventory.DataAccess.csproj" />
+        <ProjectReference Include="..\Inventory.WebScraping\Inventory.WebScraping.csproj" />
     </ItemGroup>
 
     <ItemGroup>
@@ -29,24 +32,25 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.0-rc.1.21451.13"/>
-        <PackageReference Include="PropertyChanged.Fody" Version="3.4.0"/>
-        <PackageReference Include="PubSub" Version="4.0.1"/>
+        <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.0-rc.1.21451.13" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0-rc.1.21451.13" />
+        <PackageReference Include="PropertyChanged.Fody" Version="3.4.0" />
+        <PackageReference Include="PubSub" Version="4.0.1" />
     </ItemGroup>
 
     <ItemGroup>
-        <None Remove="Font\Font Awesome 5 Brands-Regular-400.otf"/>
-        <None Remove="Font\Font Awesome 5 Free-Regular-400.otf"/>
-        <None Remove="Font\Font Awesome 5 Free-Solid-900.otf"/>
-        <None Remove="Resources\Logo.png"/>
-        <None Remove="settings.json"/>
+        <None Remove="Font\Font Awesome 5 Brands-Regular-400.otf" />
+        <None Remove="Font\Font Awesome 5 Free-Regular-400.otf" />
+        <None Remove="Font\Font Awesome 5 Free-Solid-900.otf" />
+        <None Remove="Resources\Logo.png" />
+        <None Remove="settings.json" />
     </ItemGroup>
 
     <ItemGroup>
-        <Resource Include="Font\Font Awesome 5 Brands-Regular-400.otf"/>
-        <Resource Include="Font\Font Awesome 5 Free-Regular-400.otf"/>
-        <Resource Include="Font\Font Awesome 5 Free-Solid-900.otf"/>
-        <Resource Include="Resources\Logo.png"/>
+        <Resource Include="Font\Font Awesome 5 Brands-Regular-400.otf" />
+        <Resource Include="Font\Font Awesome 5 Free-Regular-400.otf" />
+        <Resource Include="Font\Font Awesome 5 Free-Solid-900.otf" />
+        <Resource Include="Resources\Logo.png" />
         <Content Include="settings.json">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
