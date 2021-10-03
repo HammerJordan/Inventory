@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Dapper;
-using Inventory.Core;
+using Inventory.Domain;
 
 namespace Inventory.DataAccess
 {

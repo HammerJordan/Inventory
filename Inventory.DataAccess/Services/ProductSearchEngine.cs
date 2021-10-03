@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Mime;
 using System.Text.RegularExpressions;
-using Inventory.Core;
+using Inventory.Domain;
 
 namespace Inventory.DataAccess
 {

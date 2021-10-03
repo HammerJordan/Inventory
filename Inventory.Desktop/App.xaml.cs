@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
 using System.Windows;
-using Inventory.Core;
-using Inventory.Core.IoC;
-using Inventory.Core.Services;
+using Inventory.Domain;
+using Inventory.Domain.IoC;
+using Inventory.Domain.Services;
 using Inventory.DataAccess;
 using Inventory.DataAccess.Queries;
 using Inventory.Desktop.PopupWindows;

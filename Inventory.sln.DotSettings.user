@@ -4,4 +4,8 @@
     &lt;TestId&gt;xUnit::191896D6-C692-44AA-81E3-579CCB56C6FB::net5.0::WebScraping.Test.ProductScraperTests&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
+	<s:Boolean x:Key="/Default/UnloadedProject/UnloadedProjects/=16773f8e_002D9083_002D492a_002Daac1_002D300feeef3ba2_0023Inventory_002EWebScraping/@EntryIndexedValue">True</s:Boolean>
+	
+	<s:Boolean x:Key="/Default/UnloadedProject/UnloadedProjects/=ded4093f_002D61b5_002D4754_002D9cbb_002D4b4472178972_0023Inventory_002ERemote/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/UnloadedProject/UnloadedProjects/=fb428f42_002D01d6_002D42d8_002D977d_002D0274d43bc839_0023Inventory_002EDesktop/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/UserDictionary/Words/=Bindable/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>

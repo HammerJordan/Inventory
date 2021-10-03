@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using Inventory.Core;
+using Inventory.Domain;
 
 namespace Inventory.DataAccess.Queries
 {

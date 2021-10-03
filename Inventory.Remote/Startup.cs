@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Inventory.Core;
+using Inventory.Domain;
 using Inventory.DataAccess;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Models;

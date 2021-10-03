@@ -1,9 +1,9 @@
 ﻿// ReSharper disable InconsistentNaming
 
-using System;
-using System.Drawing;
+using System.Collections.Generic;
+using Inventory.Domain.Enums;
 
-namespace Inventory.Core
+namespace Inventory.Domain.Models
 {
     public class ProductModel
     {
@@ -12,14 +12,9 @@ namespace Inventory.Core
         public string Description { get; set; }
         public string UPC { get; set; }
         public decimal Cost { get; set; }
-        public string Unit { get; set; }
+        public UnitType Unit { get; set; }
         public string URL { get; set; }
         public string ImageHref { get; set; }
-        public string Category { get; set; }
-
-        public int Quantity { get; set; } = 1;
-        public string Group { get; set; }
-
-        public string NowToString => DateTime.UtcNow.ToShortDateString();
+        public List<string> CategoryTree { get; set; } = new();
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Controls;
-using Inventory.Core.IoC;
+using Inventory.Domain.IoC;
 using Inventory.Desktop.View;
 
 namespace Inventory.Desktop.Services

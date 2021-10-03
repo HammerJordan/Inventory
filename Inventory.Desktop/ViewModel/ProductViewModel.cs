@@ -1,5 +1,5 @@
 ﻿using System.Windows.Input;
-using Inventory.Core;
+using Inventory.Domain;
 using Inventory.Desktop.Commands;
 using Inventory.Desktop.Events;
 using PubSub;

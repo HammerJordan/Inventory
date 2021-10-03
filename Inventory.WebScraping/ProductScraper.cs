@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AngleSharp.Dom;
 using AngleSharp.Html.Dom;
-using Inventory.Core;
+using Inventory.Domain;
 
 namespace WebScraping
 {

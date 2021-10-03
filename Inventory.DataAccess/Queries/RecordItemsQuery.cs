@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Inventory.Core;
+using Inventory.Domain;
 
 namespace Inventory.DataAccess.Queries
 {
