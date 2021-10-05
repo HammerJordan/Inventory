@@ -33,8 +33,19 @@ namespace Inventory.Desktop
                 .Build();
 
             Setup();
-            base.OnStartup(e);
+
+            SetupExceptionLogging();
+
+                base.OnStartup(e);
             ServiceCollection.GetService<MainWindow>().Show();
+        }
+
+        private static void SetupExceptionLogging()
+        {
+            AppDomain.CurrentDomain.UnhandledException += (sender, args) =>
+            {
+                Log.Fatal("Fatal Unhandled exception  {args}", args.ExceptionObject.ToString());
+            };
         }
 
         private void Setup()
@@ -66,7 +77,6 @@ namespace Inventory.Desktop
 
             ServiceCollection = services.BuildServiceProvider();
         }
-        
         private static void SetupLogger(IServiceCollection services, IConfiguration configuration)
         {
             string logPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
