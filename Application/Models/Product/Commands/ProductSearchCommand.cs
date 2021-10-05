@@ -10,6 +10,11 @@ namespace Inventory.Application.Models.Product.Commands
     public class ProductSearchCommand : IRequest<IEnumerable<ProductModel>>
     {
         public string Search { get; set; }
+
+        public ProductSearchCommand(string search)
+        {
+            Search = search;
+        }
     }
 
     public class ProductSearchCommandHandler : IRequestHandler<ProductSearchCommand, IEnumerable<ProductModel>>

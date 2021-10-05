@@ -2,6 +2,7 @@
 using AngleSharp.Html.Dom;
 using FluentAssertions;
 using Xunit;
+using Inventory.Domain.Models;
 
 namespace WebScraping.Test
 {

@@ -1,4 +1,4 @@
-﻿using Application.Models.Record;
+﻿using Application.Models.RecordProductList;
 
 namespace Application.Common.Interfaces
 {

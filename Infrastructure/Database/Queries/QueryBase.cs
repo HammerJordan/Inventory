@@ -1,4 +1,5 @@
 using Application.Common.Interfaces;
+using Microsoft.Extensions.Logging;
 
 namespace Infrastructure.Database.Queries
 {

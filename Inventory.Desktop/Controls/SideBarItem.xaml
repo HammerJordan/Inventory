@@ -21,12 +21,10 @@
                 TrueBrush="{StaticResource SelectedColorBrush}" />
 
 
-            <SolidColorBrush x:Key="HoverOverBrush" Color="#2e67a3" />
-            <SolidColorBrush x:Key="PressedBrush" Color="{StaticResource SelectedColor}" />
-
             <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
 
-                <Setter Property="Background" Value="{Binding SideBarSelected, Converter={StaticResource isSelectedColor}}" />
+                <Setter Property="Background"
+                        Value="{Binding SideBarSelected, Converter={StaticResource isSelectedColor}}" />
                 <Setter Property="BorderBrush" Value="Transparent" />
                 <Setter Property="HorizontalAlignment" Value="Stretch" />
 
@@ -43,7 +41,6 @@
                                     HorizontalAlignment="Stretch"
                                     VerticalAlignment="Center" />
                             </Border>
-
 
 
                         </ControlTemplate>
@@ -69,10 +66,11 @@
                 <Style.Triggers>
 
 
-                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=IsMouseOver}" Value="True">
+                    <DataTrigger
+                        Binding="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=IsMouseOver}"
+                        Value="True">
                         <Setter Property="Foreground" Value="White" />
                     </DataTrigger>
-
 
 
                 </Style.Triggers>
@@ -83,7 +81,6 @@
                                              TrueBrush="White" />-->
 
         </ResourceDictionary>
-
 
 
     </UserControl.Resources>

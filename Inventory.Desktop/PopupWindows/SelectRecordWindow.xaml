@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Inventory.Desktop.PopupWindows"
         mc:Ignorable="d"
         ShowInTaskbar="False"
         WindowStyle="None"
@@ -13,18 +12,18 @@
         WindowStartupLocation="CenterOwner"
         Title="SelectRecordWindow" Height="450" Width="450">
 
-    <Grid  Background="{StaticResource Mid-Brush}"
-           Margin="10">
+    <Grid Background="{StaticResource Mid-Brush}"
+          Margin="10">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Column="0"
               Width="150"
               HorizontalAlignment="Center"
               Margin="8 8 0 0">
-            <StackPanel >
+            <StackPanel>
                 <Button Style="{StaticResource RoundedButton}"
                         Content="New Record"
                         Command="{Binding AddNewRecordCommand}"
@@ -34,7 +33,7 @@
                         FontWeight="Medium"
                         Foreground="White"
                         FontSize="16"
-                        Background="#2EA33A" /> 
+                        Background="#2EA33A" />
                 <Button Style="{StaticResource RoundedButton}"
                         Content="Open Record"
                         Command="{Binding OpenRecordCommand}"
@@ -82,18 +81,18 @@
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                  ItemsSource="{Binding RecordsCollection}">
             <ListBox.ItemTemplate>
-                <DataTemplate >
-                    <Grid  HorizontalAlignment="Center">
+                <DataTemplate>
+                    <Grid HorizontalAlignment="Center">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <Label Content="{Binding Name}"
                                Grid.Row="0"
-                               HorizontalAlignment="Center"></Label>
+                               HorizontalAlignment="Center" />
                         <Label Content="{Binding CreatedAtString}"
                                Grid.Row="1"
-                               HorizontalAlignment="Center"></Label>
+                               HorizontalAlignment="Center" />
 
                     </Grid>
 

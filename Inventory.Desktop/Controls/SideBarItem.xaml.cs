@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media;
 
 namespace Inventory.Desktop.Controls
 {
     /// <summary>
-    /// Interaction logic for SideBarItem.xaml
+    ///     Interaction logic for SideBarItem.xaml
     /// </summary>
     public partial class SideBarItem : UserControl
     {
-
         public static readonly DependencyProperty SetNameText =
             DependencyProperty.Register("SideBarName", typeof(string), typeof(SideBarItem), new
                 PropertyMetadata("", OnSideBarNameChanged));
@@ -23,6 +20,30 @@ namespace Inventory.Desktop.Controls
         public static readonly DependencyProperty SetSideBarIsSelected =
             DependencyProperty.Register("SideBarSelected", typeof(bool), typeof(SideBarItem), new
                 PropertyMetadata(true, OnIsSelectedChanged));
+
+        public string SideBarName
+        {
+            get => (string)GetValue(SetNameText);
+            set => SetValue(SetNameText, value);
+        }
+
+        public string SideBarIcon
+        {
+            get => (string)GetValue(SetSideBarIcon);
+            set => SetValue(SetSideBarIcon, value);
+        }
+
+        public bool SideBarSelected
+        {
+            get => (bool)GetValue(SetSideBarIsSelected);
+            set => SetValue(SetSideBarIsSelected, value);
+        }
+
+        public SideBarItem()
+        {
+            DataContext = this;
+            InitializeComponent();
+        }
 
         private static void OnSideBarNameChanged(DependencyObject d,
             DependencyPropertyChangedEventArgs e)
@@ -45,24 +66,6 @@ namespace Inventory.Desktop.Controls
             UserControl1Control?.OnIsSelectedChanged(e);
         }
 
-        public string SideBarName
-        {
-            get => (string)GetValue(SetNameText);
-            set => SetValue(SetNameText, value);
-        }
-
-        public string SideBarIcon
-        {
-            get => (string)GetValue(SetSideBarIcon);
-            set => SetValue(SetSideBarIcon, value);
-        }
-
-        public bool SideBarSelected
-        {
-            get => (bool)GetValue(SetSideBarIsSelected);
-            set => SetValue(SetSideBarIsSelected, value);
-        }
-
         private void OnSetTextChanged(DependencyPropertyChangedEventArgs e)
         {
             Name.Text = e.NewValue.ToString();
@@ -83,16 +86,9 @@ namespace Inventory.Desktop.Controls
 
         public event Action<SideBarItem> SideBarClickEvent;
 
-        public SideBarItem()
-        {
-            DataContext = this;
-            InitializeComponent();
-        }
-
         private void OnSideBarClicked(object sender, RoutedEventArgs e)
         {
             SideBarClickEvent?.Invoke(this);
         }
-
     }
 }

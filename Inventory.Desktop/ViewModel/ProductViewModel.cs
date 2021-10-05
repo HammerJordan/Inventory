@@ -1,7 +1,7 @@
 ﻿using System.Windows.Input;
-using Inventory.Domain;
 using Inventory.Desktop.Commands;
 using Inventory.Desktop.Events;
+using Inventory.Domain.Models;
 using PubSub;
 
 namespace Inventory.Desktop.ViewModel
@@ -10,15 +10,17 @@ namespace Inventory.Desktop.ViewModel
     {
         private ProductModel productModel;
 
-        public int Quantity
-        {
-            get => productModel.Quantity;
-            set => productModel.Quantity = value;
-        }
+        public int Quantity { get; set; } = 1;
 
         public ICommand IncrementQuantityCommand { get; }
         public ICommand DecrementQuantityCommand { get; }
         public ICommand AddToRecordCommand { get; }
+
+        public ProductModel ProductModel
+        {
+            get => productModel;
+            set => SetProperty(ref productModel, value);
+        }
 
         public ProductViewModel()
         {
@@ -35,18 +37,5 @@ namespace Inventory.Desktop.ViewModel
         {
             Hub.Default.Publish(new ProductModelAddRemove(ProductModel));
         }
-
-        public ProductModel ProductModel
-        {
-            get => productModel;
-            set => SetProperty(ref productModel, value);
-        }
-
-        //public int Quantity
-        //{
-        //    get => quantity;
-        //    set => SetProperty(ref quantity, value);
-        //}
-
     }
 }

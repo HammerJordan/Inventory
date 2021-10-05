@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Application.Common.Interfaces;
 using Inventory.Domain.Models;
 
-namespace Application.Models.Record.Queries
+namespace Application.Models.RecordProductList.Queries
 {
     public interface IRecordListItemQuery : IQuery<RecordListItem>
     {

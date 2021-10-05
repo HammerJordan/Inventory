@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Application.Common.Interfaces;
 using Application.Models.Product.Queries;
 using Inventory.Domain.Models;
+using Microsoft.Extensions.Logging;
 
 namespace Infrastructure.Database.Queries
 {
@@ -56,5 +57,7 @@ namespace Infrastructure.Database.Queries
             var match = r.Match(search);
             return !match.Success;
         }
+
+
     }
 }

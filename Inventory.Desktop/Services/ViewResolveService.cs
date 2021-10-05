@@ -22,7 +22,7 @@ namespace Inventory.Desktop.Services
                 return cachedViews[name];
 
             var view = GetNewView(name);
-            cachedViews.Add(name,view);
+            cachedViews.Add(name, view);
 
             return view;
         }
@@ -34,9 +34,8 @@ namespace Inventory.Desktop.Services
                 "Home" => _serviceProvider.GetService<HomePage>(),
                 "Catalog" => _serviceProvider.GetService<CatalogPage>(),
                 "Settings" => _serviceProvider.GetService<SettingsPage>(),
-                _ => null,
+                _ => null
             };
         }
-
     }
 }

@@ -1,23 +1,25 @@
 ﻿using System;
+using System.IO;
+using System.Reflection;
 using System.Windows;
 using Infrastructure;
 using Inventory.Application;
-using Inventory.DataAccess;
-using Inventory.DataAccess.Queries;
 using Inventory.Desktop.PopupWindows;
 using Inventory.Desktop.Services;
 using Inventory.Desktop.View;
 using Inventory.Desktop.ViewModel;
+using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using WebScraping;
+using Serilog;
+using ILogger = Serilog.ILogger;
 
 // ReSharper disable PossibleNullReferenceException
 
 namespace Inventory.Desktop
 {
     /// <summary>
-    /// Interaction logic for App.xaml
+    ///     Interaction logic for App.xaml
     /// </summary>
     public partial class App : System.Windows.Application
     {
@@ -57,9 +59,26 @@ namespace Inventory.Desktop
 
             services.AddApplication();
             services.AddInfrastructure(Configuration);
-
+            
+            services.AddMediatR(Assembly.GetExecutingAssembly());
+            
+            SetupLogger(services,Configuration);
 
             ServiceCollection = services.BuildServiceProvider();
+        }
+        
+        private static void SetupLogger(IServiceCollection services, IConfiguration configuration)
+        {
+            string logPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            logPath = Path.Join(logPath, configuration["LoggingLocation"]);
+            logPath = Path.Join(logPath, "log.txt");
+            var logger = new LoggerConfiguration()
+                .MinimumLevel.Information()
+                .WriteTo.File(logPath, rollingInterval: RollingInterval.Day)
+                .CreateLogger();
+
+            Log.Logger = logger;
+
         }
     }
 }

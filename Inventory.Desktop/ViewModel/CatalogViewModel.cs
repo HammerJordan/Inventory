@@ -2,41 +2,39 @@
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Inventory.DataAccess;
+using Inventory.Application.Models.Product.Commands;
 using Inventory.Desktop.Commands;
 using Inventory.Desktop.Events;
+using MediatR;
 using PubSub;
+using Serilog;
 
 namespace Inventory.Desktop.ViewModel
 {
     public class CatalogViewModel : ViewModelBase
     {
+        private readonly IMediator _mediator;
+        private CancellationTokenSource _cancellationToken;
+        private string _searchBox;
         public ObservableCollection<ProductViewModel> ProductViewModels { get; set; }
         public ICommand AddToRecordCommand { get; }
 
-        private string searchBox;
-
-        private readonly ProductSearchEngine searchEngine;
-        private CancellationTokenSource cancellationToken;
-
-
         public string SearchBox
         {
-            get => searchBox;
+            get => _searchBox;
             set
             {
-                SetProperty(ref searchBox, value);
-                UpdateSearchResults(value);
+                SetProperty(ref _searchBox, value);
+                _ = UpdateSearchResults(value);
             }
         }
 
-
-        public CatalogViewModel(ProductSearchEngine searchEngine)
+        public CatalogViewModel(IMediator mediator)
         {
             ProductViewModels = new ObservableCollection<ProductViewModel>();
-            this.searchEngine = searchEngine;
+            _mediator = mediator;
 
-            AddToRecordCommand = new RelayCommand((x) =>
+            AddToRecordCommand = new RelayCommand(x =>
             {
                 if (x is not ProductViewModel vm)
                     return;
@@ -49,22 +47,20 @@ namespace Inventory.Desktop.ViewModel
         {
             ProductViewModels.Clear();
 
-            if (cancellationToken != null && cancellationToken.Token.CanBeCanceled)
-                cancellationToken.Cancel();
+            if (_cancellationToken is { Token: { CanBeCanceled: true } })
+                _cancellationToken.Cancel();
 
-            cancellationToken = new CancellationTokenSource();
-            
-            
-            var models = await Task.Run(() => searchEngine.SearchResults(newValue), cancellationToken.Token);
-            
+            _cancellationToken = new CancellationTokenSource();
+
+            var searchCommand = new ProductSearchCommand(newValue);
+
+            var models = await _mediator.Send(searchCommand, _cancellationToken.Token);
+
             if (models == null)
                 return;
-            
-            foreach (var model in models)
-            {
-                ProductViewModels.Add(new ProductViewModel() { ProductModel = model });
-            }
 
+            foreach (var model in models)
+                ProductViewModels.Add(new ProductViewModel { ProductModel = model });
         }
     }
 }

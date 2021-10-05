@@ -12,12 +12,10 @@ namespace Inventory.Desktop.Converters
             if (value is not string v)
                 return Visibility.Visible;
 
-
             if (bool.TryParse(parameter as string, out bool b))
                 return string.IsNullOrEmpty(v) ^ b ? Visibility.Visible : Visibility.Collapsed;
 
             return string.IsNullOrEmpty(v) ? Visibility.Visible : Visibility.Collapsed;
-
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

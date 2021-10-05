@@ -1,7 +1,7 @@
 ﻿using System.Windows;
+using Inventory.Desktop.Controls;
 using Inventory.Desktop.Services;
 using Inventory.Desktop.ViewModel;
-using SideBarItem = Inventory.Desktop.Controls.SideBarItem;
 
 namespace Inventory.Desktop
 {
@@ -22,7 +22,7 @@ namespace Inventory.Desktop
 
             foreach (UIElement child in SideBarNav.Children)
             {
-                if (child is not Controls.SideBarItem sideBarItem)
+                if (child is not SideBarItem sideBarItem)
                     continue;
 
                 sideBarItem.SideBarClickEvent += OnSideBarItemClickedEvent;
@@ -32,10 +32,9 @@ namespace Inventory.Desktop
             }
         }
 
-        private void OnSideBarItemClickedEvent(Controls.SideBarItem clickedItem)
+        private void OnSideBarItemClickedEvent(SideBarItem clickedItem)
         {
             foreach (UIElement child in SideBarNav.Children)
-            {
                 if (child is SideBarItem sideBarItem)
                 {
                     if (sideBarItem == clickedItem)
@@ -47,10 +46,7 @@ namespace Inventory.Desktop
                     {
                         sideBarItem.SideBarSelected = false;
                     }
-
                 }
-            }
         }
-
     }
 }

@@ -9,9 +9,9 @@ namespace Inventory.Desktop.ViewModel
     {
         private readonly ProductUpdateRunner databaseUpdate;
 
-        public ICommand UpdateDatabaseCommand { get; }
-
         private double progressBar;
+
+        public ICommand UpdateDatabaseCommand { get; }
 
         public double ProgressBar
         {
@@ -27,13 +27,13 @@ namespace Inventory.Desktop.ViewModel
             {
                 ProgressBar = 0;
                 var job = databaseUpdate.RunProductUpdate();
-            
+
                 while (!job.IsCompleted)
                 {
                     ProgressBar = databaseUpdate.EstPercentDone * 100;
                     await Task.Delay(5000);
                 }
-            
+
                 ProgressBar = 100;
             });
         }

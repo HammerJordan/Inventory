@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using Application.Common.Interfaces;
 using Application.Models.Record;
+using Application.Models.RecordProductList;
 
 namespace Infrastructure.FileAccess
 {

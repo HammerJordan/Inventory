@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AngleSharp.Dom;
 using AngleSharp.Html.Dom;
 using Inventory.Domain;
+using Inventory.Domain.Models;
 
 namespace WebScraping
 {

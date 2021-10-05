@@ -4,7 +4,7 @@ namespace Inventory.Desktop.Events
 {
     public class RecordModelSelect
     {
-        public RecordModel Record { get; private set; }
+        public RecordModel Record { get; }
 
         public RecordModelSelect(RecordModel recordModel)
         {

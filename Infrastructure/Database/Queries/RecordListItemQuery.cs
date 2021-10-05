@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Application.Common.Interfaces;
 using Application.Models.Record.Queries;
+using Application.Models.RecordProductList.Queries;
 using Dapper;
 using Inventory.Domain.Models;
+using Microsoft.Extensions.Logging;
 
 namespace Infrastructure.Database.Queries
 {
@@ -49,16 +52,23 @@ namespace Infrastructure.Database.Queries
 
         public async Task<IEnumerable<RecordListItem>> LoadAllAsync(RecordModel recordModel)
         {
-            const string sql = @"SELECT P.ID, Name, Description, 
-                                        UPC, Cost, Unit, URL, LastUpdated, ImageHref, Quantity 
+            const string sql = @"SELECT Quantity, P.ID AS ID, Name, Description, 
+                                        UPC, Cost, Unit, URL, LastUpdated, ImageHref
                             FROM RecordItem 
                             JOIN Product P on P.ID = RecordItem.ProductID where @ID == RecordItem.RecordID;";
 
-            var results = await _dbAccess
-                .Connection
-                .QueryAsync<ProductModel, int, Tuple<ProductModel, int>>(sql, Tuple.Create, recordModel);
+            // var res = await _dbAccess.Connection.QueryAsync<ProductModel, int, RecordListItem>(
+            //     sql, ((model, i) => new RecordListItem(model, recordModel) { Quantity = i }), recordModel,
+            //     splitOn: "ID");
 
-            return results.Select(x => new RecordListItem(x.Item1, recordModel) { Quantity = x.Item2 });
+            var results = await _dbAccess.Connection.QueryAsync<long, ProductModel, RecordListItem>(
+                sql, (quantity, product) =>
+                    new RecordListItem(product, recordModel)
+                    {
+                        Quantity = (int)quantity
+                    }, recordModel, splitOn: "ID");
+
+            return results;
         }
     }
 }
