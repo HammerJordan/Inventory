@@ -1,10 +1,10 @@
 ﻿using System;
 using System.IO;
 using System.Reflection;
-using Application.Common.Interfaces;
-using Application.Models.Product.Queries;
-using Application.Models.Record.Queries;
-using Application.Models.RecordProductList.Queries;
+using Application.Core.Common.Interfaces;
+using Application.Core.Models.Product.Queries;
+using Application.Core.Models.Record.Queries;
+using Application.Core.Models.RecordProductList.Queries;
 using Infrastructure.Database;
 using Infrastructure.Database.Queries;
 using Infrastructure.FileAccess;
@@ -30,7 +30,8 @@ namespace Infrastructure
                 .AddTransient<IApplicationDbAccess, DbAccess>()
                 .AddTransient<IProductSearchQuery, ProductSearchQuery>()
                 .AddTransient<IRecordListItemQuery, RecordListItemQuery>()
-                .AddTransient<IRecordModelQuery, RecordModelQuery>();
+                .AddTransient<IRecordModelQuery, RecordModelQuery>()
+                .AddTransient<IProductModelQuery, ProductModelQuery>();
             
            
 

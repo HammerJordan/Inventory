@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
-using Application.Models.RecordProductList;
-using Application.Models.RecordProductList.Events;
+using Application.Core.Common.Exceptions;
+using Application.Core.Models.RecordProductList;
+using Application.Core.Models.RecordProductList.Events;
 using FluentAssertions;
-using Inventory.Application.Common.Exceptions;
 using Inventory.Domain.Models;
 using MediatR;
 using Moq;

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using Application.Common.Interfaces;
-using Application.Models.Record;
-using Application.Models.RecordProductList;
+using Application.Core.Common.Interfaces;
+using Application.Core.Models.Record;
+using Application.Core.Models.RecordProductList;
 
 namespace Infrastructure.FileAccess
 {

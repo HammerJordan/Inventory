@@ -1,4 +1,4 @@
-using Application.Common.Interfaces;
+using Application.Core.Common.Interfaces;
 using Microsoft.Extensions.Logging;
 
 namespace Infrastructure.Database.Queries

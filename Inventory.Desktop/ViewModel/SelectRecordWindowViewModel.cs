@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Application.Models.Record.Queries;
+using Application.Core.Models.Record.Queries;
 using Inventory.Desktop.Commands;
 using Inventory.Desktop.Events;
 using Inventory.Domain.Models;

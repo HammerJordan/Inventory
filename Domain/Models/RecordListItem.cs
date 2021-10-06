@@ -1,5 +1,4 @@
-﻿using Inventory.Domain.Enums;
-
+﻿
 namespace Inventory.Domain.Models
 {
     public class RecordListItem

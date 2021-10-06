@@ -3,8 +3,8 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
-using Application.Common.Interfaces;
-using Application.Models.Product.Queries;
+using Application.Core.Common.Interfaces;
+using Application.Core.Models.Product.Queries;
 using Inventory.Domain.Models;
 using Microsoft.Extensions.Logging;
 

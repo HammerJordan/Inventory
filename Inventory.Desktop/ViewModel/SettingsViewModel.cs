@@ -1,13 +1,14 @@
 ﻿using System.Threading.Tasks;
 using System.Windows.Input;
+using Application.Core.Models.Product.Queries;
+using Application.WPF.WebScraping.Common;
 using Inventory.Desktop.Commands;
-using WebScraping;
 
 namespace Inventory.Desktop.ViewModel
 {
     public class SettingsViewModel : ViewModelBase
     {
-        private readonly ProductUpdateRunner databaseUpdate;
+        private readonly IProductUpdateRunner _productUpdateRunner;
 
         private double progressBar;
 
@@ -19,23 +20,23 @@ namespace Inventory.Desktop.ViewModel
             set => SetProperty(ref progressBar, value);
         }
 
-        public SettingsViewModel(ProductUpdateRunner databaseUpdate)
+        public SettingsViewModel(IProductUpdateRunner databaseUpdate)
         {
-            this.databaseUpdate = databaseUpdate;
+            _productUpdateRunner = databaseUpdate;
 
             UpdateDatabaseCommand = new RelayCommand(x => true, async x =>
             {
                 ProgressBar = 0;
-                var job = databaseUpdate.RunProductUpdate();
-
-                while (!job.IsCompleted)
-                {
-                    ProgressBar = databaseUpdate.EstPercentDone * 100;
-                    await Task.Delay(5000);
-                }
-
-                ProgressBar = 100;
+                await databaseUpdate.RunProductUpdateAsync(CallBackUpdate);
             });
+        }
+
+        private void CallBackUpdate()
+        {
+            ProgressBar = _productUpdateRunner.PercentDone * 100;
+            
+            if(_productUpdateRunner.IsDone)
+                ProgressBar = 100;
         }
     }
 }

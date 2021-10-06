@@ -1,7 +1,7 @@
 ﻿// ReSharper disable InconsistentNaming
 
+using System;
 using System.Collections.Generic;
-using Inventory.Domain.Enums;
 
 namespace Inventory.Domain.Models
 {
@@ -15,6 +15,11 @@ namespace Inventory.Domain.Models
         public string Unit { get; set; }
         public string URL { get; set; }
         public string ImageHref { get; set; }
+
+        public DateTime LastUpdated { get; set; }
+
+        public string LastUpdatedToString => LastUpdated.ToString("yyyy-MM-dd");
+        
         public List<string> CategoryTree { get; set; } = new();
     }
 }

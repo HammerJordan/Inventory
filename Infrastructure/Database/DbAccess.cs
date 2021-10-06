@@ -4,7 +4,7 @@ using System.Data;
 using System.Data.SQLite;
 using System.Linq;
 using System.Threading.Tasks;
-using Application.Common.Interfaces;
+using Application.Core.Common.Interfaces;
 using Dapper;
 
 namespace Infrastructure.Database

@@ -2,8 +2,9 @@
 using System.IO;
 using System.Reflection;
 using System.Windows;
+using Application.WPF;
 using Infrastructure;
-using Inventory.Application;
+using Inventory.Application.Core;
 using Inventory.Desktop.PopupWindows;
 using Inventory.Desktop.Services;
 using Inventory.Desktop.View;
@@ -12,7 +13,6 @@ using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
-using ILogger = Serilog.ILogger;
 
 // ReSharper disable PossibleNullReferenceException
 
@@ -36,8 +36,10 @@ namespace Inventory.Desktop
 
             SetupExceptionLogging();
 
-                base.OnStartup(e);
+            base.OnStartup(e);
             ServiceCollection.GetService<MainWindow>().Show();
+            
+            
         }
 
         private static void SetupExceptionLogging()
@@ -68,15 +70,17 @@ namespace Inventory.Desktop
                 .AddTransient<SelectRecordWindowViewModel>()
                 .AddTransient<ViewResolveService>();
 
-            services.AddApplication();
+            services.AddApplicationCore();
             services.AddInfrastructure(Configuration);
-            
+            services.AddApplicationWpf();
+
             services.AddMediatR(Assembly.GetExecutingAssembly());
-            
-            SetupLogger(services,Configuration);
+
+            SetupLogger(services, Configuration);
 
             ServiceCollection = services.BuildServiceProvider();
         }
+
         private static void SetupLogger(IServiceCollection services, IConfiguration configuration)
         {
             string logPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
@@ -88,7 +92,6 @@ namespace Inventory.Desktop
                 .CreateLogger();
 
             Log.Logger = logger;
-
         }
     }
 }

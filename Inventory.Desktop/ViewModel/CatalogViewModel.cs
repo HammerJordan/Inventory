@@ -1,8 +1,10 @@
 ﻿using System.Collections.ObjectModel;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Windows.Input;
-using Inventory.Application.Models.Product.Commands;
+using Application.Core.Models.Product.Queries;
+using Inventory.Application.Core.Models.Product.Commands;
 using Inventory.Desktop.Commands;
 using Inventory.Desktop.Events;
 using MediatR;
@@ -28,6 +30,8 @@ namespace Inventory.Desktop.ViewModel
                 _ = UpdateSearchResults(value);
             }
         }
+        
+        
 
         public CatalogViewModel(IMediator mediator)
         {
@@ -42,6 +46,7 @@ namespace Inventory.Desktop.ViewModel
                 Hub.Default.Publish(new ProductModelAddRemove(vm.ProductModel));
             });
         }
+
 
         private async Task UpdateSearchResults(string newValue)
         {
