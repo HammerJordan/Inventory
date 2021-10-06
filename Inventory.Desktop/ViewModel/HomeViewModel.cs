@@ -2,6 +2,8 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Input;
 using Application.Core.Common.Interfaces;
@@ -16,9 +18,10 @@ using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using PubSub;
 
+
 namespace Inventory.Desktop.ViewModel
 {
-    public class HomeViewModel : ViewModelBase
+    public class HomeViewModel : ViewModelBase 
     {
         private readonly IExportCsvFile _exportRecord;
         private readonly IRecordListItemQuery _recordItemsQuery;
@@ -44,6 +47,8 @@ namespace Inventory.Desktop.ViewModel
         public decimal Subtotal => ProductViewModels.Sum(x => x.Quantity * x.ProductModel.Cost);
         public int TotalItems => ProductViewModels.Sum(x => x.Quantity);
 
+        private static int Foo = 0;
+
         public HomeViewModel(IExportCsvFile exportRecord,
             IRecordListItemQuery recordItemsQuery,
             IRecordModelQuery recordQuery,
@@ -58,9 +63,6 @@ namespace Inventory.Desktop.ViewModel
 
             ProductViewModels = new ObservableCollection<ProductViewModel>();
 
-            var hub = Hub.Default;
-            hub.Subscribe<ProductModelAddRemove>(ModifyProducts);
-
             OpenRecordCommand = new RelayCommand(_ => true, _ => OpenRecord());
             EditRecordCommand = new RelayCommand(() => EditRecordName = true);
             RenameRecordCommand = new RelayCommand(RenameRecord);
@@ -72,33 +74,14 @@ namespace Inventory.Desktop.ViewModel
             });
 
             ExportCommand = new RelayCommand(ExportRecord);
+            Foo++;
 
-            Hub.Default.Subscribe<RecordModelSelect>(this, x =>
-            {
-                Record = x.Record;
-                ProductViewModels.Clear();
+            Hub.Default.Subscribe<AddProductModelToRecordEvent>(AddProductModelToRecord);
+            Hub.Default.Subscribe<RecordModelSelectEvent>(OpenNewRecord);
 
-                var recordItems = recordItemsQuery.LoadAllAsync(Record).Result;
-
-                foreach (var product in recordItemsQuery.LoadAllAsync(Record).Result)
-                {
-                    var productViewModel = new ProductViewModel
-                    {
-                        ProductModel = product.ProductModel,
-                        Quantity = product.Quantity
-                    };
-                    productViewModel.PropertyChanged += ProductViewModelPropertyChanged;
-                    ProductViewModels.Add(productViewModel);
-                }
-
-                _recordProductList = new RecordProductList(Record, ProductViewModels
-                    .Select(item => new RecordListItem(item.ProductModel, Record)
-                        { Quantity = item.Quantity })
-                    .ToList(), _mediator);
-
-                OnPropertyChanged(null);
-            });
         }
+
+
 
         private void ExportRecord()
         {
@@ -138,30 +121,7 @@ namespace Inventory.Desktop.ViewModel
             window.ShowDialog();
         }
 
-        public void ModifyProducts(ProductModelAddRemove model)
-        {
-            if (Record is null)
-                return;
-
-            if (ProductViewModels.Any(x => x.ProductModel.ID == model.Model.ID))
-            {
-                var productViewModel = ProductViewModels.First(x => x.ProductModel.ID == model.Model.ID);
-                productViewModel.Quantity++;
-
-                // _recordItemsQuery.UpdateProduct(Record, productViewModel.ProductModel);
-            }
-            else
-            {
-                var productViewModel = new ProductViewModel { ProductModel = model.Model };
-                productViewModel.PropertyChanged += ProductViewModelPropertyChanged;
-                productViewModel.Quantity = productViewModel.Quantity;
-
-                _recordProductList.Add(productViewModel.ProductModel, productViewModel.Quantity);
-                ProductViewModels.Add(productViewModel);
-            }
-
-            OnPropertyChanged(null);
-        }
+        
 
         private void ProductViewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
@@ -173,5 +133,67 @@ namespace Inventory.Desktop.ViewModel
             if (sender is ProductViewModel vm)
                 _recordProductList.SetQuantity(vm.ProductModel, vm.Quantity);
         }
+
+        private void AddProductModelToRecord(AddProductModelToRecordEvent notification)
+        {
+            if (Record is null || notification?.Model?.ProductModel is null)
+                return;
+
+            if (ProductViewModels.Any(x => x.ProductModel.ID == notification.Model.ProductModel.ID))
+            {
+                var productViewModel = ProductViewModels
+                    .First(x => x.ProductModel.ID == notification.Model.ProductModel.ID);
+                productViewModel.Quantity++;
+            }
+            else
+            {
+                var productViewModel = new ProductViewModel
+                {
+                    ProductModel = notification.Model.ProductModel,
+                    Quantity = notification.Model.Quantity
+                };
+
+                _recordProductList.Add(productViewModel.ProductModel, productViewModel.Quantity);
+                ProductViewModels.Add(productViewModel);
+
+                productViewModel.PropertyChanged += ProductViewModelPropertyChanged;
+            }
+
+            OnPropertyChanged(null);
+            return;
+        }
+
+
+
+        private void OpenNewRecord(RecordModelSelectEvent recordEvent)
+        {
+            if (recordEvent.Record is null)
+                return;
+            Record = recordEvent.Record;
+            ProductViewModels.Clear();
+
+            var recordItems = _recordItemsQuery.LoadAllAsync(Record).Result;
+
+            foreach (var product in recordItems)
+            {
+                var productViewModel = new ProductViewModel
+                {
+                    ProductModel = product.ProductModel,
+                    Quantity = product.Quantity
+                };
+                productViewModel.PropertyChanged += ProductViewModelPropertyChanged;
+                ProductViewModels.Add(productViewModel);
+            }
+
+            _recordProductList = new RecordProductList(Record, ProductViewModels
+                .Select(item => new RecordListItem(item.ProductModel, Record)
+                    { Quantity = item.Quantity })
+                .ToList(), _mediator);
+
+            OnPropertyChanged(null);
+        }
+
+
+
     }
 }

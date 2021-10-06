@@ -1,15 +1,12 @@
 ﻿using System.Collections.ObjectModel;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Windows.Input;
-using Application.Core.Models.Product.Queries;
 using Inventory.Application.Core.Models.Product.Commands;
 using Inventory.Desktop.Commands;
 using Inventory.Desktop.Events;
 using MediatR;
 using PubSub;
-using Serilog;
 
 namespace Inventory.Desktop.ViewModel
 {
@@ -38,13 +35,15 @@ namespace Inventory.Desktop.ViewModel
             ProductViewModels = new ObservableCollection<ProductViewModel>();
             _mediator = mediator;
 
-            AddToRecordCommand = new RelayCommand(x =>
-            {
-                if (x is not ProductViewModel vm)
-                    return;
+            AddToRecordCommand = new RelayCommand(  AddProductToCurrentRecord);
+        }
 
-                Hub.Default.Publish(new ProductModelAddRemove(vm.ProductModel));
-            });
+        private void AddProductToCurrentRecord(object obj)
+        {
+            if (obj is not ProductViewModel vm)
+                return;
+
+            Hub.Default.Publish(new AddProductModelToRecordEvent(vm));
         }
 
 

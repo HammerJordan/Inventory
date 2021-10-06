@@ -2,13 +2,15 @@
 using Inventory.Desktop.Commands;
 using Inventory.Desktop.Events;
 using Inventory.Domain.Models;
+using MediatR;
 using PubSub;
+using Serilog;
 
 namespace Inventory.Desktop.ViewModel
 {
     public class ProductViewModel : ViewModelBase
     {
-        private ProductModel productModel;
+        private ProductModel _productModel;
 
         public int Quantity { get; set; } = 1;
 
@@ -18,8 +20,8 @@ namespace Inventory.Desktop.ViewModel
 
         public ProductModel ProductModel
         {
-            get => productModel;
-            set => SetProperty(ref productModel, value);
+            get => _productModel;
+            set => SetProperty(ref _productModel, value);
         }
 
         public ProductViewModel()
@@ -35,7 +37,8 @@ namespace Inventory.Desktop.ViewModel
 
         private void AddProductToRecord()
         {
-            Hub.Default.Publish(new ProductModelAddRemove(ProductModel));
+            Log.Debug("Add to products from Product VM");
+            Hub.Default.Publish(new AddProductModelToRecordEvent(this));
         }
     }
 }

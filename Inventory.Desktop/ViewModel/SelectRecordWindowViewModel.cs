@@ -1,12 +1,11 @@
 ﻿using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using Application.Core.Models.Record.Queries;
 using Inventory.Desktop.Commands;
 using Inventory.Desktop.Events;
 using Inventory.Domain.Models;
+using MediatR;
 using PubSub;
 
 namespace Inventory.Desktop.ViewModel
@@ -14,6 +13,7 @@ namespace Inventory.Desktop.ViewModel
     public class SelectRecordWindowViewModel : ViewModelBase
     {
         private readonly IRecordModelQuery recordQuery;
+        private readonly IMediator _mediator;
         private RecordModel selectedRecord;
         public ObservableCollection<RecordModel> RecordsCollection { get; set; }
 
@@ -27,15 +27,18 @@ namespace Inventory.Desktop.ViewModel
                 OnPropertyChanged(null);
             }
         }
+        
+        
 
         public ICommand CloseWindowCommand { get; set; }
         public ICommand OpenRecordCommand { get; }
         public ICommand AddNewRecordCommand { get; }
         public ICommand DeleteRecordCommand { get; }
 
-        public SelectRecordWindowViewModel(IRecordModelQuery recordQuery)
+        public SelectRecordWindowViewModel(IRecordModelQuery recordQuery, IMediator mediator)
         {
             this.recordQuery = recordQuery;
+            _mediator = mediator;
             var loadedInvoices = recordQuery.LoadAllAsync().Result;
 
             RecordsCollection = new ObservableCollection<RecordModel>();
@@ -81,7 +84,7 @@ namespace Inventory.Desktop.ViewModel
 
         private void OpenRecord()
         {
-            Hub.Default.Publish(new RecordModelSelect(SelectedRecord));
+            Hub.Default.Publish(new RecordModelSelectEvent(SelectedRecord));
             CloseWindowCommand.Execute(null);
         }
     }

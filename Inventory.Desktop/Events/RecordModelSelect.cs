@@ -1,12 +1,13 @@
 ﻿using Inventory.Domain.Models;
+using MediatR;
 
 namespace Inventory.Desktop.Events
 {
-    public class RecordModelSelect
+    public class RecordModelSelectEvent
     {
         public RecordModel Record { get; }
 
-        public RecordModelSelect(RecordModel recordModel)
+        public RecordModelSelectEvent(RecordModel recordModel)
         {
             Record = recordModel;
         }

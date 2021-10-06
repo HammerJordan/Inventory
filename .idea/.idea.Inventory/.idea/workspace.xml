@@ -15,59 +15,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7a6d2810-f582-42df-adfb-b5401f0dfa70" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Application.Core/Models/Product/Queries/IProductModelQuery.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application.WPF/DependencyInjection.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application.WPF/WebScraping/Common/ICheckProudctForUpdates.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application.WPF/WebScraping/Common/IProductUpdateRunner.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application.WPF/WebScraping/DirectoryNode.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Database/Queries/ProductModelQuery.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Inventory.Desktop/Events/AddProductModelToRecordEvent.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Inventory/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Inventory/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application.Tests/Application.Tests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Application.Tests/Application.Tests.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application.Tests/Models/RecordProductListTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application.Tests/Models/RecordProductListTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Application.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Application.Core/Application.Core.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Common/Exceptions/NotFoundException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application.Core/Common/Exceptions/NotFoundException.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Common/Interfaces/IApplicationDbAccess.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application.Core/Common/Interfaces/IApplicationDbAccess.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Common/Interfaces/IExportCsvFile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application.Core/Common/Interfaces/IExportCsvFile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Common/Interfaces/IQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application.Core/Common/Interfaces/IQuery.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application.Core/DependencyInjection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Models/Product/Commands/ProductSearchCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application.Core/Models/Product/Commands/ProductSearchCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Models/Product/Queries/IProductSearchQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application.Core/Models/Product/Queries/IProductSearchQuery.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Models/Record/Queries/IRecordModelQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application.Core/Models/Record/Queries/IRecordModelQuery.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Models/RecordProductList/Events/EventHandlers/RecordListAddNotificationHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application.Core/Models/RecordProductList/Events/EventHandlers/RecordListAddNotificationHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Models/RecordProductList/Events/EventHandlers/RecordListNotificationHandlerBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application.Core/Models/RecordProductList/Events/EventHandlers/RecordListNotificationHandlerBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Models/RecordProductList/Events/EventHandlers/RecordListRemoveNotificationHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application.Core/Models/RecordProductList/Events/EventHandlers/RecordListRemoveNotificationHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Models/RecordProductList/Events/EventHandlers/RecordListUpdateNotificationHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application.Core/Models/RecordProductList/Events/EventHandlers/RecordListUpdateNotificationHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Models/RecordProductList/Events/RecordListAddNotification.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application.Core/Models/RecordProductList/Events/RecordListAddNotification.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Models/RecordProductList/Events/RecordListNotificationBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application.Core/Models/RecordProductList/Events/RecordListNotificationBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Models/RecordProductList/Events/RecordListRemoveNotificationBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application.Core/Models/RecordProductList/Events/RecordListRemoveNotificationBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Models/RecordProductList/Events/RecordListUpdateNotification.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application.Core/Models/RecordProductList/Events/RecordListUpdateNotification.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Models/RecordProductList/Queries/IRecordProductListQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application.Core/Models/RecordProductList/Queries/IRecordProductListQuery.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Models/RecordProductList/RecordProductList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application.Core/Models/RecordProductList/RecordProductList.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Domain.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Domain.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Enums/Unit.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Models/ProductModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Models/ProductModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Models/RecordListItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Models/RecordListItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Database/DbAccess.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Database/DbAccess.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Database/Queries/ProductsearchQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Database/Queries/ProductsearchQuery.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Database/Queries/QueryBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Database/Queries/QueryBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Database/Queries/RecordListItemQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Database/Queries/RecordListItemQuery.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Database/Queries/RecordModelQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Database/Queries/RecordModelQuery.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/DependencyInjection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/FileAccess/ExportRecordListToCsv.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/FileAccess/ExportRecordListToCsv.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Infrastructure.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Infrastructure.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/App.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/App.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Database/Queries/ProductModelQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Database/Queries/ProductModelQuery.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/Controls/ProductItem.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/Controls/ProductItem.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/Events/ProdcutModelAddRemove.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/Events/RecordModelSelect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/Events/RecordModelSelect.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Inventory.Desktop/Inventory.Desktop.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/Inventory.Desktop.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Inventory.Desktop/ViewModel/CatalogViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/ViewModel/CatalogViewModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Inventory.Desktop/ViewModel/HomeViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/ViewModel/HomeViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/ViewModel/ProductViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/ViewModel/ProductViewModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Inventory.Desktop/ViewModel/SelectRecordWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/ViewModel/SelectRecordWindowViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/ViewModel/SettingsViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/ViewModel/SettingsViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.WebScraping/DirectoryTreeModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application.WPF/WebScraping/DirectoryTreeModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.WebScraping/Inventory.WebScraping.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.WebScraping/Inventory.WebScraping.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.WebScraping/ProductScraper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application.WPF/WebScraping/ProductScraper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.WebScraping/ProductUpdateRunner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application.WPF/WebScraping/ProductUpdateRunner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.WebScraping/WebPageLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application.WPF/WebScraping/WebPageLoader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.sln.DotSettings.user" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,6 +89,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e076aa0ddc1143c4ae72963282119f709cc00/1/AggregateExceptionExtractor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/adbabd2b288f4892be207445c67c39505c0c8/79/a4dc872e/SQLiteDataReader.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/578643b7d10a415b979d299b20801ef0f55f78/f4/515be3c4/WpfXamlLoader.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3834795bf41b4e628161509eca0f58228200/E/NotificationHandlerWrapper.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e076aa0ddc1143c4ae72963282119f709cc00/13/CallerIdentifier.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/adbabd2b288f4892be207445c67c39505c0c8/4e/bd968d18/SQLiteCommand.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d8a85799ff174a54b41e883411e1785814268/C/CallSiteFactory.cs" root0="SKIP_HIGHLIGHTING" />
@@ -258,6 +217,7 @@
       <workItem from="1633300114810" duration="3290000" />
       <workItem from="1633345871337" duration="6183000" />
       <workItem from="1633436439632" duration="20921000" />
+      <workItem from="1633519700855" duration="2791000" />
     </task>
     <servers />
   </component>
@@ -288,14 +248,7 @@
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Inventory.DataAccess.Tests/DbConnectionTests.cs</url>
           <line>13</line>
-          <properties documentPath="C:\Users\Hammer\Desktop\MyProjects\C#\Inventory\Inventory.DataAccess.Tests\DbConnectionTests.cs" initialLine="13" containingFunctionPresentation="method 'Should_CreateNewDB_When_NoDbFound'">
-            <startOffsets>
-              <option value="338" />
-            </startOffsets>
-            <endOffsets>
-              <option value="399" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="C:\Users\Hammer\Desktop\MyProjects\C#\Inventory\Inventory.DataAccess.Tests\DbConnectionTests.cs" initialLine="13" containingFunctionPresentation="method 'Should_CreateNewDB_When_NoDbFound'" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
@@ -316,6 +269,19 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Inventory.Desktop/ViewModel/HomeViewModel.cs</url>
+          <line>160</line>
+          <properties documentPath="C:\Users\Hammer\Desktop\MyProjects\C#\Inventory\Inventory.Desktop\ViewModel\HomeViewModel.cs" initialLine="160" containingFunctionPresentation="method 'Handle'">
+            <startOffsets>
+              <option value="5774" />
+            </startOffsets>
+            <endOffsets>
+              <option value="5803" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="30" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

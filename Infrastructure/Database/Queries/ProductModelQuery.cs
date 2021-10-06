@@ -31,7 +31,6 @@ namespace Infrastructure.Database.Queries
 
         public async Task UpdateAsync(ProductModel model)
         {
-            //TODO: NOW TO STRING IS GONE ADD BACK FOR THE PRODUCT UPDATE
             const string sql = @"UPDATE Product
                                 SET
                                     Description = @Description,

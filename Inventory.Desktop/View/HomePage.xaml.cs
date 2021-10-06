@@ -8,7 +8,6 @@ namespace Inventory.Desktop.View
     /// </summary>
     public partial class HomePage : UserControl
     {
-        private readonly HomeViewModel vm;
 
         public HomePage(HomeViewModel vm)
         {
