@@ -16,7 +16,7 @@
                 FalseBrush="{StaticResource LightTextColorBrush}"
                 TrueBrush="White" />
             <converters:BoolToColorConverter
-                x:Key="isSelectedColor"
+                x:Key="IsSelectedColor"
                 FalseBrush="Transparent"
                 TrueBrush="{StaticResource SelectedColorBrush}" />
 
@@ -24,7 +24,7 @@
             <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
 
                 <Setter Property="Background"
-                        Value="{Binding SideBarSelected, Converter={StaticResource isSelectedColor}}" />
+                        Value="{Binding SideBarSelected, Converter={StaticResource IsSelectedColor}}" />
                 <Setter Property="BorderBrush" Value="Transparent" />
                 <Setter Property="HorizontalAlignment" Value="Stretch" />
 
@@ -116,7 +116,7 @@
                 Text="&#xf015;" />
 
             <TextBlock
-                x:Name="Name"
+                x:Name="ItemName"
                 Grid.Column="1"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"

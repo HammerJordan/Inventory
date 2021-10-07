@@ -43,7 +43,7 @@
 		        primary key autoincrement
 		        unique,
 	        Name TEXT not null,
-	        CreatedDateTime TEXT
+	        CreatedAt TEXT
         );";
 
         public const string CREATE_RECORD_ITEM_SCHEMA =

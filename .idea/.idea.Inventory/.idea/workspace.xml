@@ -15,19 +15,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7a6d2810-f582-42df-adfb-b5401f0dfa70" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Application.Tests/Services/ProductUpdateRule.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application.WPF/WebScraping/ProductUpdate/CheckProductForUpdatesCommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application.WPF/WebScraping/ProductUpdate/ProductUpdateRule.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Inventory/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Inventory/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application.Tests/WebScrapper/ProductScraperTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application.Tests/WebScrapper/ProductScraperTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application.WPF/Application.WPF.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Application.WPF/Application.WPF.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application.WPF/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application.WPF/DependencyInjection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application.WPF/WebScraping/Common/ICheckProudctForUpdates.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application.WPF/WebScraping/ProductScraper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application.WPF/WebScraping/ProductScraper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/App.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/App.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application.WPF/WebScraping/ProductUpdate/CheckProductForUpdatesCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application.WPF/WebScraping/ProductUpdate/CheckProductForUpdatesCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/Controls/SideBarItem.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/Controls/SideBarItem.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/Controls/SideBarItem.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/Controls/SideBarItem.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/Inventory.Desktop.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/Inventory.Desktop.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Inventory.Desktop/ViewModel/HomeViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/ViewModel/HomeViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.sln.DotSettings.user" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +116,6 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
-    <option name="autoscrollToSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
@@ -231,7 +223,7 @@
       <workItem from="1633564240411" duration="3983000" />
       <workItem from="1633572308406" duration="1874000" />
       <workItem from="1633608727335" duration="1738000" />
-      <workItem from="1633610499942" duration="4409000" />
+      <workItem from="1633610499942" duration="5007000" />
     </task>
     <servers />
   </component>

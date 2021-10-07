@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Input;
@@ -19,6 +18,8 @@ using Inventory.Domain.Models;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using PubSub;
+// ReSharper disable MemberCanBePrivate.Global
+// ReSharper disable UnusedAutoPropertyAccessor.Global
 
 
 namespace Inventory.Desktop.ViewModel
@@ -49,7 +50,6 @@ namespace Inventory.Desktop.ViewModel
         public decimal Subtotal => ProductViewModels.Sum(x => x.Quantity * x.ProductModel.Cost);
         public int TotalItems => ProductViewModels.Sum(x => x.Quantity);
 
-        private static int Foo = 0;
 
         public HomeViewModel(IExportCsvFile exportRecord,
             IRecordListItemQuery recordItemsQuery,
@@ -76,7 +76,6 @@ namespace Inventory.Desktop.ViewModel
             });
 
             ExportCommand = new RelayCommand(ExportRecord);
-            Foo++;
 
             Hub.Default.Subscribe<AddProductModelToRecordEvent>(AddProductModelToRecord);
             Hub.Default.Subscribe<RecordModelSelectEvent>(OpenNewRecord);
@@ -88,7 +87,7 @@ namespace Inventory.Desktop.ViewModel
         private void ExportRecord()
         {
             using var dialog = new FolderBrowserDialog();
-            var result = dialog.ShowDialog();
+            dialog.ShowDialog();
             string path = dialog.SelectedPath;
 
             _exportRecord.ExportToCSV(path, _recordProductList);
@@ -188,13 +187,13 @@ namespace Inventory.Desktop.ViewModel
 
             
 
-            foreach (var product in updatedItems)
+            foreach (var productViewModel in updatedItems
+                .Select(product => new ProductViewModel
             {
-                var productViewModel = new ProductViewModel
-                {
-                    ProductModel = product,
-                    Quantity = recordItemsArray.First(x => x.ProductID == product.ID).Quantity
-                };
+                ProductModel = product,
+                Quantity = recordItemsArray.First(x => x.ProductID == product.ID).Quantity
+            }))
+            {
                 productViewModel.PropertyChanged += ProductViewModelPropertyChanged;
                 ProductViewModels.Add(productViewModel);
             }

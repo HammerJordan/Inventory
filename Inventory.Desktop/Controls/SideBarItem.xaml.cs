@@ -68,7 +68,7 @@ namespace Inventory.Desktop.Controls
 
         private void OnSetTextChanged(DependencyPropertyChangedEventArgs e)
         {
-            Name.Text = e.NewValue.ToString();
+            ItemName.Text = e.NewValue.ToString();
         }
 
         private void OnIconChanged(DependencyPropertyChangedEventArgs e)

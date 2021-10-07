@@ -56,7 +56,7 @@ namespace Application.WPF.WebScraping.ProductUpdates
             }
             catch (Exception e)
             {
-                Log.Error("Unable to update product ID:{ID}, from {URL}", request.ModelToCheck.ID,
+                Log.Error(e,"Unable to update product ID:{ID}, from {URL}", request.ModelToCheck.ID,
                     request.ModelToCheck.URL);
                 
                 await _modelQuery.UpdateAsync(request.ModelToCheck);
