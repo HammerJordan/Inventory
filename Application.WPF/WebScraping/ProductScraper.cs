@@ -169,12 +169,17 @@ namespace Application.WPF.WebScraping
         private string GetUpc(IElement productElement)
         {
             var query = productElement.QuerySelectorAll("div");
-            if (query.Length < 5)
+            var upcDiv = query.FirstOrDefault(x => x.InnerHtml.Contains("UPC:"));
+            if (upcDiv == null)
                 return "";
+            var upcInnerHtml = upcDiv.InnerHtml;
+            int start = upcInnerHtml.IndexOf("UPC: </span>", StringComparison.Ordinal) + 12;
+            upcInnerHtml = upcInnerHtml.Substring(start);
+            int end = upcInnerHtml.IndexOf("</", StringComparison.Ordinal);
 
-            var inner = query[4].InnerHtml;
-            int end = inner.IndexOf("</span>", StringComparison.Ordinal) + 7;
-            return inner[end..];
+            var result = upcInnerHtml[0..end];
+
+            return result;
         }
 
         private string GetUnit(IElement productElement)

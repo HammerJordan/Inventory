@@ -23,6 +23,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Application.Core\Application.Core.csproj" />
+      <ProjectReference Include="..\Application.WPF\Application.WPF.csproj" />
     </ItemGroup>
 
 </Project>

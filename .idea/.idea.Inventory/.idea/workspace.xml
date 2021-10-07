@@ -15,17 +15,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7a6d2810-f582-42df-adfb-b5401f0dfa70" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Inventory.Desktop/Events/AddProductModelToRecordEvent.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application.Tests/WebScrapper/ProductScraperTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application.Tests/WebScrapper/WebPageLoaderTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Inventory/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Inventory/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Database/Queries/ProductModelQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Database/Queries/ProductModelQuery.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/Controls/ProductItem.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/Controls/ProductItem.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/Events/ProdcutModelAddRemove.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/Events/RecordModelSelect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/Events/RecordModelSelect.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/Inventory.Desktop.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/Inventory.Desktop.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/ViewModel/CatalogViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/ViewModel/CatalogViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/ViewModel/HomeViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/ViewModel/HomeViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/ViewModel/ProductViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/ViewModel/ProductViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/ViewModel/SelectRecordWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/ViewModel/SelectRecordWindowViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application.Tests/Application.Tests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Application.Tests/Application.Tests.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application.WPF/WebScraping/ProductScraper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application.WPF/WebScraping/ProductScraper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain.Tests/Domain.Tests.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain.Tests/UnitTest1.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/App.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/App.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/View/HomePage.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/View/HomePage.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.WebScraping.Tests/Inventory.WebScraping.Tests.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.WebScraping.Tests/ProductScraperTests.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.WebScraping.Tests/WebPageLoaderTests.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.WebScraping/DirectoryNode.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.WebScraping/Inventory.WebScraping.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.sln.DotSettings.user" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +90,6 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/cbc4469a215a48fca98fdf5b9f7a7d4a31000/14/SqlMapper.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bc3d7024e97f4f818de53bc3c23872b48f5790/233/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/578643b7d10a415b979d299b20801ef0f55f78/168/WpfXamlLoader.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Inventory.WebScraping/DirectoryNode.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e076aa0ddc1143c4ae72963282119f709cc00/1/AggregateExceptionExtractor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/adbabd2b288f4892be207445c67c39505c0c8/79/a4dc872e/SQLiteDataReader.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/578643b7d10a415b979d299b20801ef0f55f78/f4/515be3c4/WpfXamlLoader.cs" root0="SKIP_HIGHLIGHTING" />
@@ -218,6 +222,7 @@
       <workItem from="1633345871337" duration="6183000" />
       <workItem from="1633436439632" duration="20921000" />
       <workItem from="1633519700855" duration="2791000" />
+      <workItem from="1633564240411" duration="2549000" />
     </task>
     <servers />
   </component>
@@ -283,8 +288,27 @@
           </properties>
           <option name="timeStamp" value="30" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Application.Tests/WebScrapper/ProductScraperTests.cs</url>
+          <line>62</line>
+          <properties documentPath="C:\Users\Hammer\Desktop\MyProjects\C#\Inventory\Application.Tests\WebScrapper\ProductScraperTests.cs" initialLine="62" containingFunctionPresentation="method 'GetProductModelFromIElement_WithUnitAs_PackageOf100'">
+            <startOffsets>
+              <option value="2430" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2584" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="RiderUnitTests">
+        <watch expression="model" />
+        <watch expression="new System.Collections.Generic.ICollectionDebugView&lt;AngleSharp.Dom.Node&gt;(((AngleSharp.Html.Dom.HtmlListItemElement) ((AngleSharp.Dom.INode) upcSpan).Parent).ChildNodes._entries).Items[0]" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

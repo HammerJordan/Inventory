@@ -1,4 +1,5 @@
 ﻿using AngleSharp.Html.Dom;
+using Application.WPF.WebScraping;
 using Xunit;
 using FluentAssertions;
 

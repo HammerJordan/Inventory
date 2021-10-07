@@ -1,8 +1,8 @@
 ﻿using System.Linq;
 using AngleSharp.Html.Dom;
+using Application.WPF.WebScraping;
 using FluentAssertions;
 using Xunit;
-using Inventory.Domain.Models;
 
 namespace WebScraping.Test
 {
@@ -51,72 +51,73 @@ namespace WebScraping.Test
         }
         
         
+        [Fact]
+        public async void GetProductModelFromIElement_WithUnitAs_PackageOf100()
+        {
+            string url = @"https://ebhorsman.com/searchresults?find=NMC050TB";
+            IHtmlDocument page = await pageLoader.GetWebPageAsync(url);
+            var result = productScraper.GetProductLinksFromPage(page).First();
 
+            var model = productScraper.GetProductModel(result);
+            model.Name.Should().BeEquivalentTo("NMC050TB");
+            model.Description.Should()
+                .ContainEquivalentOf("T&amp;B Industrial Fitting® Flexible Non-Metallic Conduit  1/2 Inch  X 100 Foot  Black");
+            model.UPC.Should().BeEquivalentTo("78621010389");
+            model.Unit.Should().BeEquivalentTo("package of 100");
+            model.Cost.Should().Be(167.70m);
 
-        //[Fact]
-        //public async void GetProductModel_ReturnValidProductModel()
-        //{
-        //    string url =
-        //        @"https://ebhorsman.com/itemDetail?product=6641-w-energy-management-toggle-dimmer-leviton&p=12984";
-        //    IHtmlDocument page = await pageLoader.GetWebPageAsync(url);
+            model.URL.Should()
+                .BeEquivalentTo(
+                    "itemDetail?product=nmc050tb-t&b-flexible-non-metallic-conduit-&p=27230");
 
-        //    var model = productScraper.GetProductModel(page);
+            model.ImageHref.Should()
+                .BeEquivalentTo("https://storage.googleapis.com/ebh/images/product/27230.jpg");
 
-        //    model.Name.Should().BeEquivalentTo("6641-W");
+        }
 
-        //    model.Description.Should()
-        //        .BeEquivalentTo(@"Leviton® Electro-Mechanical Dimmer, 120 VAC, 1 Pole, Standard On/Off Mode, white");
+        [Fact]
+        public async void GetCategoriesLinks_ReturnAllCategories()
+        {
+            string url = @"https://ebhorsman.com/categories";
+            IHtmlDocument page = await pageLoader.GetWebPageAsync(url);
 
-        //    model.UPC.Should().BeEquivalentTo("06867919053");
+            var results = productScraper.GetCategoriesLinks(page);
 
-        //    model.Cost.Should().Be(25.25);
+            results.Count.Should().Be(26);
+        }
 
-        //    model.Unit.Should().BeEquivalentTo("each");
-        //}
+        [Fact]
+        public async void GetGroupLinks_ReturnAllCategories()
+        {
+            string url = @"https://ebhorsman.com/category-groups?type=energy-management&cat=3400";
+            IHtmlDocument page = await pageLoader.GetWebPageAsync(url);
 
-        //[Fact]
-        //public async void GetCategoriesLinks_ReturnAllCategories()
-        //{
-        //    string url = @"https://ebhorsman.com/categories";
-        //    IHtmlDocument page = await pageLoader.GetWebPageAsync(url);
+            var results = productScraper.GetCategoriesLinks(page);
 
-        //    var results = productScraper.GetCategoriesLinks(page);
+            results.Count.Should().Be(9);
+        }
 
-        //    results.Count.Should().Be(26);
-        //}
+        [Fact]
+        public async void GetProductLinks_ReturnsAllProductLinksOnAPage()
+        {
+            string url = @"https://ebhorsman.com/category-items?type=dimming-colour-change-kits&cat=340501";
+            IHtmlDocument page = await pageLoader.GetWebPageAsync(url);
 
-        //[Fact]
-        //public async void GetGroupLinks_ReturnAllCategories()
-        //{
-        //    string url = @"https://ebhorsman.com/category-groups?type=energy-management&cat=3400";
-        //    IHtmlDocument page = await pageLoader.GetWebPageAsync(url);
+            var results = productScraper.GetProductLinksFromPage(page);
 
-        //    var results = productScraper.GetCategoriesLinks(page);
+            results.Count.Should().Be(20);
+        }
 
-        //    results.Count.Should().Be(9);
-        //}
+        [Fact]
+        public async void GetNextProductLinkPage_ReturnsNextPageLinkOrNullIfNoNextPage()
+        {
+            string url = @"https://ebhorsman.com/category-items?type=dimming-colour-change-kits&cat=340501";
+            IHtmlDocument page = await pageLoader.GetWebPageAsync(url);
 
-        //[Fact]
-        //public async void GetProductLinks_ReturnsAllProductLinksOnAPage()
-        //{
-        //    string url = @"https://ebhorsman.com/category-items?type=dimming-colour-change-kits&cat=340501";
-        //    IHtmlDocument page = await pageLoader.GetWebPageAsync(url);
+            var result = productScraper.GetNextProductLinkPage(page);
 
-        //    var results = productScraper.GetProductLinksFromPage(page);
-
-        //    results.Count.Should().Be(30);
-        //}
-
-        //[Fact]
-        //public async void GetNextProductLinkPage_ReturnsNextPageLinkOrNullIfNoNextPage()
-        //{
-        //    string url = @"https://ebhorsman.com/category-items?type=dimming-colour-change-kits&cat=340501";
-        //    IHtmlDocument page = await pageLoader.GetWebPageAsync(url);
-
-        //    var result = productScraper.GetNextProductLinkPage(page);
-
-        //    result.Should().BeEquivalentTo("category-items?cat=340501&page=2");
-        //}
+            result.Should().BeEquivalentTo("category_items_test?cat=340501&page=2");
+        }
 
         [Fact(Skip = "Slow only for debugging")]
         public async void GetAllModelsFromCategories_ShouldReturnModels()

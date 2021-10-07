@@ -85,7 +85,7 @@ namespace Inventory.Desktop
         {
             string logPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             logPath = Path.Join(logPath, configuration["LoggingLocation"]);
-            logPath = Path.Join(logPath, "log.txt");
+            logPath = Path.Join(logPath, ".log");
             var logger = new LoggerConfiguration()
                 .MinimumLevel.Information()
                 .WriteTo.File(logPath, rollingInterval: RollingInterval.Day)
