@@ -1,4 +1,5 @@
 ﻿@using Inventory.Domain
+@using Inventory.Domain.Models
 @inherits LayoutComponentBase
 
 <div class="product-item-container">
@@ -14,11 +15,16 @@
     </div>
 
 
-    <button class="add-button">Add</button>
+    <button class="add-button" @onclick="@OnAddClick">Add</button>
 </div>
 
 @code
 {
     [Parameter] public ProductModel Product { get; set; }
+    [Parameter] public Action<ProductModel> OnAdd { get; set; }
 
+    private void OnAddClick()
+    {
+        OnAdd?.Invoke(Product);
+    }
 }

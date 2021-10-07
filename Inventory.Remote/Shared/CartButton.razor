@@ -1,0 +1,18 @@
+﻿@inject NavigationManager navigationManager
+
+<button class="button-container" @onclick="CartClicked">
+    <i class="fas fa-shopping-cart"></i>
+    <div class="numberOfItems">@CartCount</div>
+</button>
+
+@code{
+    
+    [Parameter]
+     public int CartCount { get; set; }
+
+    private void CartClicked()
+    {
+        navigationManager.NavigateTo(navigationManager.Uri + "/RecordItems");
+    }
+
+}

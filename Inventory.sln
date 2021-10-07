@@ -13,15 +13,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{3D26CB08
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inventory.Remote", "Inventory.Remote\Inventory.Remote.csproj", "{DED4093F-61B5-4754-9CBB-4B4472178972}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Core", "Application.Core\Application.Core.csproj", "{FB29CE20-8C3D-463D-9E86-3EE482348029}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Core", "Application.Core\Application.Core.csproj", "{FB29CE20-8C3D-463D-9E86-3EE482348029}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{94EF70DC-1E99-4C0A-A395-A26C403FF92D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{94EF70DC-1E99-4C0A-A395-A26C403FF92D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Tests", "Application.Tests\Application.Tests.csproj", "{A94B6D15-4219-43A5-87B6-AFB8FCBADF14}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Tests", "Infrastructure.Tests\Infrastructure.Tests.csproj", "{0EA03A2B-E1CB-4381-B97F-AB602EC3633C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.WPF", "Application.WPF\Application.WPF.csproj", "{596B5972-15A1-436E-A72E-8F4A91D756D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.WPF", "Application.WPF\Application.WPF.csproj", "{596B5972-15A1-436E-A72E-8F4A91D756D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

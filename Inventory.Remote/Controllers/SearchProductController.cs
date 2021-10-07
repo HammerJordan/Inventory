@@ -1,11 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Inventory.Domain;
-using Inventory.DataAccess;
+using Inventory.Application.Core.Models.Product.Commands;
+using Inventory.Domain.Models;
+using MediatR;
 
 namespace Inventory.Remote.Controllers
 {
@@ -13,17 +11,20 @@ namespace Inventory.Remote.Controllers
     [ApiController]
     public class SearchProductController : ControllerBase
     {
-        private readonly ProductSearchEngine searchEngine;
+        private readonly IMediator _mediator;
 
-        public SearchProductController(ProductSearchEngine searchEngine)
+        public SearchProductController(IMediator mediator)
         {
-            this.searchEngine = searchEngine;
+            _mediator = mediator;
         }
 
         [HttpGet]
-        public IEnumerable<ProductModel> Get(string search)
+        public async Task<IEnumerable<ProductModel>> Get(string search)
         {
-            return searchEngine.SearchResults(search).Take(50);
+            var searchCommand = new ProductSearchCommand(search);
+
+            var models = await _mediator.Send(searchCommand);
+            return models;
         }
 
 

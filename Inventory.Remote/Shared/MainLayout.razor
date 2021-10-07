@@ -1,13 +1,19 @@
-﻿@inject IHttpClientFactory ClientFactory
+﻿@*@inject IHttpClientFactory ClientFactory
 
 @using Inventory.Domain
 @using System.Text.Json
 @using System.Text.Json.Serialization;
 @using System.Net.Http.Json
+@using Inventory.Domain.Models
+
+@page "/"
+@page "/record/{ID}"*@
 
 @inherits LayoutComponentBase
 
-<div style="display: flex">
+@Body
+
+@*<div style="display: flex">
     <a href="/Swagger">Swagger</a>
     <SearchBar OnSearchEnter="SearchResultUpdated" />
 </div>
@@ -26,6 +32,9 @@
 @code
 {
     List<ProductModel> Models = new List<ProductModel>();
+
+    [Parameter]
+    public string ID { get; set; }
 
 
     private async void SearchResultUpdated(string search)
@@ -47,4 +56,4 @@
 
     }
 
-}
+}*@

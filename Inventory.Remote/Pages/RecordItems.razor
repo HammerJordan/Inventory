@@ -1,0 +1,37 @@
+﻿@inject IHttpClientFactory ClientFactory
+@inject IRecordModelQuery _recordModelQuery
+@inject IRecordListItemQuery _recordListItemQuery
+@inject IMediator _mediator
+@page "/{ID:int}/RecordItems"
+@using Inventory.Domain.Models
+@using global::Application.Core.Models.RecordProductList
+@using global::Application.Core.Models.RecordProductList.Queries
+@using MediatR
+@using global::Application.Core.Models.Record.Queries
+
+
+        
+    @foreach (var model in RecordProductList.ProductLists.Select(x => x.ProductModel))
+    {
+        <ItemDisplay Product="model" />
+    }
+
+
+@code {
+    [Parameter]
+    public int ID { get; set; }
+    
+    public RecordModel Record { get; private set; }
+    public RecordProductList RecordProductList { get; private set; }
+    
+    protected override async Task OnParametersSetAsync()
+    {
+        var record = await _recordModelQuery.GetAsync((int)ID);
+        if (record is null)
+            return;
+
+        var recordList = await _recordListItemQuery.LoadAllAsync(record);
+
+        RecordProductList = new RecordProductList(Record, recordList.ToList(), _mediator);
+    }
+}

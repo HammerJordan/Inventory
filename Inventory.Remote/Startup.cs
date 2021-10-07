@@ -1,19 +1,13 @@
 using Inventory.Remote.Data;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Inventory.Domain;
-using Inventory.DataAccess;
-using Microsoft.AspNetCore.Mvc;
+using Infrastructure;
+using Inventory.Application.Core;
 using Microsoft.OpenApi.Models;
 
 namespace Inventory.Remote
@@ -32,15 +26,15 @@ namespace Inventory.Remote
         public void ConfigureServices(IServiceCollection services)
         {
             IConfiguration config = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json")
+                .AddJsonFile("settings.json")
                 .Build();
 
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
-            services
-                .AddTransient<ISqlLiteDataAccess, SqlLiteDataAccess>()
-                .AddTransient<ProductSearchEngine>();
+
+            services.AddApplicationCore();
+            services.AddInfrastructure(config);
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -49,18 +43,8 @@ namespace Inventory.Remote
             });
 
             services.AddHttpClient();
-
-            AddDbConfig(config,services);
         }
 
-        private static void AddDbConfig(IConfiguration config, IServiceCollection serviceCollection)
-        {
-            string pathToDb = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            pathToDb = Path.Join(pathToDb, config["DbLocation"]);
-            var dbConnection = new DbConnection(pathToDb);
-
-            serviceCollection.AddSingleton(dbConnection);
-        }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

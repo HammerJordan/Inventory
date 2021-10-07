@@ -1,0 +1,21 @@
+﻿.button-container {
+    background: #202020;
+    height: 30px;
+    width: 65px;
+    display: flex;
+    align-items: center;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    margin-right: 10px;
+}
+
+.fa-shopping-cart {
+    color: white;
+
+}
+
+.numberOfItems{
+    color: white;
+    margin-left: 4px;
+}

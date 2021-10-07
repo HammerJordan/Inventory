@@ -22,7 +22,7 @@ namespace Infrastructure.Database.Queries
         {
             const string sql = "SELECT * FROM Record WHERE ID == @id LIMIT 1;";
 
-            var awaiter = await _dbAccess.LoadDataAsync<RecordModel, int>(sql, id);
+            var awaiter = await _dbAccess.LoadDataAsync<RecordModel, object>(sql, new{id});
 
             var result = awaiter.FirstOrDefault();
 

@@ -1,7 +1,75 @@
-﻿@page "/"
+﻿@inject IHttpClientFactory ClientFactory
+@inject IRecordModelQuery _recordModelQuery
+@inject IRecordListItemQuery _recordListItemQuery
+@inject IMediator _mediator
 
-<h1>Hello, world!</h1>
+@using System.Text.Json
+@using System.Text.Json.Serialization;
+@using System.Net.Http.Json
+@using global::Application.Core.Models.Record.Queries
+@using global::Application.Core.Models.RecordProductList
+@using global::Application.Core.Models.RecordProductList.Queries
+@using Inventory.Domain.Models
+@using MediatR
 
-Welcome to your new appdp.
+@page "/{ID:int}"
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+<div style="display: flex">
+    <a href="/Swagger">Swagger</a>
+    <SearchBar OnSearchEnter="SearchResultUpdated"/>
+    <CartButton  CartCount="@RecordProductList.ProductLists.Count" />
+
+</div>
+
+
+<div class="search-result-container">
+
+    @foreach (var model in _models)
+    {
+        <ItemDisplay Product="model" OnAdd="OnAdd"/>
+    }
+
+</div>
+
+
+@code
+{
+    List<ProductModel> _models = new List<ProductModel>();
+
+    [Parameter]
+    public int ID { get; set; }
+
+    public RecordModel Record { get; private set; }
+    public RecordProductList RecordProductList { get; private set; }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        var record = await _recordModelQuery.GetAsync((int)ID);
+        if (record is null)
+            return;
+
+        Record = record;
+
+        var records = await _recordListItemQuery.LoadAllAsync(record);
+
+        var recordList = records.Select(x => new RecordListItem(x.ProductModel, record) { Quantity = x.Quantity }).ToList();
+
+        RecordProductList = new RecordProductList(Record, recordList, _mediator);
+    }
+
+    private async void SearchResultUpdated(string search)
+    {
+        var http = ClientFactory.CreateClient();
+
+        _models = await http.GetFromJsonAsync<List<ProductModel>>($"https://localhost:5001/api/SearchProduct?search={search}").ConfigureAwait(false);
+
+
+        await InvokeAsync(StateHasChanged);
+    }
+
+    private async void OnAdd(ProductModel productModel)
+    {
+        RecordProductList.Add(productModel);
+        await InvokeAsync(StateHasChanged);
+    }
+}

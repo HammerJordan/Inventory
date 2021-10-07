@@ -15,12 +15,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7a6d2810-f582-42df-adfb-b5401f0dfa70" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Inventory.Remote/Pages/RecordItems.razor" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Inventory.Remote/Shared/CartButton.razor" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Inventory.Remote/Shared/CartButton.razor.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Inventory/.idea/dataSources/7b481bc5-6e11-43dc-a446-32253272f4b4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Inventory/.idea/dataSources/7b481bc5-6e11-43dc-a446-32253272f4b4.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Inventory/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Inventory/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application.WPF/WebScraping/ProductUpdate/CheckProductForUpdatesCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application.WPF/WebScraping/ProductUpdate/CheckProductForUpdatesCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/Controls/SideBarItem.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/Controls/SideBarItem.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/Controls/SideBarItem.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/Controls/SideBarItem.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/config/applicationhost.config" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/config/applicationhost.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/net5.0-windows/Inventory.Desktop.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/Build/net5.0-windows/Inventory.Desktop.deps.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/net5.0-windows/Inventory.Desktop.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Build/net5.0-windows/Inventory.Desktop.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/net5.0-windows/Inventory.Desktop.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Build/net5.0-windows/Inventory.Desktop.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/net5.0-windows/ref/Inventory.Desktop.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Build/net5.0-windows/ref/Inventory.Desktop.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/net5.0-windows/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Build/net5.0-windows/settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/net5.0/Inventory.Remote.StaticWebAssets.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Build/net5.0/Inventory.Remote.StaticWebAssets.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/net5.0/Inventory.Remote.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Build/net5.0/Inventory.Remote.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/net5.0/Inventory.Remote.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Build/net5.0/Inventory.Remote.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/net5.0/ref/Inventory.Remote.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Build/net5.0/ref/Inventory.Remote.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Database/Queries/RecordModelQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Database/Queries/RecordModelQuery.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Inventory.Desktop/Inventory.Desktop.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/Inventory.Desktop.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/ViewModel/HomeViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/ViewModel/HomeViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Remote/Controllers/SearchProductController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Remote/Controllers/SearchProductController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Remote/Inventory.Remote.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Remote/Inventory.Remote.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Remote/Pages/Index.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Remote/Pages/Index.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Remote/Pages/_Host.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Remote/Pages/_Host.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Remote/Shared/ItemDisplay.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Remote/Shared/ItemDisplay.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Remote/Shared/MainLayout.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Remote/Shared/MainLayout.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Remote/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Remote/Startup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Remote/appsettings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.sln.DotSettings.user" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +88,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bc3d7024e97f4f818de53bc3c23872b48f5790/3A/RuntimeType.CoreCLR.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9356308fdfc64560868de4ee015f859b1a578/3/Parallel.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/49954eb56c674e768be7a97e2a6794c343e00/13/Guard.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bc3d7024e97f4f818de53bc3c23872b48f5790/B2/Nullable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Models/RecordListItem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/3834795bf41b4e628161509eca0f58228200/22/8772d15d/INotificationHandler`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/49954eb56c674e768be7a97e2a6794c343e00/28/MethodCall.cs" root0="SKIP_HIGHLIGHTING" />
@@ -99,6 +121,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2a925edfe5584632978e98fd8509cdf4d7a8/6a/415f1db9/ExceptionAggregator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3834795bf41b4e628161509eca0f58228200/11/IMediator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3aa0b4f5b859439cb46e3d299e3e3154218578/44/ComponentDispatcher.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1f4690e732f84ca9a1afbdcaceab37426c990/12/EventCallbackWorkItem.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2b369d19768947fcba24b2d54b76014c1bbb78/38/ControllerBase.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bc3d7024e97f4f818de53bc3c23872b48f5790/1CD/Future.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2b369d19768947fcba24b2d54b76014c1bbb78/5F/ObjectResult.cs" root0="FORCE_HIGHLIGHTING" />
@@ -130,7 +153,7 @@
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C#" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected=".NET Project.Inventory.Desktop">
+  <component name="RunManager" selected=".NET Launch Settings Profile.Inventory.Remote">
     <configuration name="Inventory.Desktop" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="$PROJECT_DIR$/Inventory.Desktop/bin/Debug/net5.0-windows/Inventory.Desktop.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -224,6 +247,9 @@
       <workItem from="1633572308406" duration="1874000" />
       <workItem from="1633608727335" duration="1738000" />
       <workItem from="1633610499942" duration="5007000" />
+      <workItem from="1633622874600" duration="4975000" />
+      <workItem from="1633629170618" duration="312000" />
+      <workItem from="1633629504578" duration="31000" />
     </task>
     <servers />
   </component>
