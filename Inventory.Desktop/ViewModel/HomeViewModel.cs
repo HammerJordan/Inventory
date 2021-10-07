@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
@@ -10,6 +11,7 @@ using Application.Core.Common.Interfaces;
 using Application.Core.Models.Record.Queries;
 using Application.Core.Models.RecordProductList;
 using Application.Core.Models.RecordProductList.Queries;
+using Application.WPF.WebScraping.ProductUpdates;
 using Inventory.Desktop.Commands;
 using Inventory.Desktop.Events;
 using Inventory.Desktop.PopupWindows;
@@ -117,6 +119,9 @@ namespace Inventory.Desktop.ViewModel
         private void OpenRecord()
         {
             var window = _serviceProvider.GetService<SelectRecordWindow>();
+            if (window == null)
+                return;
+            
             window.Owner = System.Windows.Application.Current.MainWindow;
             window.ShowDialog();
         }
@@ -134,7 +139,7 @@ namespace Inventory.Desktop.ViewModel
                 _recordProductList.SetQuantity(vm.ProductModel, vm.Quantity);
         }
 
-        private void AddProductModelToRecord(AddProductModelToRecordEvent notification)
+        private async Task AddProductModelToRecord(AddProductModelToRecordEvent notification)
         {
             if (Record is null || notification?.Model?.ProductModel is null)
                 return;
@@ -147,9 +152,11 @@ namespace Inventory.Desktop.ViewModel
             }
             else
             {
+                var productModel = await _mediator.Send(new CheckProductForUpdatesCommand(notification.Model.ProductModel));
+                
                 var productViewModel = new ProductViewModel
                 {
-                    ProductModel = notification.Model.ProductModel,
+                    ProductModel = productModel,
                     Quantity = notification.Model.Quantity
                 };
 
@@ -160,26 +167,33 @@ namespace Inventory.Desktop.ViewModel
             }
 
             OnPropertyChanged(null);
-            return;
         }
 
-
-
-        private void OpenNewRecord(RecordModelSelectEvent recordEvent)
+        private async Task OpenNewRecord(RecordModelSelectEvent recordEvent)
         {
             if (recordEvent.Record is null)
                 return;
             Record = recordEvent.Record;
             ProductViewModels.Clear();
 
-            var recordItems = _recordItemsQuery.LoadAllAsync(Record).Result;
+            var recordItems = await _recordItemsQuery.LoadAllAsync(Record);
+            var recordItemsArray = recordItems as RecordListItem[] ?? recordItems.ToArray();
+            var updatedItems = new List<ProductModel>();
+            
+            foreach (var item in recordItemsArray)
+            {
+                var model = await _mediator.Send(new CheckProductForUpdatesCommand(item.ProductModel));
+                updatedItems.Add(model);
+            }
 
-            foreach (var product in recordItems)
+            
+
+            foreach (var product in updatedItems)
             {
                 var productViewModel = new ProductViewModel
                 {
-                    ProductModel = product.ProductModel,
-                    Quantity = product.Quantity
+                    ProductModel = product,
+                    Quantity = recordItemsArray.First(x => x.ProductID == product.ID).Quantity
                 };
                 productViewModel.PropertyChanged += ProductViewModelPropertyChanged;
                 ProductViewModels.Add(productViewModel);

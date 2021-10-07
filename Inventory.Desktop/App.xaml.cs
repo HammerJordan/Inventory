@@ -54,6 +54,7 @@ namespace Inventory.Desktop
         {
             IServiceCollection services = new ServiceCollection();
 
+
             services
                 .AddSingleton(Configuration)
                 .AddSingleton<MainWindow>()
@@ -70,10 +71,9 @@ namespace Inventory.Desktop
                 .AddTransient<SelectRecordWindowViewModel>()
                 .AddTransient<ViewResolveService>();
 
+            services.AddApplicationWpf(Configuration);
             services.AddApplicationCore();
             services.AddInfrastructure(Configuration);
-            services.AddApplicationWpf();
-
             services.AddMediatR(Assembly.GetExecutingAssembly());
 
             SetupLogger(services, Configuration);

@@ -2,12 +2,10 @@
 	<s:String x:Key="/Default/Environment/AssemblyExplorer/XmlDocument/@EntryValue">&lt;AssemblyExplorer&gt;&#xD;
   &lt;Assembly Path="C:\Users\Hammer\.nuget\packages\mediatr\9.0.0\lib\netstandard2.1\MediatR.dll" /&gt;&#xD;
 &lt;/AssemblyExplorer&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=29b3c2ff_002D36e3_002D4f43_002Dbf6f_002Da8062cf90994/@EntryIndexedValue">&lt;SessionState ContinuousTestingIsOn="True" ContinuousTestingMode="1" IsActive="True" Name="Session" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;And&gt;&#xD;
-    &lt;Project Location="C:\Users\Hammer\Desktop\MyProjects\C#\Inventory\Application.Tests" Presentation="&amp;lt;Tests&amp;gt;\&amp;lt;Application.Tests&amp;gt;" /&gt;&#xD;
-    &lt;Namespace&gt;WebScraping.Test&lt;/Namespace&gt;&#xD;
-  &lt;/And&gt;&#xD;
-&lt;/SessionState&gt;</s:String>
+	
+	
+	
+	
 	
 	
 	

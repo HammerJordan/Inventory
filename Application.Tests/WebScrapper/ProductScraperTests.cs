@@ -157,5 +157,21 @@ namespace WebScraping.Test
 
             result.Should().NotBeEmpty();
         }
+
+        [Fact]
+        public async void GetGetProductModelFromUrl()
+        {
+            string url =
+                "https://ebhorsman.com/itemDetail?product=ipkit-e-energy-management-colour-change-kit-&p=49241";
+
+           var product = await productScraper.GetProductModelFromUrlAsync(url);
+
+           product.Name.Should().BeEquivalentTo("IPKIT-E");
+           product.Description.Should().BeEquivalentTo("Leviton® Color Change Kits for IllumaTech Dimmer - black");
+           product.Cost.Should().Be(5.52m);
+           product.Unit.Should().BeEquivalentTo("each");
+           product.UPC.Should().BeEquivalentTo("07847701044");
+
+        }
     }
 }

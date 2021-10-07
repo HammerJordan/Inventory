@@ -12,4 +12,8 @@
       <PackageReference Include="AngleSharp" Version="1.0.0-alpha-844" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="WebScraping\Commands" />
+    </ItemGroup>
+
 </Project>

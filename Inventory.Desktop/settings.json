@@ -10,5 +10,6 @@
     "Tools",
     "Signaling",
     "Special Offers"
-  ]
+  ],
+  "DaysBetweenUpdates": "1"
 }

@@ -4,8 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using AngleSharp.Dom;
 using AngleSharp.Html.Dom;
-using Inventory.Domain;
 using Inventory.Domain.Models;
+// ReSharper disable StringIndexOfIsCultureSpecific.1
 
 namespace Application.WPF.WebScraping
 {
@@ -27,13 +27,28 @@ namespace Application.WPF.WebScraping
                 UPC = GetUpc(productElement),
                 Cost = GetCost(productElement),
                 Unit = GetUnit(productElement),
-                URL = GetURL(productElement),
+                URL = GetUrl(productElement),
                 ImageHref = GetImageHref(productElement)
             };
             return product;
         }
 
+        public async Task<ProductModel> GetProductModelFromUrlAsync(string url)
+        {
+            var page = await pageLoader.GetWebPageAsync(url);
 
+            var product = new ProductModel
+            {
+                Name = GetName(page),
+                Description = GetDescription(page),
+                UPC = GetUpc(page),
+                Cost = GetCost(page),
+                Unit = GetUnit(page),
+                URL = url,
+                ImageHref = GetImageHref(page)
+            };
+            return product;
+        }
 
         public List<DirectoryNode> GetCategoriesLinks(IHtmlDocument page, params string[] exclude)
         {
@@ -46,13 +61,13 @@ namespace Application.WPF.WebScraping
 
             foreach (var child in parent.Children)
             {
-                var href = child.Children[0].GetAttribute("href");
-                var name = child.Children[0].Children[1].Children[0].Children[0].TextContent;
+                string href = child.Children[0].GetAttribute("href");
+                string name = child.Children[0].Children[1].Children[0].Children[0].TextContent;
 
                 if (exclude.Any(x => string.Equals(x, name, StringComparison.CurrentCultureIgnoreCase)))
                     continue;
 
-                output.Add(new DirectoryNode() {Category = name, Url = href});
+                output.Add(new DirectoryNode { Category = name, Url = href });
             }
 
             return output;
@@ -73,7 +88,7 @@ namespace Application.WPF.WebScraping
             if (result is null || result.Children.Length <= 1)
                 return null;
 
-            var link = result.Children[1].Children[0].GetAttribute("href");
+            string link = result.Children[1].Children[0].GetAttribute("href");
 
             if (link == "#")
                 return null;
@@ -84,7 +99,7 @@ namespace Application.WPF.WebScraping
         public async Task<List<ProductModel>> GetAllModelsFromCategoriesAsync(string entryUrl,
             params string[] exclude)
         {
-            var directoryTree = new DirectoryTreeModel() {RootURL = entryUrl};
+            var directoryTree = new DirectoryTreeModel { RootURL = entryUrl };
 
             var tasks = new List<Task>();
 
@@ -112,7 +127,7 @@ namespace Application.WPF.WebScraping
                 while (true)
                 {
                     // productLinks.AddRange(GetProductLinksFromPage(page));
-                    var next = GetNextProductLinkPage(page);
+                    string next = GetNextProductLinkPage(page);
                     if (next is null)
                         break;
                     page = await pageLoader.GetWebPageAsync(directoryTree.GetUrlFromHref(next));
@@ -156,55 +171,116 @@ namespace Application.WPF.WebScraping
                 await WalkCategoryGroups(child, directoryTree, exclude);
         }
 
-        private string GetName(IElement productElement)
+        private static string GetName(IElement productElement)
         {
             return productElement.QuerySelectorAll("a").First(x => x.ClassName == "mobile-no").InnerHtml;
         }
 
-        private string GetDescription(IElement productElement)
+        private static string GetName(IHtmlDocument productElement)
+        {
+            string result = productElement.QuerySelectorAll(".product-title")
+                .FirstOrDefault()?
+                .Children?.FirstOrDefault()?.InnerHtml;
+            return result;
+        }
+
+        private static string GetDescription(IElement productElement)
         {
             return productElement.QuerySelectorAll("p").First(x => x.ClassName == "mobile-no").InnerHtml;
         }
 
-        private string GetUpc(IElement productElement)
+        private static string GetDescription(IHtmlDocument productElement)
+        {
+            string result = productElement
+                .QuerySelectorAll(".product-desc").FirstOrDefault()
+                ?.InnerHtml;
+
+            return result;
+        }
+
+        private static string GetUpc(IElement productElement)
         {
             var query = productElement.QuerySelectorAll("div");
             var upcDiv = query.FirstOrDefault(x => x.InnerHtml.Contains("UPC:"));
             if (upcDiv == null)
                 return "";
-            var upcInnerHtml = upcDiv.InnerHtml;
+            string upcInnerHtml = upcDiv.InnerHtml;
             int start = upcInnerHtml.IndexOf("UPC: </span>", StringComparison.Ordinal) + 12;
-            upcInnerHtml = upcInnerHtml.Substring(start);
+            upcInnerHtml = upcInnerHtml[start..];
             int end = upcInnerHtml.IndexOf("</", StringComparison.Ordinal);
 
-            var result = upcInnerHtml[0..end];
+            string result = upcInnerHtml[..end];
 
             return result;
         }
 
-        private string GetUnit(IElement productElement)
+        private static string GetUpc(IHtmlDocument productElement)
         {
-            var inner = productElement.QuerySelectorAll("li")[1].InnerHtml;
+            var query = productElement.QuerySelectorAll("div");
+            var upcDiv = query.FirstOrDefault(x => x.InnerHtml.Contains("UPC:"));
+            if (upcDiv == null)
+                return "";
+            string upcInnerHtml = upcDiv.InnerHtml;
+            int start = upcInnerHtml.IndexOf("UPC: </span>", StringComparison.Ordinal) + 12;
+            upcInnerHtml = upcInnerHtml[start..];
+            int end = upcInnerHtml.IndexOf("</", StringComparison.Ordinal);
+
+            string result = upcInnerHtml[..end];
+
+            return result;
+        }
+
+        private static string GetUnit(IElement productElement)
+        {
+            string inner = productElement.QuerySelectorAll("li")[1].InnerHtml;
             int end = inner.IndexOf(';') + 1;
             return inner[end..];
         }
 
-        private decimal GetCost(IElement productElement)
+        private static string GetUnit(IHtmlDocument productElement)
         {
-            var inner = productElement.QuerySelectorAll("li")[0].InnerHtml;
+            var inner = productElement.QuerySelectorAll(".product-stock").FirstOrDefault();
+            if (inner == null)
+                return "";
+            
+            string innerHtml = inner.InnerHtml;
+            int start = inner.InnerHtml.IndexOf(";") + 1;
+            innerHtml = innerHtml[start..];
+            int end = innerHtml.IndexOf(" ");
+
+            return innerHtml[..end];
+        }
+
+        private static decimal GetCost(IElement productElement)
+        {
+            string inner = productElement.QuerySelectorAll("li")[0].InnerHtml;
             int end = inner.IndexOf(';') + 1;
             return decimal.Parse(inner[end..]);
         }
-        
-        private string GetURL(IElement productElement)
+
+        private static decimal GetCost(IHtmlDocument productElement)
+        {
+            var innerElement = productElement.QuerySelector(".product-stock");
+            var unOrderedListElement = innerElement.QuerySelector("ul");
+            string innerHtml = unOrderedListElement.InnerHtml;
+            int start = innerHtml.IndexOf("</i>") + 4;
+
+            innerHtml = innerHtml[start..];
+            int end = innerHtml.IndexOf(" ");
+            innerHtml = innerHtml[..end];
+
+            return decimal.Parse(innerHtml);
+        }
+
+        private static string GetUrl(IElement productElement)
         {
             return productElement
                 .QuerySelectorAll("a")
                 .First(x => x.ClassName == "mobile-no")
                 .GetAttribute("href");
         }
-        
-        private string GetImageHref(IElement productElement)
+
+        private static string GetImageHref(IElement productElement)
         {
             return productElement
                 .QuerySelector("a.thumbnail")
@@ -213,5 +289,10 @@ namespace Application.WPF.WebScraping
                 .GetAttribute("src");
         }
 
+        private static string GetImageHref(IHtmlDocument productElement)
+        {
+            var result = productElement.QuerySelector("#item-display");
+            return result.GetAttribute("src");
+        }
     }
 }
