@@ -16,15 +16,11 @@ namespace Inventory.Desktop.Commands
 
         public RelayCommand(Action<object> execute) : this(o => true, execute)
         {
-
         }
-
 
         public RelayCommand(Action execute) : this(o => execute())
         {
-
         }
-
 
         public event EventHandler CanExecuteChanged
         {

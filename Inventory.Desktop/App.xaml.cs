@@ -1,50 +1,66 @@
 ﻿using System;
 using System.IO;
+using System.Reflection;
 using System.Windows;
-using Inventory.Core;
-using Inventory.Core.IoC;
-using Inventory.Core.Services;
-using Inventory.DataAccess;
-using Inventory.DataAccess.Queries;
+using Application.WPF;
+using Infrastructure;
+using Inventory.Application.Core;
 using Inventory.Desktop.PopupWindows;
 using Inventory.Desktop.Services;
 using Inventory.Desktop.View;
 using Inventory.Desktop.ViewModel;
+using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using PubSub;
-using WebScraping;
+using Serilog;
 
 // ReSharper disable PossibleNullReferenceException
 
 namespace Inventory.Desktop
 {
     /// <summary>
-    /// Interaction logic for App.xaml
+    ///     Interaction logic for App.xaml
     /// </summary>
-    public partial class App : Application
+    public partial class App : System.Windows.Application
     {
+        public IConfiguration Configuration { get; private set; }
+        public IServiceProvider ServiceCollection { get; private set; }
+
         protected override void OnStartup(StartupEventArgs e)
         {
-            SetupIoC();
-            base.OnStartup(e);
-            IoC.Get<MainWindow>().Show();
-        }
-
-        private void SetupIoC()
-        {
-            IConfiguration config = new ConfigurationBuilder()
+            Configuration = new ConfigurationBuilder()
                 .AddJsonFile("settings.json")
                 .Build();
 
-            var serviceCollection = new ServiceCollection();
-            serviceCollection
-                .AddSingleton(config)
+            Setup();
+
+            SetupExceptionLogging();
+
+            base.OnStartup(e);
+            ServiceCollection.GetService<MainWindow>().Show();
+            
+            
+        }
+
+        private static void SetupExceptionLogging()
+        {
+            AppDomain.CurrentDomain.UnhandledException += (sender, args) =>
+            {
+                Log.Fatal("Fatal Unhandled exception  {args}", args.ExceptionObject.ToString());
+            };
+        }
+
+        private void Setup()
+        {
+            IServiceCollection services = new ServiceCollection();
+
+
+            services
+                .AddSingleton(Configuration)
                 .AddSingleton<MainWindow>()
                 .AddSingleton<MainWindowViewModel>();
 
-            // views and vm
-            serviceCollection
+            services
                 .AddTransient<HomePage>()
                 .AddTransient<HomeViewModel>()
                 .AddTransient<CatalogPage>()
@@ -53,30 +69,29 @@ namespace Inventory.Desktop
                 .AddTransient<SettingsViewModel>()
                 .AddTransient<SelectRecordWindow>()
                 .AddTransient<SelectRecordWindowViewModel>()
-                .AddTransient<ViewResolveService>()
-                .AddTransient<IRecordQuery, RecordQuery>()
-                .AddTransient<IExportRecord, ExportRecord>()
-                .AddTransient<IRecordItemsQuery, RecordItemsQuery>()
-                .AddTransient<WebPageLoader>()
-                .AddTransient<ProductScraper>()
-                .AddTransient<ProductUpdateRunner>()
-                .AddTransient<ISqlLiteDataAccess, SqlLiteDataAccess>()
-                .AddTransient<ProductSearchEngine>();
+                .AddTransient<ViewResolveService>();
 
-            AddDbConfig(config, serviceCollection);
+            services.AddApplicationWpf(Configuration);
+            services.AddApplicationCore();
+            services.AddInfrastructure(Configuration);
+            services.AddMediatR(Assembly.GetExecutingAssembly());
 
-            var services = serviceCollection.BuildServiceProvider();
+            SetupLogger(services, Configuration);
 
-            IoC.IoCInitialize(services);
+            ServiceCollection = services.BuildServiceProvider();
         }
 
-        private static void AddDbConfig(IConfiguration config, ServiceCollection serviceCollection)
+        private static void SetupLogger(IServiceCollection services, IConfiguration configuration)
         {
-            string pathToDb = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            pathToDb = Path.Join(pathToDb, config["DbLocation"]);
-            var dbConnection = new DbConnection(pathToDb);
+            string logPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            logPath = Path.Join(logPath, configuration["LoggingLocation"]);
+            logPath = Path.Join(logPath, ".log");
+            var logger = new LoggerConfiguration()
+                .MinimumLevel.Information()
+                .WriteTo.File(logPath, rollingInterval: RollingInterval.Day)
+                .CreateLogger();
 
-            serviceCollection.AddSingleton(dbConnection);
+            Log.Logger = logger;
         }
     }
 }

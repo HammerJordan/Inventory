@@ -1,13 +1,15 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Navigation;
+using Infrastructure.Exceptions;
 using Inventory.Desktop.Events;
 using Inventory.Desktop.ViewModel;
-using PubSub;
+using MediatR;
 
 namespace Inventory.Desktop.Controls
 {
@@ -16,6 +18,7 @@ namespace Inventory.Desktop.Controls
     /// </summary>
     public partial class ProductItem : UserControl
     {
+
         public static readonly DependencyProperty ViewModelProperty = DependencyProperty.Register(
             "ViewModel", typeof(ProductViewModel), typeof(ProductItem),
             new PropertyMetadata(default(ProductViewModel)));
@@ -108,12 +111,15 @@ namespace Inventory.Desktop.Controls
 
         private void AddButtonClick(object sender, RoutedEventArgs routedEventArgs)
         {
-            if (!(DataContext is ProductViewModel model))
-                return;
+            throw new NotImplementedException("ProductItem.xaml.cs AddButtonClick Not used Anymore");
+            
+            //if (DataContext is not ProductViewModel model)
+            //    return;
 
-            var hub = Hub.Default;
+            //_mediator.Publish(new AddProductModelToRecordEvent(model));
+            
+            
 
-            hub.Publish(new ProductModelAddRemove(model.ProductModel));
         }
     }
 }

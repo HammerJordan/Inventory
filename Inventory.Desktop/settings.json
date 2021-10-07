@@ -1,5 +1,6 @@
 {
   "DbLocation": "Inventory\\InventoryDB.db",
+  "LoggingLocation": "Inventory\\Logs",
   "EntryUrl": "https://ebhorsman.com/categories",
   "IgnoreProducts": [
     "Instrumentation",
@@ -9,5 +10,6 @@
     "Tools",
     "Signaling",
     "Special Offers"
-  ]
+  ],
+  "DaysBetweenUpdates": "1"
 }

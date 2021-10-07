@@ -1,20 +1,22 @@
 ﻿using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
 using System.Windows.Input;
-using Inventory.Core;
+using Application.Core.Models.Record.Queries;
 using Inventory.Desktop.Commands;
 using Inventory.Desktop.Events;
+using Inventory.Domain.Models;
+using MediatR;
 using PubSub;
 
 namespace Inventory.Desktop.ViewModel
 {
     public class SelectRecordWindowViewModel : ViewModelBase
     {
-        private readonly IRecordQuery recordQuery;
-
+        private readonly IRecordModelQuery recordQuery;
+        private readonly IMediator _mediator;
         private RecordModel selectedRecord;
         public ObservableCollection<RecordModel> RecordsCollection { get; set; }
+
         public RecordModel SelectedRecord
         {
             get => selectedRecord;
@@ -25,54 +27,45 @@ namespace Inventory.Desktop.ViewModel
                 OnPropertyChanged(null);
             }
         }
+        
+        
 
         public ICommand CloseWindowCommand { get; set; }
         public ICommand OpenRecordCommand { get; }
         public ICommand AddNewRecordCommand { get; }
         public ICommand DeleteRecordCommand { get; }
 
-        public SelectRecordWindowViewModel(IRecordQuery recordQuery)
+        public SelectRecordWindowViewModel(IRecordModelQuery recordQuery, IMediator mediator)
         {
             this.recordQuery = recordQuery;
-            var loadedInvoices = recordQuery.LoadAll();
+            _mediator = mediator;
+            var loadedInvoices = recordQuery.LoadAllAsync().Result;
 
             RecordsCollection = new ObservableCollection<RecordModel>();
-            
-            foreach (RecordModel record in loadedInvoices)
-            {
+
+            foreach (var record in loadedInvoices)
                 RecordsCollection.Add(record);
-                //record.PropertyChanged += RecordOnPropertyChanged;
-            }
+            
 
             AddNewRecordCommand = new RelayCommand(AddNewRecord);
             DeleteRecordCommand = new RelayCommand(DeleteRecord);
             OpenRecordCommand = new RelayCommand(OpenRecord);
         }
 
-
-
-        private void RecordOnPropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            if (sender is not RecordModel model)
-                return;
-
-            recordQuery.Update(model);
-        }
-
         private void AddNewRecord()
         {
-            var record = recordQuery.Create();
-            RecordModel recordViewModel = record;
+            var record = recordQuery.CreateAsync(new RecordModel()).Result;
 
-            RecordsCollection.Insert(0, recordViewModel);
-            SelectedRecord = recordViewModel;
+            RecordsCollection.Insert(0, record);
+            SelectedRecord = record;
         }
+
         private void DeleteRecord()
         {
             if (SelectedRecord == null)
                 return;
 
-            recordQuery.Delete(SelectedRecord);
+            recordQuery.DeleteAsync(SelectedRecord);
 
             int selectedIndex = RecordsCollection
                 .IndexOf(RecordsCollection.First(x => x.ID == SelectedRecord.ID));
@@ -82,18 +75,16 @@ namespace Inventory.Desktop.ViewModel
             if (RecordsCollection.Count == 0)
                 SelectedRecord = null;
             else
-            {
                 SelectedRecord = selectedIndex == 0 ?
                     RecordsCollection[0] :
                     RecordsCollection[selectedIndex - 1];
-            }
 
             OnPropertyChanged(null);
-
         }
+
         private void OpenRecord()
         {
-            Hub.Default.Publish(new RecordModelSelect(SelectedRecord));
+            Hub.Default.Publish(new RecordModelSelectEvent(SelectedRecord));
             CloseWindowCommand.Execute(null);
         }
     }

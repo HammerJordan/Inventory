@@ -1,53 +1,74 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
-using System.Windows;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Windows.Input;
-using Inventory.Core;
-using Inventory.Core.IoC;
-using Inventory.DataAccess;
+using Application.Core.Common.Interfaces;
+using Application.Core.Models.Record.Queries;
+using Application.Core.Models.RecordProductList;
+using Application.Core.Models.RecordProductList.Queries;
+using Application.WPF.WebScraping.ProductUpdates;
 using Inventory.Desktop.Commands;
 using Inventory.Desktop.Events;
 using Inventory.Desktop.PopupWindows;
-using Microsoft.Win32;
+using Inventory.Domain.Models;
+using MediatR;
+using Microsoft.Extensions.DependencyInjection;
 using PubSub;
 
 
 namespace Inventory.Desktop.ViewModel
 {
-    public class HomeViewModel : ViewModelBase
+    public class HomeViewModel : ViewModelBase 
     {
+        private readonly IExportCsvFile _exportRecord;
+        private readonly IRecordListItemQuery _recordItemsQuery;
+        private readonly IRecordModelQuery _recordQuery;
+        private readonly IMediator _mediator;
+        private readonly IServiceProvider _serviceProvider;
 
-        private readonly IRecordQuery recordQuery;
-        private readonly IRecordItemsQuery recordItemsQuery;
-        private readonly IExportRecord exportRecord;
+        private RecordProductList _recordProductList;
+
         public ICommand OpenRecordCommand { get; }
         public ICommand EditRecordCommand { get; }
         public ICommand RenameRecordCommand { get; }
         public ICommand DeleteRecordCommand { get; }
         public ICommand ExportCommand { get; }
         public ObservableCollection<ProductViewModel> ProductViewModels { get; set; }
+
         public RecordModel Record { get; set; }
         public bool EditRecordName { get; set; }
         public string RecordNameEdit { get; set; }
+
         public bool RecordNameEmpty => EditRecordName && string.IsNullOrEmpty(RecordNameEdit);
+
         public decimal Subtotal => ProductViewModels.Sum(x => x.Quantity * x.ProductModel.Cost);
         public int TotalItems => ProductViewModels.Sum(x => x.Quantity);
 
-        public HomeViewModel(IRecordQuery recordQuery, IRecordItemsQuery recordItemsQuery,IExportRecord exportRecord)
-        {
-            this.recordQuery = recordQuery;
-            this.recordItemsQuery = recordItemsQuery;
-            this.exportRecord = exportRecord;
-            ProductViewModels = new ObservableCollection<ProductViewModel>();
+        private static int Foo = 0;
 
-            var hub = Hub.Default;
-            hub.Subscribe<ProductModelAddRemove>(ModifyProducts);
+        public HomeViewModel(IExportCsvFile exportRecord,
+            IRecordListItemQuery recordItemsQuery,
+            IRecordModelQuery recordQuery,
+            IMediator mediator,
+            IServiceProvider serviceProvider)
+        {
+            _exportRecord = exportRecord;
+            _recordItemsQuery = recordItemsQuery;
+            _recordQuery = recordQuery;
+            _mediator = mediator;
+            _serviceProvider = serviceProvider;
+
+            ProductViewModels = new ObservableCollection<ProductViewModel>();
 
             OpenRecordCommand = new RelayCommand(_ => true, _ => OpenRecord());
             EditRecordCommand = new RelayCommand(() => EditRecordName = true);
             RenameRecordCommand = new RelayCommand(RenameRecord);
-            DeleteRecordCommand = new RelayCommand((x) =>
+            DeleteRecordCommand = new RelayCommand(x =>
             {
                 if (x is not ProductViewModel vm)
                     return;
@@ -55,39 +76,29 @@ namespace Inventory.Desktop.ViewModel
             });
 
             ExportCommand = new RelayCommand(ExportRecord);
+            Foo++;
 
-            Hub.Default.Subscribe<RecordModelSelect>(this, x =>
-            {
-                Record = x.Record;
-                ProductViewModels.Clear();
+            Hub.Default.Subscribe<AddProductModelToRecordEvent>(AddProductModelToRecord);
+            Hub.Default.Subscribe<RecordModelSelectEvent>(OpenNewRecord);
 
-                foreach (var product in recordItemsQuery.LoadAll(Record))
-                {
-                    var productViewModel = new ProductViewModel { ProductModel = product, Quantity = product.Quantity};
-                    productViewModel.PropertyChanged += ProductViewModelPropertyChanged;
-                    ProductViewModels.Add(productViewModel);
-                }
-
-
-                OnPropertyChanged(null);
-            });
         }
+
+
 
         private void ExportRecord()
         {
-            using var dialog = new System.Windows.Forms.FolderBrowserDialog();
-            System.Windows.Forms.DialogResult result = dialog.ShowDialog();
+            using var dialog = new FolderBrowserDialog();
+            var result = dialog.ShowDialog();
             string path = dialog.SelectedPath;
 
-            exportRecord.ExportToCSV(path,Record,ProductViewModels.Select(x => x.ProductModel));
-
+            _exportRecord.ExportToCSV(path, _recordProductList);
         }
 
         private void DeleteRecord(ProductViewModel vm)
         {
             ProductViewModels.Remove(vm);
+            _recordProductList.Remove(vm.ProductModel);
             OnPropertyChanged(null);
-            recordItemsQuery.Delete(Record,vm.ProductModel);
         }
 
         private void RenameRecord()
@@ -101,55 +112,102 @@ namespace Inventory.Desktop.ViewModel
             RecordNameEdit = string.Empty;
             EditRecordName = false;
 
-            recordQuery.Update(Record);
+            _recordQuery.UpdateAsync(Record);
             OnPropertyChanged(null);
         }
 
         private void OpenRecord()
         {
-            var window = IoC.Get<SelectRecordWindow>();
-            window.Owner = Application.Current.MainWindow;
+            var window = _serviceProvider.GetService<SelectRecordWindow>();
+            if (window == null)
+                return;
+            
+            window.Owner = System.Windows.Application.Current.MainWindow;
             window.ShowDialog();
         }
 
-        public void ModifyProducts(ProductModelAddRemove model)
-        {
-            if (Record is null)
-                return;
+        
 
-            if (ProductViewModels.Any(x => x.ProductModel.ID == model.Model.ID))
-            {
-                var productViewModel = ProductViewModels.First(x => x.ProductModel.ID == model.Model.ID);
-                productViewModel.Quantity++;
-                productViewModel.ProductModel.Quantity = productViewModel.Quantity;
-                recordItemsQuery.UpdateProduct(Record, productViewModel.ProductModel);
-            }
-            else
-            {
-                var productViewModel = new ProductViewModel { ProductModel = model.Model };
-                productViewModel.PropertyChanged += ProductViewModelPropertyChanged;
-                productViewModel.ProductModel.Quantity = productViewModel.Quantity;
-                recordItemsQuery.InsertProduct(Record, productViewModel.ProductModel);
-                ProductViewModels.Add(productViewModel);
-            }
-
-
-            OnPropertyChanged(null);
-        }
-
-        private void ProductViewModelPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void ProductViewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName is not "Quantity")
                 return;
 
-
             OnPropertyChanged(null);
+            
             if (sender is ProductViewModel vm)
+                _recordProductList.SetQuantity(vm.ProductModel, vm.Quantity);
+        }
+
+        private async Task AddProductModelToRecord(AddProductModelToRecordEvent notification)
+        {
+            if (Record is null || notification?.Model?.ProductModel is null)
+                return;
+
+            if (ProductViewModels.Any(x => x.ProductModel.ID == notification.Model.ProductModel.ID))
             {
-                vm.ProductModel.Quantity = vm.Quantity;
-                recordItemsQuery.UpdateProduct(Record,vm.ProductModel);
+                var productViewModel = ProductViewModels
+                    .First(x => x.ProductModel.ID == notification.Model.ProductModel.ID);
+                productViewModel.Quantity++;
+            }
+            else
+            {
+                var productModel = await _mediator.Send(new CheckProductForUpdatesCommand(notification.Model.ProductModel));
+                
+                var productViewModel = new ProductViewModel
+                {
+                    ProductModel = productModel,
+                    Quantity = notification.Model.Quantity
+                };
+
+                _recordProductList.Add(productViewModel.ProductModel, productViewModel.Quantity);
+                ProductViewModels.Add(productViewModel);
+
+                productViewModel.PropertyChanged += ProductViewModelPropertyChanged;
             }
 
+            OnPropertyChanged(null);
         }
+
+        private async Task OpenNewRecord(RecordModelSelectEvent recordEvent)
+        {
+            if (recordEvent.Record is null)
+                return;
+            Record = recordEvent.Record;
+            ProductViewModels.Clear();
+
+            var recordItems = await _recordItemsQuery.LoadAllAsync(Record);
+            var recordItemsArray = recordItems as RecordListItem[] ?? recordItems.ToArray();
+            var updatedItems = new List<ProductModel>();
+            
+            foreach (var item in recordItemsArray)
+            {
+                var model = await _mediator.Send(new CheckProductForUpdatesCommand(item.ProductModel));
+                updatedItems.Add(model);
+            }
+
+            
+
+            foreach (var product in updatedItems)
+            {
+                var productViewModel = new ProductViewModel
+                {
+                    ProductModel = product,
+                    Quantity = recordItemsArray.First(x => x.ProductID == product.ID).Quantity
+                };
+                productViewModel.PropertyChanged += ProductViewModelPropertyChanged;
+                ProductViewModels.Add(productViewModel);
+            }
+
+            _recordProductList = new RecordProductList(Record, ProductViewModels
+                .Select(item => new RecordListItem(item.ProductModel, Record)
+                    { Quantity = item.Quantity })
+                .ToList(), _mediator);
+
+            OnPropertyChanged(null);
+        }
+
+
+
     }
 }
