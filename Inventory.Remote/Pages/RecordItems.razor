@@ -1,5 +1,4 @@
-﻿@inject IHttpClientFactory ClientFactory
-@inject IRecordModelQuery _recordModelQuery
+﻿@inject IRecordModelQuery _recordModelQuery
 @inject IRecordListItemQuery _recordListItemQuery
 @inject IMediator _mediator
 @page "/{ID:int}/RecordItems"
@@ -13,7 +12,7 @@
         
     @foreach (var model in RecordProductList.ProductLists.Select(x => x.ProductModel))
     {
-        <ItemDisplay Product="model" />
+        <ItemDisplay Product="model" ActionName="Delete" OnAction="@DeleteRecord" />
     }
 
 
@@ -33,5 +32,11 @@
         var recordList = await _recordListItemQuery.LoadAllAsync(record);
 
         RecordProductList = new RecordProductList(Record, recordList.ToList(), _mediator);
+    }
+
+    private async void DeleteRecord(ProductModel model)
+    {
+        RecordProductList.Remove(model);
+        await InvokeAsync(StateHasChanged);
     }
 }

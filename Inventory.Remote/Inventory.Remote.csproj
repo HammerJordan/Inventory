@@ -10,6 +10,9 @@
 
     <ItemGroup>
         <None Include="Shared\ItemDisplay.razor" />
+        <None Include="wwwroot\fontAwsome\css\all.css" />
+        <None Include="wwwroot\fontAwsome\css\all.min.css" />
+        <None Include="wwwroot\fontAwsome\css\brands.css" />
     </ItemGroup>
 
     <ItemGroup>
@@ -31,7 +34,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Assets/"/>
+        <Folder Include="Assets" />
+        <Folder Include="Assets/" />
     </ItemGroup>
 
 

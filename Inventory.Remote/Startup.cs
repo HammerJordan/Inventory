@@ -37,10 +37,7 @@ namespace Inventory.Remote
             services.AddInfrastructure(config);
 
             services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApplication", Version = "v1" });
-            });
+
 
             services.AddHttpClient();
         }
@@ -56,15 +53,8 @@ namespace Inventory.Remote
             else
             {
                 app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
-            
-            app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApplication v1"));
-
-
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
@@ -73,7 +63,6 @@ namespace Inventory.Remote
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/_Host");
             });

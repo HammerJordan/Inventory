@@ -5,26 +5,69 @@
 <div class="product-item-container">
 
     <div class="horizontal-group">
-        <img class="product-display" src="@Product.ImageHref" alt="product image" />
+        <img class="product-display" src="@Product.ImageHref" alt="product image"/>
         <div class="product-info-group">
-            <div class="product-name">@Product.Name</div>
-            <div class="product-upc">UPC: @Product.UPC</div>
+            <span class="product-name">
+                @Product.Name
+                <span class="product-upc @UseUpc">
+                    - Upc: @Product.UPC
+                </span>
+            </span>
             <p class="product-desc">@Product.Description</p>
-            <div class="product-cost">$ @Product.Cost</div>
+            <span class="product-cost">
+                @Product.Cost
+                <span class="product-unit">
+                    @Product.Unit
+                </span>
+            </span>
+
+
+            <div class="last-item">
+                <span class="item-qty">
+                    <button class="qty-button" @onmousedown="@DecrementQuantity">-</button>
+                    <span class="qty">Qty <input class="qty-amount" type="text" @bind="Quantity"/></span>
+                    <button class="qty-button" @onmousedown="@IncrementQuantity">+</button>
+                </span>
+
+                <button class="add-button" @onmousedown="@OnAddClick">@ActionName</button>
+            </div>
+
+
         </div>
     </div>
 
 
-    <button class="add-button" @onclick="@OnAddClick">Add</button>
+    
 </div>
 
 @code
 {
-    [Parameter] public ProductModel Product { get; set; }
-    [Parameter] public Action<ProductModel> OnAdd { get; set; }
+    [Parameter]
+    public ProductModel Product { get; set; }
+
+    [Parameter]
+    public Action<ProductModel> OnAction { get; set; }
+    [Parameter]
+    public string ActionName { get; set; }
+
+    public string UseUpc => string.IsNullOrEmpty(Product.UPC) ? "hidden" : "";
+
+    public int Quantity { get; set; } = 1;
 
     private void OnAddClick()
     {
-        OnAdd?.Invoke(Product);
+        OnAction?.Invoke(Product);
+    }
+
+    private void DecrementQuantity()
+    {
+        Quantity--;
+        if (Quantity < 1)
+            Quantity = 1;
+    }
+
+    private void IncrementQuantity()
+    {
+        Quantity++;
     }
 }

@@ -1,5 +1,4 @@
-﻿@inject IHttpClientFactory ClientFactory
-@inject IRecordModelQuery _recordModelQuery
+﻿@inject IRecordModelQuery _recordModelQuery
 @inject IRecordListItemQuery _recordListItemQuery
 @inject IMediator _mediator
 
@@ -9,13 +8,13 @@
 @using global::Application.Core.Models.Record.Queries
 @using global::Application.Core.Models.RecordProductList
 @using global::Application.Core.Models.RecordProductList.Queries
+@using Inventory.Application.Core.Models.Product.Commands
 @using Inventory.Domain.Models
 @using MediatR
 
 @page "/{ID:int}"
 
 <div style="display: flex">
-    <a href="/Swagger">Swagger</a>
     <SearchBar OnSearchEnter="SearchResultUpdated"/>
     <CartButton  CartCount="@RecordProductList.ProductLists.Count" />
 
@@ -26,7 +25,7 @@
 
     @foreach (var model in _models)
     {
-        <ItemDisplay Product="model" OnAdd="OnAdd"/>
+        <ItemDisplay Product="model" OnAction="OnAdd" ActionName="Add"/>
     }
 
 </div>
@@ -59,10 +58,12 @@
 
     private async void SearchResultUpdated(string search)
     {
-        var http = ClientFactory.CreateClient();
+        
 
-        _models = await http.GetFromJsonAsync<List<ProductModel>>($"https://localhost:5001/api/SearchProduct?search={search}").ConfigureAwait(false);
+        var searchCommand = new ProductSearchCommand(search);
 
+        var result = await _mediator.Send(searchCommand);
+        _models = result.ToList();
 
         await InvokeAsync(StateHasChanged);
     }
