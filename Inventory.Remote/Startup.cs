@@ -9,6 +9,7 @@ using System.IO;
 using Infrastructure;
 using Inventory.Application.Core;
 using Microsoft.OpenApi.Models;
+using Serilog;
 
 namespace Inventory.Remote
 {
@@ -40,6 +41,26 @@ namespace Inventory.Remote
 
 
             services.AddHttpClient();
+        }
+
+        private static void SetupLogger(IServiceCollection services, IConfiguration configuration)
+        {
+            string logPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            logPath = Path.Join(logPath, configuration["LoggingLocation"]);
+            logPath = Path.Join(logPath, "Remote.log");
+            var logger = new LoggerConfiguration()
+                .MinimumLevel.Information()
+                .WriteTo.File(logPath, rollingInterval: RollingInterval.Day)
+                .CreateLogger();
+
+            Log.Logger = logger;
+
+
+            AppDomain.CurrentDomain.UnhandledException += (sender, args) =>
+            {
+                Log.Fatal("Fatal Unhandled exception  {args}", args.ExceptionObject.ToString());
+            };
+
         }
 
 

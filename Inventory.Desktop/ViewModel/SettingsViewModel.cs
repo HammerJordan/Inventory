@@ -7,10 +7,13 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using Application.Core.Common.Exceptions;
 using Application.Core.Models.Product.Queries;
 using Application.WPF.WebScraping.Common;
 using Inventory.Desktop.Commands;
+using Inventory.Desktop.PopupWindows;
 using QRCoder;
+using Microsoft.Extensions.DependencyInjection;
 using PixelFormat = System.Windows.Media.PixelFormat;
 
 namespace Inventory.Desktop.ViewModel
@@ -18,13 +21,13 @@ namespace Inventory.Desktop.ViewModel
     public class SettingsViewModel : ViewModelBase
     {
         private readonly IProductUpdateRunner _productUpdateRunner;
+        private readonly IServiceProvider _serviceProvider;
 
         private double progressBar;
 
         public ICommand UpdateDatabaseCommand { get; }
-        public ICommand StartRemoteCommand { get; }
+        public ICommand OpenRemoteWindowCommand { get; }
 
-        public BitmapSource QrBitmap { get; }
 
         public double ProgressBar
         {
@@ -32,9 +35,10 @@ namespace Inventory.Desktop.ViewModel
             set => SetProperty(ref progressBar, value);
         }
 
-        public SettingsViewModel(IProductUpdateRunner databaseUpdate)
+        public SettingsViewModel(IProductUpdateRunner databaseUpdate, IServiceProvider serviceProvider)
         {
             _productUpdateRunner = databaseUpdate;
+            _serviceProvider = serviceProvider;
 
             UpdateDatabaseCommand = new RelayCommand(x => true, async x =>
             {
@@ -42,66 +46,22 @@ namespace Inventory.Desktop.ViewModel
                 await databaseUpdate.RunProductUpdateAsync(CallBackUpdate);
             });
 
-            StartRemoteCommand = new RelayCommand(StartRemote);
-
-
-            QRCodeGenerator generator = new QRCodeGenerator();
-
-            var gen = new PayloadGenerator.Url(@"https://192.168.0.16:45456/4");
-
-            QRCodeData data = generator.CreateQrCode(gen);
-
-            var qrCode = new QRCode(data);
-
-            var qrBitmap = qrCode.GetGraphic(10);
-
-            var x = CreateBitmapSourceFromGdiBitmap(qrBitmap);
-
-            QrBitmap = x;
-
+            OpenRemoteWindowCommand = new RelayCommand(OpenRemoteWindow);
         }
 
-        public static BitmapSource CreateBitmapSourceFromGdiBitmap(Bitmap bitmap)
+        
+
+        private void OpenRemoteWindow()
         {
-            if (bitmap == null)
-                throw new ArgumentNullException("bitmap");
+            var remoteWindow = _serviceProvider.GetService<RemoteWindow>();
+            if (remoteWindow == null)
+                throw new NotFoundException("Remote Window cant be found");
 
-            var rect = new Rectangle(0, 0, bitmap.Width, bitmap.Height);
+            remoteWindow.Owner = System.Windows.Application.Current.MainWindow;
+            remoteWindow.ShowDialog();
 
-            var bitmapData = bitmap.LockBits(
-                rect,
-                ImageLockMode.ReadWrite,
-                System.Drawing.Imaging.PixelFormat.Format32bppArgb);
 
-            try
-            {
-                var size = (rect.Width * rect.Height) * 4;
 
-                return BitmapSource.Create(
-                    bitmap.Width,
-                    bitmap.Height,
-                    bitmap.HorizontalResolution,
-                    bitmap.VerticalResolution,
-                    PixelFormats.Bgra32,
-                    null,
-                    bitmapData.Scan0,
-                    size,
-                    bitmapData.Stride);
-            }
-            finally
-            {
-                bitmap.UnlockBits(bitmapData);
-            }
-        }
-
-        private void StartRemote()
-        {
-            Process prc = new Process();
-            prc.StartInfo.FileName =
-                "C:\\Users\\Hammer\\Desktop\\MyProjects\\C#\\Inventory\\Inventory.Remote\\bin\\Release\\net5.0\\publish\\Inventory.Remote.exe";
-            prc.StartInfo.UseShellExecute = true;
-            prc.StartInfo.WindowStyle = ProcessWindowStyle.Minimized;
-            prc.Start();
         }
 
         private void CallBackUpdate()

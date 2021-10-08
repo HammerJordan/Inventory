@@ -5,6 +5,6 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <_PublishTargetUrl>C:\Users\Hammer\Desktop\MyProjects\C#\Inventory\Inventory.Remote\bin\Release\net5.0\publish\</_PublishTargetUrl>
-    <History>True|2021-10-07T18:03:00.5063835Z;True|2021-10-07T11:00:10.4238015-07:00;</History>
+    <History>True|2021-10-08T19:38:04.8479047Z;True|2021-10-08T12:34:52.0625420-07:00;True|2021-10-08T12:31:37.3090845-07:00;True|2021-10-07T11:03:00.5063835-07:00;True|2021-10-07T11:00:10.4238015-07:00;</History>
   </PropertyGroup>
 </Project>

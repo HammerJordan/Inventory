@@ -2,11 +2,17 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
+    <Compile Update="PopupWindows\RemoteWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="PopupWindows\SelectRecordWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="PopupWindows\RemoteWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="PopupWindows\SelectRecordWindow.xaml">
       <SubType>Designer</SubType>
     </Page>

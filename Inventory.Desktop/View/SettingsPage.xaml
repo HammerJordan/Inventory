@@ -19,7 +19,7 @@
             Minimum="0"
             Value="{Binding ProgressBar}" />
 
-        <Button Command="{Binding StartRemoteCommand}" Content="Start Remote" />
+        <Button Command="{Binding OpenRemoteWindowCommand}" Content="Start Remote" />
 
         <Image
             Width="150"

@@ -69,7 +69,9 @@ namespace Inventory.Desktop
                 .AddTransient<SettingsViewModel>()
                 .AddTransient<SelectRecordWindow>()
                 .AddTransient<SelectRecordWindowViewModel>()
-                .AddTransient<ViewResolveService>();
+                .AddTransient<ViewResolveService>()
+                .AddTransient<RemoteWindow>()
+                .AddSingleton<RemoteWindowViewModel>();
 
             services.AddApplicationWpf(Configuration);
             services.AddApplicationCore();
@@ -85,13 +87,20 @@ namespace Inventory.Desktop
         {
             string logPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             logPath = Path.Join(logPath, configuration["LoggingLocation"]);
-            logPath = Path.Join(logPath, ".log");
+            logPath = Path.Join(logPath, "WPF.log");
             var logger = new LoggerConfiguration()
                 .MinimumLevel.Information()
                 .WriteTo.File(logPath, rollingInterval: RollingInterval.Day)
                 .CreateLogger();
 
             Log.Logger = logger;
+        }
+
+        protected override void OnExit(ExitEventArgs e)
+        {
+            ServiceCollection.GetService<RemoteWindowViewModel>().StopProcess();
+
+            base.OnExit(e);
         }
     }
 }
