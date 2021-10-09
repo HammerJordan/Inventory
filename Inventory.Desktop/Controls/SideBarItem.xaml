@@ -23,8 +23,7 @@
 
             <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
 
-                <Setter Property="Background"
-                        Value="{Binding SideBarSelected, Converter={StaticResource IsSelectedColor}}" />
+                <Setter Property="Background" Value="{Binding SideBarSelected, Converter={StaticResource IsSelectedColor}}" />
                 <Setter Property="BorderBrush" Value="Transparent" />
                 <Setter Property="HorizontalAlignment" Value="Stretch" />
 
@@ -66,23 +65,14 @@
                 <Style.Triggers>
 
 
-                    <DataTrigger
-                        Binding="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=IsMouseOver}"
-                        Value="True">
+                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=IsMouseOver}" Value="True">
                         <Setter Property="Foreground" Value="White" />
                     </DataTrigger>
 
 
                 </Style.Triggers>
             </Style>
-
-            <!--<converters:BoolToColorConverter x:Key="BoolToColorConverter"
-                                             FalseBrush="{StaticResource LightTextColorBrush}"
-                                             TrueBrush="White" />-->
-
         </ResourceDictionary>
-
-
     </UserControl.Resources>
 
 

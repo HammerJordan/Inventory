@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -86,9 +87,12 @@ namespace Inventory.Desktop.ViewModel
 
         private void ExportRecord()
         {
+            //TODO Open a export wizard.
             using var dialog = new FolderBrowserDialog();
             dialog.ShowDialog();
             string path = dialog.SelectedPath;
+            if (string.IsNullOrEmpty(path))
+                return;
 
             _exportRecord.ExportToCSV(path, _recordProductList);
         }
@@ -117,10 +121,11 @@ namespace Inventory.Desktop.ViewModel
 
         private void OpenRecord()
         {
+            
+
             var window = _serviceProvider.GetService<SelectRecordWindow>();
             if (window == null)
                 return;
-            
             window.Owner = System.Windows.Application.Current.MainWindow;
             window.ShowDialog();
         }
