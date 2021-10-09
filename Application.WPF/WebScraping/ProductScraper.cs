@@ -233,8 +233,9 @@ namespace Application.WPF.WebScraping
         private static string GetUnit(IElement productElement)
         {
             string inner = productElement.QuerySelectorAll("li")[1].InnerHtml;
-            int end = inner.IndexOf(';') + 1;
-            return inner[end..];
+            int start = inner.IndexOf(';') + 1;
+            int end = inner.IndexOf('<', start);
+            return end != -1 ? inner[start..end] : inner[start..];
         }
 
         private static string GetUnit(IHtmlDocument productElement)

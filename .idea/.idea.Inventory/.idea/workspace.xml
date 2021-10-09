@@ -15,7 +15,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7a6d2810-f582-42df-adfb-b5401f0dfa70" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Inventory.Remote/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Remote/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Inventory/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Inventory/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application.Tests/WebScrapper/ProductScraperTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application.Tests/WebScrapper/ProductScraperTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application.WPF/WebScraping/ProductScraper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application.WPF/WebScraping/ProductScraper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/PopupWindows/RemoteWindow.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/PopupWindows/RemoteWindow.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/PopupWindows/SelectRecordWindow.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/PopupWindows/SelectRecordWindow.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.sln.DotSettings.user" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,7 +132,7 @@
     <property name="settings.editor.selected.configurable" value="ReSharper" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.Inventory.Remote">
+  <component name="RunManager" selected=".NET Project.Inventory.Desktop">
     <configuration name="Inventory.Desktop" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="$PROJECT_DIR$/Inventory.Desktop/bin/Debug/net5.0-windows/Inventory.Desktop.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -229,6 +234,9 @@
       <workItem from="1633708216414" duration="5386000" />
       <workItem from="1633716352788" duration="200000" />
       <workItem from="1633716577891" duration="1333000" />
+      <workItem from="1633726396215" duration="622000" />
+      <workItem from="1633727074133" duration="687000" />
+      <workItem from="1633792301121" duration="389000" />
     </task>
     <servers />
   </component>
@@ -280,19 +288,6 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="26" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Application.WPF/WebScraping/ProductScraper.cs</url>
-          <line>49</line>
-          <properties documentPath="C:\Users\Hammer\Desktop\MyProjects\C#\Inventory\Application.WPF\WebScraping\ProductScraper.cs" initialLine="49" containingFunctionPresentation="method 'GetProductModelFromUrlAsync'">
-            <startOffsets>
-              <option value="1539" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1554" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="45" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

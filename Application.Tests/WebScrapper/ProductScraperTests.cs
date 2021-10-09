@@ -73,7 +73,8 @@ namespace WebScraping.Test
             model.ImageHref.Should()
                 .BeEquivalentTo("https://storage.googleapis.com/ebh/images/product/27230.jpg");
 
-        }
+        }        
+
 
         [Fact]
         public async void GetCategoriesLinks_ReturnAllCategories()
@@ -173,5 +174,7 @@ namespace WebScraping.Test
            product.UPC.Should().BeEquivalentTo("07847701044");
 
         }
+        
+
     }
 }

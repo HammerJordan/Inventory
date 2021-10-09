@@ -9,6 +9,8 @@
     Title="RemoteWindow"
     Width="400"
     Height="350"
+    WindowStartupLocation="CenterOwner"
+    TextOptions.TextFormattingMode="Display"
     d:DataContext="{d:DesignInstance Type=viewModel:RemoteWindowViewModel}"
     Background="{StaticResource Dark-Brush}"
     BorderBrush="Black"
