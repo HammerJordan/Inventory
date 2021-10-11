@@ -48,5 +48,6 @@ namespace Inventory.Desktop
                     }
                 }
         }
+
     }
 }
