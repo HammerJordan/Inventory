@@ -34,8 +34,8 @@ namespace Infrastructure.Database.Queries
 
         public async Task<RecordModel> CreateAsync(RecordModel model)
         {
-            var sql = @"INSERT INTO Record (Name, CreatedDateTime) 
-                            VALUES (@Name,@CreatedDate)";
+            var sql = @"INSERT INTO Record (Name, CreatedAt) 
+                            VALUES (@Name, @CreatedDate)";
 
             var prams = new
             {
