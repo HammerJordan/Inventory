@@ -50,12 +50,14 @@
                     FontFamily="{StaticResource FontAwesomeSolid}"
                     FontSize="14"
                     Foreground="#666666"
+                    IsHitTestVisible="False"
                     Text="Search" />
                 <TextBlock
                     Margin="20,0,0,0"
                     VerticalAlignment="Center"
                     FontSize="20"
                     Foreground="#666666"
+                    IsHitTestVisible="False"
                     Text="Search"
                     Visibility="{Binding SearchBox, Converter={StaticResource StringToVisibility}}" />
 

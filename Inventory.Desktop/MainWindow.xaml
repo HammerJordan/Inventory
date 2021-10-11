@@ -56,7 +56,7 @@
         </Style>-->
 
         <!--  Outer menu items  -->
-        <Style x:Key="F" TargetType="{x:Type MenuItem}">
+        <!--<Style x:Key="F" TargetType="{x:Type MenuItem}">
             <Setter Property="Background" Value="#0f3c5a" />
             <Setter Property="Foreground" Value="White" />
             <Style.Triggers>
@@ -67,17 +67,19 @@
                     <Setter Property="Foreground" Value="LightGray" />
                 </Trigger>
             </Style.Triggers>
-        </Style>
+        </Style>-->
 
         <!--  Outer menu  -->
-        <Style x:Key="A" TargetType="{x:Type ContextMenu}">
+        <!--<Style x:Key="A" TargetType="{x:Type ContextMenu}">
             <Setter Property="OverridesDefaultStyle" Value="True" />
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ContextMenu}">
 
-                        <!--  Here is where you change the border thickness to zero on the menu  -->
+        -->
+        <!--  Here is where you change the border thickness to zero on the menu  -->
+        <!--
                         <Border
                             x:Name="Border"
                             Background="Transparent"
@@ -95,11 +97,11 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-        </Style>
+        </Style>-->
 
         <!--  SubmenuItem  -->
 
-        <ControlTemplate x:Key="{x:Static MenuItem.SubmenuItemTemplateKey}" TargetType="{x:Type MenuItem}">
+        <!--<ControlTemplate x:Key="{x:Static MenuItem.SubmenuItemTemplateKey}" TargetType="{x:Type MenuItem}">
             <Border Name="Border">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -163,17 +165,16 @@
                     <Setter Property="Foreground" Value="#0f3c5a" />
                 </Trigger>
             </ControlTemplate.Triggers>
-        </ControlTemplate>
+        </ControlTemplate>-->
 
         <!--  SubmenuHeader  -->
 
-        <ControlTemplate x:Key="{x:Static MenuItem.SubmenuHeaderTemplateKey}" TargetType="{x:Type MenuItem}">
+        <!--<ControlTemplate x:Key="{x:Static MenuItem.SubmenuHeaderTemplateKey}" TargetType="{x:Type MenuItem}">
             <Border Name="Border">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" SharedSizeGroup="Icon" />
                         <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="Auto" SharedSizeGroup="Shortcut" />
                         <ColumnDefinition Width="13" />
                     </Grid.ColumnDefinitions>
                     <ContentPresenter
@@ -184,6 +185,8 @@
                     <ContentPresenter
                         Name="HeaderHost"
                         Grid.Column="1"
+                        Margin="2,0,0,0"
+                        HorizontalAlignment="Center"
                         ContentSource="Header"
                         RecognizesAccessKey="True" />
                     <TextBlock
@@ -193,13 +196,14 @@
                         DockPanel.Dock="Right"
                         Text="{TemplateBinding InputGestureText}" />
                     <Path
-                        Grid.Column="3"
+                        Grid.Column="2"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Data="M 0 0 L 0 7 L 4 3.5 Z"
-                        Fill="#0f3c5a" />
+                        Fill="White" />
                     <Popup
                         Name="Popup"
+                        Grid.Column="1"
                         AllowsTransparency="True"
                         Focusable="False"
                         HorizontalOffset="-4"
@@ -208,8 +212,8 @@
                         PopupAnimation="Fade">
                         <Border
                             Name="SubmenuBorder"
-                            Background="#0f3c5a"
-                            BorderBrush="#0f3c5a"
+                            Background="{StaticResource Dark-Brush}"
+                            BorderBrush="{StaticResource Dark-Brush}"
                             BorderThickness="1"
                             SnapsToDevicePixels="True">
                             <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" />
@@ -223,7 +227,8 @@
                     <Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
                 </Trigger>
                 <Trigger Property="IsHighlighted" Value="true">
-                    <Setter TargetName="Border" Property="Background" Value="#5082a4" />
+                    <Setter TargetName="Border" Property="Background" Value="#535082A4" />
+                    <Setter TargetName="Border" Property="BorderBrush" Value="#1E94E5" />
                 </Trigger>
                 <Trigger SourceName="Popup" Property="Popup.AllowsTransparency" Value="True">
                     <Setter TargetName="SubmenuBorder" Property="CornerRadius" Value="4" />
@@ -233,7 +238,7 @@
                     <Setter Property="Foreground" Value="#0f3c5a" />
                 </Trigger>
             </ControlTemplate.Triggers>
-        </ControlTemplate>
+        </ControlTemplate>-->
 
 
 
@@ -334,6 +339,7 @@
                     SideBarSelected="True" />
                 <controls:SideBarItem
                     Padding="0,0,0,10"
+                    IsEnabled="False"
                     SideBarIcon="&#xf002;"
                     SideBarName="Catalog"
                     SideBarSelected="False" />
@@ -345,23 +351,38 @@
 
             </StackPanel>
 
-            <Menu Grid.Row="1" Grid.Column="1">
+            <!--<Menu Grid.Row="1" Grid.Column="1">
+
                 <MenuItem
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    Background="{StaticResource Dark-Brush}"
                     Header="_File">
                     <MenuItem Header="_New" />
                     <MenuItem Header="_Open" />
                     <MenuItem Header="_Close" />
-                    <MenuItem Header="_Export">
-                        <MenuItem Background="{StaticResource Dark-Brush}" Header="E_xport Current" />
-
-                        <MenuItem Background="{StaticResource Dark-Brush}" Header="Export _Wizard" />
-                    </MenuItem>
+                    <MenuItem Header="_Export" />
                     <MenuItem Header="_Exit" />
                 </MenuItem>
-            </Menu>
+
+                <MenuItem
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Header="_Edit">
+                    <MenuItem Header="_Rename" />
+                    <MenuItem Header="_Clear All Items" />
+                    <MenuItem Header="_Delete" />
+                </MenuItem>
+
+                <MenuItem
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Header="_Tools">
+                    <MenuItem Header="_Rename" />
+                    <MenuItem Header="_Clear All Items" />
+                    <MenuItem Header="_Delete" />
+                </MenuItem>
+
+            </Menu>-->
 
             <ContentControl
                 x:Name="ActiveContent"

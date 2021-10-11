@@ -56,6 +56,10 @@
                     <Trigger Property="IsPressed" Value="True">
                         <Setter Property="Background" Value="#0B151A" />
                     </Trigger>
+
+                    <Trigger Property="IsEnabled" Value="False">
+                        <Setter Property="Background" Value="#364D54" />
+                    </Trigger>
                 </Style.Triggers>
 
             </Style>
