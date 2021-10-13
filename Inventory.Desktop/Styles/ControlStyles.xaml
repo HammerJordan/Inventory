@@ -45,8 +45,6 @@
     <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4" />
     <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5" />
     <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383" />
-
-
     <Style x:Key="RoundedButton" TargetType="{x:Type ButtonBase}">
 
 
@@ -105,6 +103,7 @@
         </Setter>
 
     </Style>
+
 
     <Style TargetType="{x:Type MenuItem}">
         <Style.Triggers>

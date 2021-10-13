@@ -32,6 +32,7 @@ namespace Inventory.Desktop.ViewModel
 
         public ICommand CloseWindowCommand { get; set; }
         public ICommand OpenRecordCommand { get; }
+        public ICommand OpenRecordDoubleClickCommand { get; }
         public ICommand AddNewRecordCommand { get; }
         public ICommand DeleteRecordCommand { get; }
 
@@ -50,6 +51,7 @@ namespace Inventory.Desktop.ViewModel
             AddNewRecordCommand = new RelayCommand(AddNewRecord);
             DeleteRecordCommand = new RelayCommand(DeleteRecord);
             OpenRecordCommand = new RelayCommand(OpenRecord);
+            OpenRecordDoubleClickCommand = new RelayCommand(OpenRecord);
         }
 
         private void AddNewRecord()
