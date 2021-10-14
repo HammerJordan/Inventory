@@ -99,7 +99,8 @@
                     Command="{Binding EditRecordCommand}"
                     Content="&#xf303;"
                     FontFamily="{StaticResource FontAwesomeSolid}"
-                    Foreground="#A3742E" />
+                    Foreground="#A3742E"
+                    Visibility="{Binding Record, Converter={StaticResource NullToVisibilityConverter}}" />
 
             </Grid>
 
