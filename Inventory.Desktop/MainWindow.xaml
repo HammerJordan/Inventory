@@ -339,7 +339,6 @@
                     SideBarSelected="True" />
                 <controls:SideBarItem
                     Padding="0,0,0,10"
-                    IsEnabled="False"
                     SideBarIcon="&#xf002;"
                     SideBarName="Catalog"
                     SideBarSelected="False" />

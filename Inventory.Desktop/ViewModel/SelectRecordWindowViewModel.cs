@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows.Input;
 using Application.Core.Models.Record.Queries;
+using Inventory.Application.Core.Models.Record.Commands;
 using Inventory.Desktop.Commands;
 using Inventory.Desktop.Events;
 using Inventory.Domain.Models;
@@ -16,6 +17,8 @@ namespace Inventory.Desktop.ViewModel
         private readonly IMediator _mediator;
         private RecordModel selectedRecord;
         public ObservableCollection<RecordModel> RecordsCollection { get; set; }
+
+        public bool RenameActive { get; set; } = false;
 
         public RecordModel SelectedRecord
         {
@@ -49,7 +52,7 @@ namespace Inventory.Desktop.ViewModel
             
 
             AddNewRecordCommand = new RelayCommand(AddNewRecord);
-            DeleteRecordCommand = new RelayCommand(DeleteRecord);
+            DeleteRecordCommand = new RelayCommand(DeleteRecordAsync);
             OpenRecordCommand = new RelayCommand(OpenRecord);
             OpenRecordDoubleClickCommand = new RelayCommand(OpenRecord);
         }
@@ -62,12 +65,12 @@ namespace Inventory.Desktop.ViewModel
             SelectedRecord = record;
         }
 
-        private void DeleteRecord()
+        private async void DeleteRecordAsync()
         {
             if (SelectedRecord == null)
                 return;
 
-            recordQuery.DeleteAsync(SelectedRecord);
+            await _mediator.Send(new DeleteRecordCommand(SelectedRecord));
 
             int selectedIndex = RecordsCollection
                 .IndexOf(RecordsCollection.First(x => x.ID == SelectedRecord.ID));

@@ -70,5 +70,11 @@ namespace Infrastructure.Database.Queries
 
             return results;
         }
+
+        public async Task DeleteAllAsync(RecordModel recordModel)
+        {
+            string sql = @"DELETE FROM RecordItem WHERE RecordID = @ID;";
+            await _dbAccess.SaveDataAsync(sql, recordModel);
+        }
     }
 }

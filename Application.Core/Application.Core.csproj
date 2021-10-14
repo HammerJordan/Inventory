@@ -19,7 +19,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Models\RecordProductList\Commands" />
+      <Folder Include="Models\Record\Commands\" />
     </ItemGroup>
 
 </Project>
