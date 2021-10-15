@@ -1,0 +1,72 @@
+﻿<Window
+    x:Class="Inventory.Desktop.PopupWindows.RenameDialogWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:Inventory.Desktop.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Inventory.Desktop.PopupWindows"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModel="clr-namespace:Inventory.Desktop.ViewModel"
+    Width="250"
+    Height="200"
+    d:DataContext="{d:DesignInstance viewModel:RenameDialogWindowViewModel}"
+    Background="{StaticResource Dark-Brush}"
+    ResizeMode="NoResize"
+    ShowInTaskbar="False"
+    TextOptions.TextFormattingMode="Display"
+    WindowStartupLocation="CenterOwner"
+    WindowStyle="None"
+    mc:Ignorable="d">
+
+    <Window.Resources>
+        <converters:BetterBooleanToVisibilityConverter
+            x:Key="trueVisibleConverter"
+            FalseValue="Hidden"
+            TrueValue="Visible" />
+    </Window.Resources>
+
+    <Grid Margin="10" Background="{StaticResource Mid-Brush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            Grid.Row="0"
+            Margin="5,2"
+            VerticalAlignment="Center"
+            FontSize="20"
+            Foreground="Gray"
+            Text="Record Name"
+            Visibility="{Binding RenameStringEmpty, Converter={StaticResource trueVisibleConverter}}" />
+        <TextBox
+            x:Name="RenameTextBox"
+            Grid.Row="0"
+            VerticalAlignment="Center"
+            Background="Transparent"
+            CaretBrush="White"
+            FontSize="18"
+            Foreground="White"
+            Text="{Binding RenameString, UpdateSourceTrigger=PropertyChanged}">
+            <TextBox.InputBindings>
+                <KeyBinding
+                    Key="Return"
+                    Command="{Binding CloseWindowCommand}"
+                    CommandParameter="{Binding ElementName=RenameTextBox, Path=Text}" />
+            </TextBox.InputBindings>
+
+        </TextBox>
+
+        <Button
+            Grid.Row="1"
+            Margin="50,30"
+            Background="#2EA33A"
+            Command="{Binding CloseWindowCommand}"
+            Content="Submit"
+            FontSize="16"
+            FontWeight="Bold"
+            Foreground="White"
+            Style="{StaticResource RoundedButton}" />
+
+    </Grid>
+</Window>

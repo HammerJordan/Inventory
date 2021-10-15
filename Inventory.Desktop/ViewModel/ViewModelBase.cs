@@ -4,7 +4,7 @@ using Inventory.Desktop.Annotations;
 
 namespace Inventory.Desktop.ViewModel
 {
-    public class ViewModelBase : INotifyPropertyChanged
+    public class ViewModelBase : INotifyPropertyChanged 
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

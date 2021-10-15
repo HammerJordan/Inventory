@@ -121,13 +121,12 @@ namespace Inventory.Desktop.ViewModel
 
         private void OpenRecord()
         {
-            
-
             var window = _serviceProvider.GetService<SelectRecordWindow>();
             if (window == null)
                 return;
             window.Owner = System.Windows.Application.Current.MainWindow;
             window.ShowDialog();
+
         }
 
         

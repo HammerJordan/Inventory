@@ -5,12 +5,18 @@
     <Compile Update="PopupWindows\RemoteWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="PopupWindows\RenameDialogWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="PopupWindows\SelectRecordWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="PopupWindows\RemoteWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="PopupWindows\RenameDialogWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="PopupWindows\SelectRecordWindow.xaml">

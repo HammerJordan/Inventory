@@ -42,9 +42,9 @@
     <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#000" />
     <SolidColorBrush x:Key="Button.Pressed.Background" Color="#201F1F" />
     <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B" />
-    <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4" />
+    <SolidColorBrush x:Key="Button.Disabled.Background" Color="#626262" />
     <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5" />
-    <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383" />
+    <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="Black" />
     <Style x:Key="RoundedButton" TargetType="{x:Type ButtonBase}">
 
 

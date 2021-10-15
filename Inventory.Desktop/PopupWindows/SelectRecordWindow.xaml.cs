@@ -13,6 +13,7 @@ namespace Inventory.Desktop.PopupWindows
         {
             InitializeComponent();
             vm.CloseWindowCommand = new RelayCommand(_ => Close());
+            vm.OwnerWindow = this;
             DataContext = vm;
         }
     }

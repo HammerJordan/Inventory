@@ -71,7 +71,9 @@ namespace Inventory.Desktop
                 .AddTransient<SelectRecordWindowViewModel>()
                 .AddTransient<ViewResolveService>()
                 .AddTransient<RemoteWindow>()
-                .AddSingleton<RemoteWindowViewModel>();
+                .AddSingleton<RemoteWindowViewModel>()
+                .AddTransient<RenameDialogWindow>()
+                .AddTransient<RenameDialogWindowViewModel>();
 
             services.AddApplicationWpf(Configuration);
             services.AddApplicationCore();
