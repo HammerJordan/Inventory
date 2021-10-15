@@ -121,12 +121,17 @@ namespace Inventory.Desktop.ViewModel
 
         private void OpenRecord()
         {
+            Record = null;
+            ProductViewModels.Clear();
+            _serviceProvider.GetService<MainWindowViewModel>().RecordSelected = false;
+
             var window = _serviceProvider.GetService<SelectRecordWindow>();
             if (window == null)
                 return;
             window.Owner = System.Windows.Application.Current.MainWindow;
             window.ShowDialog();
 
+  
         }
 
         
@@ -207,8 +212,11 @@ namespace Inventory.Desktop.ViewModel
                     { Quantity = item.Quantity })
                 .ToList(), _mediator);
 
+            _serviceProvider.GetService<MainWindowViewModel>().RecordSelected = true;
+
             OnPropertyChanged(null);
         }
+
 
 
 

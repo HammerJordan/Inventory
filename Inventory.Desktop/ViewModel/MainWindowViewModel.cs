@@ -14,6 +14,8 @@ namespace Inventory.Desktop.ViewModel
         public ICommand ToggleFullScreenCommand { get; }
         public ICommand MinimizeCommand { get; }
 
+        public bool RecordSelected { get; set; } = false;
+
         public MainWindowViewModel()
         {
             CloseWindowCommand = new RelayCommand(() => System.Windows.Application.Current.Shutdown());

@@ -339,6 +339,7 @@
                     SideBarSelected="True" />
                 <controls:SideBarItem
                     Padding="0,0,0,10"
+                    IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.RecordSelected}"
                     SideBarIcon="&#xf002;"
                     SideBarName="Catalog"
                     SideBarSelected="False" />
