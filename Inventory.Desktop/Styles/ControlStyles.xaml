@@ -221,4 +221,14 @@
     </Style>
 
 
+
+    <Style x:Key="PopupWindowStyle" TargetType="{x:Type Window}">
+        <Setter Property="WindowStyle" Value="None" />
+        <Setter Property="ShowInTaskbar" Value="False" />
+        <Setter Property="ResizeMode" Value="NoResize" />
+        <Setter Property="Background" Value="{StaticResource Dark-Brush}" />
+
+    </Style>
+
+
 </ResourceDictionary>

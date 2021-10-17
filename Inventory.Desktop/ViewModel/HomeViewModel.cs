@@ -25,7 +25,7 @@ using PubSub;
 
 namespace Inventory.Desktop.ViewModel
 {
-    public class HomeViewModel : ViewModelBase 
+    public class HomeViewModel : ViewModelBase
     {
         private readonly IExportCsvFile _exportRecord;
         private readonly IRecordListItemQuery _recordItemsQuery;
@@ -87,14 +87,17 @@ namespace Inventory.Desktop.ViewModel
 
         private void ExportRecord()
         {
-            //TODO Open a export wizard.
-            using var dialog = new FolderBrowserDialog();
-            dialog.ShowDialog();
-            string path = dialog.SelectedPath;
-            if (string.IsNullOrEmpty(path))
-                return;
+            var window = _serviceProvider.GetService<ExportWindow>();
+            window.Owner = System.Windows.Application.Current.MainWindow;
+            window.ShowDialog();
 
-            _exportRecord.ExportToCSV(path, _recordProductList);
+            //using var dialog = new FolderBrowserDialog();
+            //dialog.ShowDialog();
+            //string path = dialog.SelectedPath;
+            //if (string.IsNullOrEmpty(path))
+            //    return;
+
+            //_exportRecord.ExportToCSV(path, _recordProductList);
         }
 
         private void DeleteRecord(ProductViewModel vm)
@@ -131,10 +134,10 @@ namespace Inventory.Desktop.ViewModel
             window.Owner = System.Windows.Application.Current.MainWindow;
             window.ShowDialog();
 
-  
+
         }
 
-        
+
 
         private void ProductViewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
@@ -142,7 +145,7 @@ namespace Inventory.Desktop.ViewModel
                 return;
 
             OnPropertyChanged(null);
-            
+
             if (sender is ProductViewModel vm)
                 _recordProductList.SetQuantity(vm.ProductModel, vm.Quantity);
         }
@@ -161,7 +164,7 @@ namespace Inventory.Desktop.ViewModel
             else
             {
                 var productModel = await _mediator.Send(new CheckProductForUpdatesCommand(notification.Model.ProductModel));
-                
+
                 var productViewModel = new ProductViewModel
                 {
                     ProductModel = productModel,
@@ -187,21 +190,21 @@ namespace Inventory.Desktop.ViewModel
             var recordItems = await _recordItemsQuery.LoadAllAsync(Record);
             var recordItemsArray = recordItems as RecordListItem[] ?? recordItems.ToArray();
             var updatedItems = new List<ProductModel>();
-            
+
             foreach (var item in recordItemsArray)
             {
                 var model = await _mediator.Send(new CheckProductForUpdatesCommand(item.ProductModel));
                 updatedItems.Add(model);
             }
 
-            
+
 
             foreach (var productViewModel in updatedItems
                 .Select(product => new ProductViewModel
-            {
-                ProductModel = product,
-                Quantity = recordItemsArray.First(x => x.ProductID == product.ID).Quantity
-            }))
+                {
+                    ProductModel = product,
+                    Quantity = recordItemsArray.First(x => x.ProductID == product.ID).Quantity
+                }))
             {
                 productViewModel.PropertyChanged += ProductViewModelPropertyChanged;
                 ProductViewModels.Add(productViewModel);
@@ -209,7 +212,7 @@ namespace Inventory.Desktop.ViewModel
 
             _recordProductList = new RecordProductList(Record, ProductViewModels
                 .Select(item => new RecordListItem(item.ProductModel, Record)
-                    { Quantity = item.Quantity })
+                { Quantity = item.Quantity })
                 .ToList(), _mediator);
 
             _serviceProvider.GetService<MainWindowViewModel>().RecordSelected = true;

@@ -1,0 +1,180 @@
+﻿<Window
+    x:Class="Inventory.Desktop.PopupWindows.ExportWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Inventory.Desktop.PopupWindows"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModel="clr-namespace:Inventory.Desktop.ViewModel"
+    Width="500"
+    Height="450"
+    d:DataContext="{d:DesignInstance viewModel:ExportWindowViewModel}"
+    Style="{StaticResource PopupWindowStyle}"
+    TextOptions.TextFormattingMode="Display"
+    WindowStartupLocation="CenterOwner"
+    mc:Ignorable="d">
+    <Grid Margin="10" Background="{StaticResource Mid-Brush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <StackPanel
+            Width="400"
+            Margin="5,5"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Orientation="Horizontal">
+            <Label
+                Margin="5,0,10,0"
+                VerticalAlignment="Center"
+                Content="Path:"
+                FontSize="16"
+                FontWeight="Medium"
+                Foreground="White" />
+            <Grid Margin="33.8,0,0,0">
+                <TextBox
+                    Width="250"
+                    Margin="10,0"
+                    Background="{StaticResource Dark-Brush}"
+                    FontSize="16"
+                    FontWeight="Medium"
+                    Foreground="White" />
+                <TextBlock
+                    Margin="15,0"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    FontWeight="Medium"
+                    Foreground="#666666"
+                    IsHitTestVisible="False"
+                    Text="Export Path" />
+            </Grid>
+
+
+            <Button
+                Width="25"
+                Height="25"
+                Margin="10,0"
+                Background="#2E67A3"
+                Content="folder"
+                FontFamily="{StaticResource FontAwesomeSolid}"
+                FontSize="16"
+                FontWeight="Medium"
+                Foreground="White"
+                Style="{StaticResource RoundedButton}" />
+
+        </StackPanel>
+
+        <StackPanel
+            Grid.Row="1"
+            Width="400"
+            Margin="5,5"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Orientation="Horizontal">
+            <Label
+                Margin="5,0,3,0"
+                VerticalAlignment="Center"
+                Content="File Name:"
+                FontSize="16"
+                FontWeight="Medium"
+                Foreground="White" />
+
+            <Grid>
+                <TextBox
+                    Width="250"
+                    Margin="10,0"
+                    Background="{StaticResource Dark-Brush}"
+                    FontSize="16"
+                    FontWeight="Medium"
+                    Foreground="White" />
+                <TextBlock
+                    Margin="15,0"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    FontWeight="Medium"
+                    Foreground="#666666"
+                    IsHitTestVisible="False"
+                    Text="Enter File name" />
+            </Grid>
+        </StackPanel>
+
+        <Grid Grid.Row="2" Margin="0,10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Label
+                HorizontalAlignment="Center"
+                Content="Select the records to export"
+                FontSize="16"
+                FontWeight="Medium"
+                Foreground="White" />
+
+            <ListBox Grid.Row="1">
+
+                <ListBoxItem>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox Content="Foo" />
+                    </StackPanel>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox Content="Foo" />
+                    </StackPanel>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox Content="Foo" />
+                    </StackPanel>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox Content="Foo" />
+                    </StackPanel>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox Content="Foo" />
+                    </StackPanel>
+                </ListBoxItem>
+
+            </ListBox>
+        </Grid>
+
+        <Grid Grid.Row="3" HorizontalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button
+                Grid.Column="0"
+                Width="120"
+                Height="40"
+                Margin="45,0"
+                Background="#2EA33A"
+                Content="Export"
+                FontSize="16"
+                FontWeight="Medium"
+                Foreground="White"
+                Style="{StaticResource RoundedButton}" />
+
+            <Button
+                Grid.Column="1"
+                Width="120"
+                Height="40"
+                Margin="45,0"
+                Background="#A32E2E"
+                Content="Cancel"
+                FontSize="16"
+                FontWeight="Medium"
+                Foreground="White"
+                Style="{StaticResource RoundedButton}" />
+        </Grid>
+
+
+
+    </Grid>
+</Window>

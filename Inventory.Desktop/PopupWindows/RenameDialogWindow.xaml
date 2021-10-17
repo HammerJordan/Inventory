@@ -10,12 +10,9 @@
     Width="250"
     Height="200"
     d:DataContext="{d:DesignInstance viewModel:RenameDialogWindowViewModel}"
-    Background="{StaticResource Dark-Brush}"
-    ResizeMode="NoResize"
-    ShowInTaskbar="False"
+    Style="{StaticResource PopupWindowStyle}"
     TextOptions.TextFormattingMode="Display"
     WindowStartupLocation="CenterOwner"
-    WindowStyle="None"
     mc:Ignorable="d">
 
     <Window.Resources>

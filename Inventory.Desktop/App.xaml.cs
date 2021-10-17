@@ -38,8 +38,8 @@ namespace Inventory.Desktop
 
             base.OnStartup(e);
             ServiceCollection.GetService<MainWindow>().Show();
-            
-            
+
+
         }
 
         private static void SetupExceptionLogging()
@@ -73,7 +73,9 @@ namespace Inventory.Desktop
                 .AddTransient<RemoteWindow>()
                 .AddSingleton<RemoteWindowViewModel>()
                 .AddTransient<RenameDialogWindow>()
-                .AddTransient<RenameDialogWindowViewModel>();
+                .AddTransient<RenameDialogWindowViewModel>()
+                .AddTransient<ExportWindow>()
+                .AddTransient<ExportWindowViewModel>();
 
             services.AddApplicationWpf(Configuration);
             services.AddApplicationCore();
