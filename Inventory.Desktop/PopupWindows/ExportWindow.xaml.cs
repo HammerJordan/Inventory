@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Inventory.Desktop.ViewModel;
 
 namespace Inventory.Desktop.PopupWindows
 {
@@ -19,9 +20,11 @@ namespace Inventory.Desktop.PopupWindows
     /// </summary>
     public partial class ExportWindow : Window
     {
-        public ExportWindow()
+        public ExportWindow(ExportWindowViewModel vm)
         {
             InitializeComponent();
+            DataContext = vm;
+            vm.OwnerWindow = this;
         }
     }
 }

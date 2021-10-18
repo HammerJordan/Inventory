@@ -71,6 +71,17 @@ namespace Infrastructure.Database.Queries
             return results;
         }
 
+        public async Task<int> Count(RecordModel recordModel)
+        {
+            const string sql = @"SELECT Sum(Quantity)
+                                    from RecordItem
+                                    where RecordID == @ID;";
+
+            var result = await _dbAccess.Connection.QueryFirstAsync<int>(sql, recordModel);
+
+            return result;
+        }
+
         public async Task DeleteAllAsync(RecordModel recordModel)
         {
             string sql = @"DELETE FROM RecordItem WHERE RecordID = @ID;";
