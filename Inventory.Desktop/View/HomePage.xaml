@@ -146,6 +146,19 @@
                 Width="120"
                 Height="30"
                 Margin="0,0,7,0"
+                Background="#662EA3"
+                Command="{Binding OpenRemoteWindowCommand}"
+                Content="Remote Portal"
+                FontSize="16"
+                FontWeight="Regular"
+                Foreground="White"
+                Style="{StaticResource RoundedButton}" />
+
+
+            <Button
+                Width="120"
+                Height="30"
+                Margin="0,0,7,0"
                 Background="#2E67A3"
                 Command="{Binding OpenRecordCommand}"
                 Content="New / Open"

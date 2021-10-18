@@ -22,7 +22,10 @@
             TrueValue="Visible" />
     </Window.Resources>
 
-    <Grid Margin="10" Background="{StaticResource Mid-Brush}">
+    <Grid
+        Margin="10"
+        Background="{StaticResource Mid-Brush}"
+        FocusManager.FocusedElement="{Binding ElementName=RenameTextBox}">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />

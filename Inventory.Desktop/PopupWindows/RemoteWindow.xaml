@@ -19,11 +19,17 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
+        <Label
+            HorizontalAlignment="Center"
+            Content="Select a record to get a QR code to connect to the remote"
+            Foreground="White" />
         <ComboBox
+            Grid.Row="1"
             Width="250"
             Height="30"
             HorizontalAlignment="Center"
@@ -41,20 +47,11 @@
         </ComboBox>
 
         <Image
-            Grid.Row="1"
+            Grid.Row="2"
             Width="150"
             Height="150"
             HorizontalAlignment="Center"
             Source="{Binding QrBitmap}" />
-
-
-        <Button
-            Grid.Row="2"
-            Width="80"
-            Height="40"
-            Command="{Binding StartStopCommand}"
-            Content="{Binding CommandName}" />
-
 
         <Button
             Grid.Row="3"

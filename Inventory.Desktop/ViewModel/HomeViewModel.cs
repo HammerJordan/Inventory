@@ -36,6 +36,7 @@ namespace Inventory.Desktop.ViewModel
         private RecordProductList _recordProductList;
 
         public ICommand OpenRecordCommand { get; }
+        public ICommand OpenRemoteWindowCommand { get; }
         public ICommand EditRecordCommand { get; }
         public ICommand RenameRecordCommand { get; }
         public ICommand DeleteRecordCommand { get; }
@@ -77,27 +78,25 @@ namespace Inventory.Desktop.ViewModel
             });
 
             ExportCommand = new RelayCommand(ExportRecord);
+            OpenRemoteWindowCommand = new RelayCommand(OpenRemoteWindow);
 
             Hub.Default.Subscribe<AddProductModelToRecordEvent>(AddProductModelToRecord);
             Hub.Default.Subscribe<RecordModelSelectEvent>(OpenNewRecord);
 
         }
 
-
+        private void OpenRemoteWindow()
+        {
+            var window = _serviceProvider.GetService<RemoteWindow>();
+            window.Owner = System.Windows.Application.Current.MainWindow;
+            window.ShowDialog();
+        }
 
         private void ExportRecord()
         {
             var window = _serviceProvider.GetService<ExportWindow>();
             window.Owner = System.Windows.Application.Current.MainWindow;
             window.ShowDialog();
-
-            //using var dialog = new FolderBrowserDialog();
-            //dialog.ShowDialog();
-            //string path = dialog.SelectedPath;
-            //if (string.IsNullOrEmpty(path))
-            //    return;
-
-            //_exportRecord.ExportToCSV(path, _recordProductList);
         }
 
         private void DeleteRecord(ProductViewModel vm)
