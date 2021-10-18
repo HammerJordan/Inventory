@@ -117,7 +117,7 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
-                            <CheckBox VerticalContentAlignment="Center" IsChecked="{Binding IsSelected}" />
+                            <CheckBox VerticalContentAlignment="Center" IsChecked="{Binding ToExport}"/>
                             <Label
                                 Content="{Binding Record.Name}"
                                 FontSize="14"

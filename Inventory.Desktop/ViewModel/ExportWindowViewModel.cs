@@ -27,7 +27,7 @@ namespace Inventory.Desktop.ViewModel
         public ICommand ExportCommand { get; set; }
         public ICommand CancelCommand { get; set; }
 
-        public bool AnyRecordSelected => Records.Any(x => x.IsSelected);
+        public bool AnyRecordSelected => Records.Any(x => x.ToExport);
 
         public Window OwnerWindow { get; set; }
 
@@ -59,7 +59,7 @@ namespace Inventory.Desktop.ViewModel
         }
         private async void Export(object obj)
         {
-            await _exportCsv.ExportToCSV(FilePath, FileName, Records.Where(x => x.IsSelected).Select(x => x.Record));
+            await _exportCsv.ExportToCSV(FilePath, FileName, Records.Where(x => x.ToExport).Select(x => x.Record));
             CancelCommand.Execute(null);
         }
 
@@ -86,6 +86,6 @@ namespace Inventory.Desktop.ViewModel
     {
         public RecordModel Record { get; set; }
         public int RecordItemsCount { get; set; }
-        public bool IsSelected { get; set; }
+        public bool ToExport { get; set; }
     }
 }
