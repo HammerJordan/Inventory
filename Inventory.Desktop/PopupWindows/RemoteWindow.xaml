@@ -55,11 +55,16 @@
 
         <Button
             Grid.Row="3"
-            Width="60"
+            Width="120"
             Height="40"
             Margin="0,50,0,0"
+            Background="#A32E2E"
             Click="CloseButtonOnClick"
-            Content="Close" />
+            Content="Close"
+            FontSize="16"
+            FontWeight="Medium"
+            Foreground="White"
+            Style="{StaticResource RoundedButton}" />
 
 
     </Grid>

@@ -1,0 +1,11 @@
+﻿.record-item-header{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 7px;
+}
+
+.return-to-search{
+    width: 60px;
+    height: 40px;
+    padding: 0;
+}

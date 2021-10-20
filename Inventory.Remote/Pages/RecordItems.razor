@@ -1,6 +1,7 @@
 ﻿@inject IRecordModelQuery _recordModelQuery
 @inject IRecordListItemQuery _recordListItemQuery
 @inject IMediator _mediator
+@inject NavigationManager navigationManager
 @page "/{ID:int}/RecordItems"
 @using Inventory.Domain.Models
 @using global::Application.Core.Models.RecordProductList
@@ -9,8 +10,12 @@
 @using global::Application.Core.Models.Record.Queries
 
 
+<div class="record-item-header">
+    <button class="return-to-search" @onclick="ReturnToSearch">Return</button>
+</div>
+
         
-    @foreach (var model in RecordProductList.ProductLists.Select(x => x.ProductModel))
+@foreach (var model in RecordProductList.ProductLists.Select(x => x.ProductModel))
     {
         <ItemDisplay Product="model" ActionName="Delete" OnAction="@DeleteRecord" />
     }
@@ -39,4 +44,12 @@
         RecordProductList.Remove(model);
         await InvokeAsync(StateHasChanged);
     }
+
+    private void ReturnToSearch()
+    {
+        int start = navigationManager.Uri.IndexOf("/RecordItems");
+        
+        navigationManager.NavigateTo(navigationManager.Uri[..start]);
+    }
+
 }

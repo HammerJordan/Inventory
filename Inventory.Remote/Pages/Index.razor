@@ -14,7 +14,7 @@
 
 @page "/{ID:int}"
 
-<div style="display: flex">
+<div class="top-bar">
     <SearchBar OnSearchEnter="SearchResultUpdated"/>
     <CartButton  CartCount="@RecordProductList.ProductLists.Count" />
 

@@ -308,11 +308,11 @@
                 <DataTemplate>
                     <!--    -->
                     <controls:ProductItem
-                        ActionBackground="#FF0000"
+                        ActionBackground="#A32E2E"
                         ActionCommand="{Binding ElementName=Root, Path=DataContext.DeleteRecordCommand}"
                         ActionCommandPram="{TemplateBinding Content}"
                         ActionContent="Delete"
-                        ActionForeground="Black"
+                        ActionForeground="White"
                         ActionWidth="65"
                         Background="{StaticResource Dark-Brush}"
                         DataContext="{RelativeSource Mode=Self}"

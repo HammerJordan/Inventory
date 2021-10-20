@@ -36,8 +36,7 @@
                 Margin="5,0,0,0"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center">
-                <Hyperlink NavigateUri="{Binding ViewModel.ProductModel.URL}"
-                           RequestNavigate="Hyperlink_RequestNavigate">
+                <Hyperlink NavigateUri="{Binding ViewModel.ProductModel.URL}" RequestNavigate="Hyperlink_RequestNavigate">
                     <TextBlock
                         HorizontalAlignment="Center"
                         FontSize="13"
@@ -127,9 +126,12 @@
 
                 <Button
                     Grid.Column="0"
-                    Background="Green"
+                    Background="#2EA33A"
                     Command="{Binding ViewModel.IncrementQuantityCommand}"
                     Content="+"
+                    FontSize="16"
+                    FontWeight="Bold"
+                    Foreground="White"
                     Style="{StaticResource addRemoveButton}" />
                 <TextBox
                     Grid.Column="1"
@@ -140,9 +142,12 @@
                     Text="{Binding ViewModel.Quantity}" />
                 <Button
                     Grid.Column="2"
-                    Background="Red"
+                    Background="#A32E2E"
                     Command="{Binding ViewModel.DecrementQuantityCommand}"
                     Content="-"
+                    FontSize="16"
+                    FontWeight="Bold"
+                    Foreground="White"
                     Style="{StaticResource addRemoveButton}" />
             </Grid>
 

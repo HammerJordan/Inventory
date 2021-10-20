@@ -12,15 +12,19 @@
     <projectFile profileName="Inventory.API.Tests">Inventory.API.Tests/Inventory.API.Tests.csproj</projectFile>
     <projectFile profileName="IIS Express">Inventory.Remote/Inventory.Remote.csproj</projectFile>
     <projectFile profileName="Inventory.Remote">Inventory.Remote/Inventory.Remote.csproj</projectFile>
+    <projectFile profileName="Inventory.Desktop">Inventory.Desktop/Inventory.Desktop.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7a6d2810-f582-42df-adfb-b5401f0dfa70" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Inventory.Remote/Pages/Index.razor.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Inventory.Remote/Pages/RecordItems.razor.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Inventory/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Inventory/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application.Tests/WebScrapper/ProductScraperTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application.Tests/WebScrapper/ProductScraperTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application.WPF/WebScraping/ProductScraper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application.WPF/WebScraping/ProductScraper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/Controls/ProductItem.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/Controls/ProductItem.xaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Inventory.Desktop/PopupWindows/RemoteWindow.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/PopupWindows/RemoteWindow.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/PopupWindows/SelectRecordWindow.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/PopupWindows/SelectRecordWindow.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Desktop/View/HomePage.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Desktop/View/HomePage.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Remote/Pages/Index.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Remote/Pages/Index.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Remote/Pages/RecordItems.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Remote/Pages/RecordItems.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Remote/Shared/ItemDisplay.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Remote/Shared/ItemDisplay.razor" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +136,7 @@
     <property name="settings.editor.selected.configurable" value="ReSharper" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected=".NET Project.Inventory.Desktop">
+  <component name="RunManager" selected=".NET Launch Settings Profile.Inventory.Remote">
     <configuration name="Inventory.Desktop" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="$PROJECT_DIR$/Inventory.Desktop/bin/Debug/net5.0-windows/Inventory.Desktop.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -147,6 +151,21 @@
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
       <option name="PROJECT_KIND" value="DotNetCore" />
       <option name="PROJECT_TFM" value="net5.0-windows7.0" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
+    <configuration name="Inventory.Desktop" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
+      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/Inventory.Desktop/Inventory.Desktop.csproj" />
+      <option name="LAUNCH_PROFILE_TFM" value="net5.0-windows7.0" />
+      <option name="LAUNCH_PROFILE_NAME" value="Inventory.Desktop" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
+      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
+      <option name="SEND_DEBUG_REQUEST" value="1" />
+      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
       <method v="2">
         <option name="Build" />
       </method>
@@ -194,6 +213,7 @@
     <list>
       <item itemvalue=".NET Launch Settings Profile.Inventory.Remote: IIS Express" />
       <item itemvalue=".NET Launch Settings Profile.Inventory.Remote" />
+      <item itemvalue=".NET Launch Settings Profile.Inventory.Desktop" />
       <item itemvalue=".NET Project.Inventory.Desktop" />
       <item itemvalue="Xamarin.Android.Inventory.Mobile.Android" />
     </list>
@@ -237,6 +257,9 @@
       <workItem from="1633726396215" duration="622000" />
       <workItem from="1633727074133" duration="687000" />
       <workItem from="1633792301121" duration="389000" />
+      <workItem from="1634657889498" duration="2237000" />
+      <workItem from="1634670789369" duration="66000" />
+      <workItem from="1634745449978" duration="1916000" />
     </task>
     <servers />
   </component>
